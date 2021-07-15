@@ -1,0 +1,22 @@
+{
+  "name": "mifiel-api",
+  "version": "1.0.0",
+  "description": "Monorepo for Mifiel Api",
+  "repository": "git@github.com:Mifiel/mifiel-api.git",
+  "author": "Edgar Zavala <ezavile@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/Mifiel/mifiel-api/issues"
+  },
+  "engines": {
+    "node": "15.*"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "homepage": "https://github.com/Mifiel/mifiel-api#readme",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
