@@ -1,6 +1,5 @@
 {
-  "name": "mifiel-api",
-  "version": "1.0.0",
+  "name": "mifiel",
   "description": "Monorepo for Mifiel Api",
   "repository": "git@github.com:Mifiel/mifiel-api.git",
   "author": "Edgar Zavala <ezavile@gmail.com>",
@@ -17,6 +16,15 @@
   ],
   "homepage": "https://github.com/Mifiel/mifiel-api#readme",
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
   }
 }
