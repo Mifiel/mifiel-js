@@ -3,15 +3,31 @@ import { Config } from '../Config';
 import { authenticationInterceptor } from '../interceptors';
 
 export class Service {
-  service: AxiosInstance;
+  private readonly _api: AxiosInstance;
 
-  constructor() {
-    this.service = axios.create({ baseURL: Config.url });
-    this.service.interceptors.request.use(authenticationInterceptor);
+  private static instance: Service;
+
+  private constructor() {
+    const config = Config.getInstance();
+
+    this._api = axios.create({ baseURL: config.url });
+    this._api.interceptors.request.use(authenticationInterceptor);
+  }
+
+  static getInstance() {
+    if (!Service.instance) {
+      Service.instance = new Service();
+    }
+
+    return Service.instance;
+  }
+
+  get api() {
+    return this._api;
   }
 
   async request(config: AxiosRequestConfig): Promise<AxiosResponse> {
-    const response = await this.service.request(config);
+    const response = await this._api.request(config);
 
     return response;
   }

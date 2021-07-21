@@ -2,21 +2,23 @@ import forge from 'node-forge';
 import type { AxiosRequestConfig } from 'axios';
 import { Config } from '../Config';
 
-function getAuthorization(canonicalString: string[]) {
+function getAuthorization(canonical: string[]) {
+  const config = Config.getInstance();
+
   const hmac = forge.hmac.create();
-  hmac.start('sha1', Config.appSecret);
-  hmac.update(canonicalString.join(','));
+  hmac.start('sha1', config.appSecret);
+  hmac.update(canonical.join(','));
   const signatureBytes = hmac.digest().bytes();
   const encodedSignature = forge.util.encode64(signatureBytes);
 
-  return `APIAuth ${Config.appID}:${encodedSignature}`;
+  return `APIAuth ${config.appId}:${encodedSignature}`;
 }
 
 export const authenticationInterceptor = (config: AxiosRequestConfig) => {
   const date = new Date().toUTCString();
   const contentType = config.headers['content-type'] ?? 'application/json';
 
-  const canonicalString = [
+  const canonical = [
     config.method?.toUpperCase(),
     contentType,
     '',
@@ -28,7 +30,7 @@ export const authenticationInterceptor = (config: AxiosRequestConfig) => {
     ...config,
     headers: {
       ...config.headers,
-      Authorization: getAuthorization(canonicalString),
+      Authorization: getAuthorization(canonical),
       Date: date,
       'Content-Type': contentType,
       'Content-MD5': '',
