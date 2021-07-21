@@ -4,14 +4,14 @@ import { Config } from '../Config';
 import { Service } from './Service';
 
 describe('Service', () => {
-  let mifielService: Service;
+  let service: Service;
   let mockAPI: MockAdapter;
 
   beforeAll(() => {
-    Config.setTokens('app-id', 'app-ecret');
+    Config.setTokens({ appId: 'app-id', appSecret: 'app-secret' });
+    service = Service.getInstance();
 
-    mifielService = new Service();
-    mockAPI = new MockAdapter(mifielService.service);
+    mockAPI = new MockAdapter(service.api);
   });
 
   afterAll(() => {
@@ -23,7 +23,7 @@ describe('Service', () => {
 
     const {
       config: { headers },
-    } = await mifielService.request({
+    } = await service.request({
       method: 'POST',
       url: 'api/v1/documents',
     });
@@ -32,5 +32,15 @@ describe('Service', () => {
     expect(headers.Date).toBeDefined();
     expect(headers['Content-Type']).toBeDefined();
     expect(headers['Content-MD5']).toBeDefined();
+  });
+
+  it('sets only one request interceptor', () => {
+    service = Service.getInstance();
+    // @ts-ignore
+    expect(service.api.interceptors.request.handlers).toHaveLength(1);
+
+    service = Service.getInstance();
+    // @ts-ignore
+    expect(service.api.interceptors.request.handlers).toHaveLength(1);
   });
 });
