@@ -1,0 +1,29 @@
+{
+  "name": "@mifiel/models",
+  "version": "0.0.0",
+  "description": "Mifiel TypeScript Interfaces and Types",
+  "author": "Edgar Zavala <ezavile@gmail.com>",
+  "homepage": "https://github.com/Mifiel/mifiel-api/tree/main/packages/models#readme",
+  "license": "ISC",
+  "main": "lib/models.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mifiel/mifiel-api.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Mifiel/mifiel-api/issues"
+  }
+}
