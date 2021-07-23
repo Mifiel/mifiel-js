@@ -9,12 +9,21 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
-    project: './tsconfig.json',
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     'no-console': 'warn',
     'import/prefer-default-export': 'off',
-    'prettier/prettier': 'error'
-  }
+    'no-underscore-dangle': ['error', { allowAfterThis: true }],
+    'prettier/prettier': 'error',
+  },
+  overrides: [
+    {
+      files: ['*.ts'],
+      parserOptions: {
+        project: './tsconfig.json',
+        EXPERIMENTAL_useSourceOfProjectReferenceRedirect: true,
+      },
+    },
+  ],
 };
