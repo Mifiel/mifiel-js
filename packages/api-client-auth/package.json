@@ -1,0 +1,34 @@
+{
+  "name": "@mifiel/api-client-auth",
+  "version": "0.0.0",
+  "description": "Library to authenticate Mifiel API calls",
+  "license": "ISC",
+  "repository": "git@github.com:Mifiel/mifiel-js.git",
+  "bugs": {
+    "url": "https://github.com/Mifiel/mifiel-js/issues"
+  },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/api-auth#readme",
+  "author": "Edgar Zavala <ezavile@gmail.com>",
+  "main": "dist/cjs/main.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc -p ./tsconfig.prod.json",
+    "check-types": "tsc --noemit",
+    "eslint": "eslint src --ext .ts",
+    "lint": "yarn eslint && yarn check-types",
+    "test": "jest"
+  },
+  "types": "dist/types/main.d.ts",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "node-forge": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/node-forge": "^0.10.2",
+    "axios-mock-adapter": "^1.19.0",
+    "mockdate": "^3.0.5"
+  }
+}
