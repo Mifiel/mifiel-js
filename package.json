@@ -16,8 +16,11 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "lerna run build",
     "husky": "husky",
-    "prepare": "husky install"
+    "lint": "lerna run lint",
+    "prepare": "husky install",
+    "test": "lerna run test"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
