@@ -1,29 +1,23 @@
 {
   "name": "@mifiel/models",
   "version": "0.0.0",
-  "description": "Mifiel TypeScript Interfaces and Types",
-  "author": "Edgar Zavala <ezavile@gmail.com>",
-  "homepage": "https://github.com/Mifiel/mifiel-api/tree/main/packages/models#readme",
-  "license": "ISC",
-  "main": "lib/models.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+  "description": "Mifiel TypeScript Interfaces and Types definitions",
+  "license": "MIT",
+  "repository": "git@github.com:Mifiel/mifiel-js.git",
+  "bugs": {
+    "url": "https://github.com/Mifiel/mifiel-js/issues"
   },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/models#readme",
+  "author": "Edgar Zavala <ezavile@gmail.com>",
+  "main": "./src/index.ts",
   "files": [
-    "lib"
+    "src"
   ],
   "publishConfig": {
-    "registry": "http://registry.npmjs.org/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mifiel/mifiel-api.git"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/Mifiel/mifiel-api/issues"
+    "check-types": "tsc --noemit",
+    "lint": "yarn eslint && yarn check-types"
   }
 }
