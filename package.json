@@ -1,6 +1,6 @@
 {
   "name": "mifiel",
-  "description": "Monorepo for Mifiel Api",
+  "description": "Monorepo for Mifiel libraries",
   "license": "MIT",
   "private": true,
   "engines": {
