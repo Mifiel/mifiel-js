@@ -2,12 +2,12 @@
   "name": "@mifiel/api-client-auth",
   "version": "0.1.0",
   "description": "Library to authenticate Mifiel API calls",
-  "license": "ISC",
+  "license": "MIT",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
   "bugs": {
     "url": "https://github.com/Mifiel/mifiel-js/issues"
   },
-  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/api-auth#readme",
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/api-client-auth#readme",
   "author": "Edgar Zavala <ezavile@gmail.com>",
   "main": "dist/cjs/main.js",
   "files": [
