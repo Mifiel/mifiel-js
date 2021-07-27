@@ -19,13 +19,12 @@ describe('Service', () => {
   });
 
   it('headers has been defined', async () => {
-    mockAPI.onPost('api/v1/documents').reply(200);
+    mockAPI.onPost('documents').reply(200);
 
     const {
       config: { headers },
-    } = await service.request({
+    } = await Service.request('documents', {
       method: 'POST',
-      url: 'api/v1/documents',
     });
 
     expect(headers.Authorization).toBeDefined();

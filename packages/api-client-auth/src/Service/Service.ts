@@ -26,8 +26,17 @@ export class Service {
     return this._api;
   }
 
-  async request(config: AxiosRequestConfig): Promise<AxiosResponse> {
-    const response = await this._api.request(config);
+  static async request<T>(
+    resource: string,
+    config: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    const { api } = Service.getInstance();
+    const { url, ...restConfig } = config;
+
+    const response = await api.request({
+      url: url ? `${resource}/${url}` : resource,
+      ...restConfig,
+    });
 
     return response;
   }
