@@ -1,0 +1,23 @@
+{
+  "name": "@mifiel/models",
+  "version": "0.0.0",
+  "description": "Mifiel TypeScript Interfaces and Types definitions",
+  "license": "MIT",
+  "repository": "git@github.com:Mifiel/mifiel-js.git",
+  "bugs": {
+    "url": "https://github.com/Mifiel/mifiel-js/issues"
+  },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/models#readme",
+  "author": "Edgar Zavala <ezavile@gmail.com>",
+  "main": "./src/index.ts",
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "check-types": "tsc --noemit",
+    "lint": "yarn eslint && yarn check-types"
+  }
+}
