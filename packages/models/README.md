@@ -1,11 +1,9 @@
-# `models`
+# `@mifiel/models`
 
-> TODO: description
+> Mifiel TypeScript Interfaces and Types definitions
 
 ## Usage
 
 ```
-const models = require('models');
-
 // TODO: DEMONSTRATE API
 ```
