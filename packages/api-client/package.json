@@ -3,20 +3,30 @@
   "version": "0.0.0",
   "description": "Mifiel API Client for NodeJS",
   "license": "MIT",
+  "repository": "git@github.com:Mifiel/mifiel-js.git",
+  "bugs": {
+    "url": "https://github.com/Mifiel/mifiel-js/issues"
+  },
   "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/api-client#readme",
   "author": "Edgar Zavala <ezavile@gmail.com>",
-  "main": "lib/api-client.js",
+  "main": "dist/cjs/main.js",
   "files": [
-    "lib"
+    "/dist"
   ],
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
   "publishConfig": {
-    "registry": "http://registry.npmjs.org/"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "prebuild": "rimraf dist",
+    "build": "tsc -p ./tsconfig.prod.json",
+    "check-types": "tsc --noemit",
+    "eslint": "eslint src --ext .ts",
+    "lint": "yarn eslint && yarn check-types",
+    "test": "jest"
+  },
+  "types": "dist/types/main.d.ts",
+  "dependencies": {
+    "@mifiel/api-client-auth": "^0.1.0",
+    "axios": "^0.21.1"
   }
 }
