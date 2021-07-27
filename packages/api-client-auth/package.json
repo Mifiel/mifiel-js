@@ -10,6 +10,9 @@
   "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/api-auth#readme",
   "author": "Edgar Zavala <ezavile@gmail.com>",
   "main": "dist/cjs/main.js",
+  "files": [
+    "/dist"
+  ],
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
