@@ -14,6 +14,10 @@ describe('Documents', () => {
   });
 
   describe('@transfer', () => {
+    const receiver = {
+      email: 'ram@mifiel.com',
+    };
+
     const signatories: SignatoryResponse[] = [
       {
         email: 'ezavile@gmail.com',
@@ -30,14 +34,14 @@ describe('Documents', () => {
       jest.spyOn(api, 'request').mockImplementation();
     });
 
-    it('sends proper request config', async () => {
-      await Document.transfer({ documentId, signatories });
+    it('sends receiver and signatories as data', async () => {
+      await Document.transfer({ documentId, receiver, signatories });
 
       expect(api.request).toHaveBeenCalledWith(
         expect.objectContaining({
           method: 'POST',
           url: `documents/${documentId}/transfer`,
-          data: { signatories },
+          data: { receiver, signatories },
         })
       );
     });

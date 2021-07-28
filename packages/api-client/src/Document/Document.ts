@@ -3,6 +3,12 @@ import { Service } from '@mifiel/api-client-auth';
 
 export type DocumentTransferParams = {
   documentId: string;
+  // TODO: move to @mifiel/models?
+  receiver: {
+    email: string;
+    tax_id?: string;
+    asset_key?: string;
+  };
   signatories: SignatoryResponse[];
 } & { [key in string]: any };
 
