@@ -11,16 +11,22 @@ export class Config {
 
   private _appSecret: string;
 
+  private _version = 'v1';
+
   private constructor(params: ConfigParams) {
     this._appId = params.appId;
     this._appSecret = params.appSecret;
-    this._url = params.url ?? 'https://www.mifiel.com/api/v1';
+    this._url = params.url ?? `https://www.mifiel.com/api/${this._version}`;
   }
 
   private static instance: Config;
 
   static setTokens(params: ConfigParams) {
     Config.instance = new Config(params);
+  }
+
+  get version() {
+    return this._version;
   }
 
   get url() {
@@ -48,14 +54,14 @@ export class Config {
   }
 
   useSandbox() {
-    this._url = 'https://sandbox.mifiel.com/api/v1';
+    this._url = `https://sandbox.mifiel.com/api/${this._version}`;
   }
 
   useStaging() {
-    this._url = 'https://stageex.mifiel.com/api/v1';
+    this._url = `https://stageex.mifiel.com/api/${this._version}`;
   }
 
   useProd() {
-    this._url = 'https://www.mifiel.com/api/v1';
+    this._url = `https://www.mifiel.com/api/${this._version}`;
   }
 }
