@@ -12,7 +12,7 @@ describe('Authentication Interceptor', () => {
   beforeAll(() => {
     MockDate.set('2016');
 
-    Config.setTokens({ appId: 'app-id', appSecret: 'app-ecret' });
+    Config.setTokens({ appId: 'app-id', appSecret: 'app-secret' });
     const config = Config.getInstance();
 
     mifielAPI = axios.create({ baseURL: config.url });
@@ -27,17 +27,17 @@ describe('Authentication Interceptor', () => {
   });
 
   it('sets custom headers', async () => {
-    mockAPI.onPost('api/v1/documents').reply(200);
+    mockAPI.onPost('/documents').reply(200);
 
     const {
       config: { headers },
     } = await mifielAPI.request({
       method: 'POST',
-      url: 'api/v1/documents',
+      url: 'documents',
     });
 
     expect(headers.Authorization).toBe(
-      'APIAuth app-id:53+TzSOCDKoisvIaWDFB+/+WcRk='
+      'APIAuth app-id:Qr94Z4Nvp0p5G1CsR5LpQDaTQXM='
     );
     expect(headers.Date).toBe(new Date().toUTCString());
     expect(headers['Content-Type']).toBe('application/json');

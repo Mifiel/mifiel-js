@@ -1,36 +1,30 @@
-import forge from 'node-forge';
 import type { AxiosRequestConfig } from 'axios';
+// @ts-ignore
+import hmacsha1 from 'hmacsha1';
+
 import { Config } from '../Config';
 
-function getAuthorization(canonical: string[]) {
+export const authenticationInterceptor = (axiosConfig: AxiosRequestConfig) => {
+  const date = new Date().toUTCString();
+  const contentType = axiosConfig.headers['content-type'] ?? 'application/json';
+
   const config = Config.getInstance();
 
-  const hmac = forge.hmac.create();
-  hmac.start('sha1', config.appSecret);
-  hmac.update(canonical.join(','));
-  const signatureBytes = hmac.digest().bytes();
-  const encodedSignature = forge.util.encode64(signatureBytes);
-
-  return `APIAuth ${config.appId}:${encodedSignature}`;
-}
-
-export const authenticationInterceptor = (config: AxiosRequestConfig) => {
-  const date = new Date().toUTCString();
-  const contentType = config.headers['content-type'] ?? 'application/json';
-
   const canonical = [
-    config.method?.toUpperCase(),
+    axiosConfig.method?.toUpperCase(),
     contentType,
     '',
-    config.url,
+    `/api/${config.version}/${axiosConfig.url}`,
     date,
   ];
 
+  const signature = hmacsha1(config.appSecret, canonical.join(','));
+
   return Promise.resolve({
-    ...config,
+    ...axiosConfig,
     headers: {
-      ...config.headers,
-      Authorization: getAuthorization(canonical),
+      ...axiosConfig.headers,
+      Authorization: `APIAuth ${config.appId}:${signature}`,
       Date: date,
       'Content-Type': contentType,
       'Content-MD5': '',
