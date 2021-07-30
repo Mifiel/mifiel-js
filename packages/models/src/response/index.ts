@@ -4,3 +4,4 @@ export * from './SigningGroupResponse';
 export * from './SignaturePackageResponse';
 export * from './DocumentResponse';
 export * from './SignatoryResponse';
+export * from './UserResponse';
