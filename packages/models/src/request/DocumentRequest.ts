@@ -30,4 +30,5 @@ export type DocumentRequest = Partial<{
     name: StakeholderResponse['name'];
     tax_id: StakeholderResponse['tax_id'];
   }[];
+  fields: { [key: string]: any };
 }>;
