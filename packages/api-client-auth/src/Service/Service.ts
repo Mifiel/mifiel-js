@@ -8,9 +8,7 @@ export class Service {
   private static instance: Service;
 
   private constructor() {
-    const config = Config.getInstance();
-
-    this._api = axios.create({ baseURL: config.url });
+    this._api = axios.create({ baseURL: Config.url });
     this._api.interceptors.request.use(authenticationInterceptor);
   }
 
@@ -32,6 +30,8 @@ export class Service {
   ): Promise<AxiosResponse<T>> {
     const { api } = Service.getInstance();
     const { url, ...restConfig } = config;
+
+    api.defaults.baseURL = Config.url;
 
     const response = await api.request({
       url: url ? `${resource}/${url}` : resource,

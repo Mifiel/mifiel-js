@@ -13,9 +13,7 @@ describe('Authentication Interceptor', () => {
     MockDate.set('2016');
 
     Config.setTokens({ appId: 'app-id', appSecret: 'app-secret' });
-    const config = Config.getInstance();
-
-    mifielAPI = axios.create({ baseURL: config.url });
+    mifielAPI = axios.create({ baseURL: Config.url });
     mifielAPI.interceptors.request.use(authenticationInterceptor);
 
     mockAPI = new MockAdapter(mifielAPI);

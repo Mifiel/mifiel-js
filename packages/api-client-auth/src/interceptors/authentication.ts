@@ -8,23 +8,21 @@ export const authenticationInterceptor = (axiosConfig: AxiosRequestConfig) => {
   const date = new Date().toUTCString();
   const contentType = axiosConfig.headers['content-type'] ?? 'application/json';
 
-  const config = Config.getInstance();
-
   const canonical = [
     axiosConfig.method?.toUpperCase(),
     contentType,
     '',
-    `/api/${config.version}/${axiosConfig.url}`,
+    `/api/${Config.version}/${axiosConfig.url}`,
     date,
   ];
 
-  const signature = hmacsha1(config.appSecret, canonical.join(','));
+  const signature = hmacsha1(Config.appSecret, canonical.join(','));
 
   return Promise.resolve({
     ...axiosConfig,
     headers: {
       ...axiosConfig.headers,
-      Authorization: `APIAuth ${config.appId}:${signature}`,
+      Authorization: `APIAuth ${Config.appId}:${signature}`,
       Date: date,
       'Content-Type': contentType,
       'Content-MD5': '',

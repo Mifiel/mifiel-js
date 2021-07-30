@@ -1,30 +1,26 @@
 import { Config } from './Config';
 
 describe('Config', () => {
-  let config: Config;
-
   Config.setTokens({ appId: 'appId', appSecret: 'secret' });
 
   it('@setTokens', () => {
-    config = Config.getInstance();
-
-    expect(config.appId).toBe('appId');
-    expect(config.appSecret).toBe('secret');
+    expect(Config.appId).toBe('appId');
+    expect(Config.appSecret).toBe('secret');
   });
 
   it('@useSandbox', () => {
-    expect(config.url).toContain('www.mifiel.com');
+    expect(Config.url).toContain('www.mifiel.com');
 
-    config.useSandbox();
+    Config.useSandbox();
 
-    expect(config.url).toContain('sandbox.mifiel.com');
+    expect(Config.url).toContain('sandbox.mifiel.com');
   });
 
   it('@useStaging', () => {
-    expect(config.url).toContain('sandbox.mifiel.com');
+    expect(Config.url).toContain('sandbox.mifiel.com');
 
-    config.useStaging();
+    Config.useStaging();
 
-    expect(config.url).toContain('stageex.mifiel.com');
+    expect(Config.url).toContain('stageex.mifiel.com');
   });
 });

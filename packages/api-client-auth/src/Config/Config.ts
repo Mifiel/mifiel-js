@@ -1,67 +1,57 @@
 type ConfigParams = {
   appId: string;
   appSecret: string;
-  url?: string;
+  env?: 'production' | 'staging' | 'sandbox';
 };
 
 export class Config {
-  private _url: string;
+  private static _env: ConfigParams['env'];
 
-  private _appId: string;
+  private static _appId: string;
 
-  private _appSecret: string;
+  private static _appSecret: string;
 
-  private _version = 'v1';
-
-  private constructor(params: ConfigParams) {
-    this._appId = params.appId;
-    this._appSecret = params.appSecret;
-    this._url = params.url ?? `https://www.mifiel.com/api/${this._version}`;
-  }
-
-  private static instance: Config;
+  private static _version = 'v1';
 
   static setTokens(params: ConfigParams) {
-    Config.instance = new Config(params);
+    this._appId = params.appId;
+    this._appSecret = params.appSecret;
+    this._env = params.env ?? 'production';
   }
 
-  get version() {
+  static get version() {
     return this._version;
   }
 
-  get url() {
-    return this._url;
+  static get url() {
+    const hosts = {
+      production: 'https://www.mifiel.com',
+      sandbox: 'https://sandbox.mifiel.com',
+      staging: 'https://stageex.mifiel.com',
+    };
+
+    const currentHost = hosts[this._env] ?? hosts.production;
+
+    return `${currentHost}/api/${this._version}`;
   }
 
-  get appId() {
+  static get appId() {
     return this._appId;
   }
 
-  get appSecret() {
+  static get appSecret() {
     return this._appSecret;
   }
 
-  static getInstance(params?: ConfigParams) {
-    if (!Config.instance && params) {
-      Config.instance = new Config(params);
-    }
-
-    if (params) {
-      Config.instance = new Config(params);
-    }
-
-    return Config.instance;
+  static useSandbox() {
+    this._env = 'sandbox';
   }
 
-  useSandbox() {
-    this._url = `https://sandbox.mifiel.com/api/${this._version}`;
+  static useStaging() {
+    this._env = 'staging';
   }
 
-  useStaging() {
-    this._url = `https://stageex.mifiel.com/api/${this._version}`;
-  }
-
-  useProd() {
-    this._url = `https://www.mifiel.com/api/${this._version}`;
+  static useProd() {
+    this._env = 'production';
   }
 }
