@@ -69,6 +69,7 @@ export abstract class Document extends Model {
 
   static async transfer(params: {
     documentId: string;
+    callback_url?: string;
     receiver: {
       email: string;
       tax_id?: string;
