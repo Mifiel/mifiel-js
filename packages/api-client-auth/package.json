@@ -10,6 +10,7 @@
   "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/api-client-auth#readme",
   "author": "Edgar Zavala <ezavile@gmail.com>",
   "main": "dist/cjs/main.js",
+  "module": "dist/esm/main.js",
   "files": [
     "/dist"
   ],
@@ -18,7 +19,9 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc -p ./tsconfig.prod.json",
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc -p ./tsconfig.prod.json",
+    "build:esm": "node esbuild.config",
     "check-types": "tsc --noemit",
     "eslint": "eslint src --ext .ts",
     "lint": "yarn eslint && yarn check-types",
