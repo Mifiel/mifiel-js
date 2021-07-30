@@ -1,7 +1,9 @@
 import type { SigningGroupResponse } from './SigningGroupResponse';
 import type { StakeholderResponse } from './StakeholderResponse';
 
-export interface DocumentResponse {
+// TODO: check optional and required attributes
+
+export type DocumentResponse = Partial<{
   real_id: string;
   id: string;
   message_for_signers?: string;
@@ -72,8 +74,8 @@ export interface DocumentResponse {
   file_signed_download: string;
   file_zipped: string;
   file_xml: string;
-  signers: Partial<StakeholderResponse>[];
-  viewers: Partial<StakeholderResponse>[];
+  signers: StakeholderResponse[];
+  viewers: StakeholderResponse[];
   signatures: [
     {
       id: string;
@@ -109,4 +111,4 @@ export interface DocumentResponse {
     }
   ];
   signing_groups: SigningGroupResponse[];
-}
+}>;

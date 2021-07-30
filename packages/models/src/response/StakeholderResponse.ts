@@ -1,11 +1,15 @@
 import type { CertificateResponse } from './CertificateResponse';
 
-export interface StakeholderResponse {
+// TODO: check optional and required attributes
+
+export type StakeholderResponse = Partial<{
   id: string;
   name: string;
   email: string;
   tax_id: string;
   role: string;
+  // @deprecated
+  type: string;
   field: string;
   signed: boolean;
   widget_id: string;
@@ -27,4 +31,6 @@ export interface StakeholderResponse {
   };
   certificate?: CertificateResponse;
   hidden?: boolean;
-}
+  signing_group: string;
+  certificate_number: string;
+}>;

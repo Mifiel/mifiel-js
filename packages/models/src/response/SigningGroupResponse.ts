@@ -1,6 +1,8 @@
 import type { StakeholderResponse } from './StakeholderResponse';
 
-export interface SigningGroupResponse {
+// TODO: check optional and required attributes
+
+export type SigningGroupResponse = Partial<{
   name: string;
   priority: number;
   state: string;
@@ -8,4 +10,4 @@ export interface SigningGroupResponse {
   constraints: { signer: boolean; reviewer: boolean };
   id: string;
   stakeholders: StakeholderResponse[];
-}
+}>;

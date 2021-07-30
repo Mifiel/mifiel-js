@@ -1,4 +1,6 @@
-export interface CertificateResponse {
+// TODO: check optional and required attributes
+
+export type CertificateResponse = Partial<{
   id: string;
   certificate_number: string;
   type_of: string;
@@ -13,4 +15,4 @@ export interface CertificateResponse {
   revoked: boolean;
   has_addresses: boolean;
   days_to_expire: number;
-}
+}>;
