@@ -33,8 +33,8 @@ export abstract class Model {
     return data;
   }
 
-  static async create<Data>(body: Data, config?: AxiosRequestConfig) {
-    const { data } = await Service.request(this.resource, {
+  static async create<Entity>(body: Object, config?: AxiosRequestConfig) {
+    const { data } = await Service.request<Entity>(this.resource, {
       method: 'POST',
       data: body,
       ...config,
@@ -43,12 +43,12 @@ export abstract class Model {
     return data;
   }
 
-  static async update<Data>(
+  static async update<Entity>(
     id: string,
-    body: Data,
+    body: Object,
     config?: AxiosRequestConfig
   ) {
-    const { data } = await Service.request(this.resource, {
+    const { data } = await Service.request<Entity>(this.resource, {
       method: 'PATCH',
       url: id,
       data: body,
