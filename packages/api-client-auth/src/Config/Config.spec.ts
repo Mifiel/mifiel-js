@@ -23,4 +23,17 @@ describe('Config', () => {
 
     expect(Config.url).toContain('stageex.mifiel.com');
   });
+
+  it('throws error if params are wrong', () => {
+    const wrongParams = [
+      {},
+      { appId: '' },
+      { appId: 'appId', appSecret: 1234 },
+      { appId: 'appId', appSecret: 'secret', env: 'other' },
+    ];
+
+    wrongParams.forEach((params: any) => {
+      expect(() => Config.setTokens(params)).toThrowError();
+    });
+  });
 });
