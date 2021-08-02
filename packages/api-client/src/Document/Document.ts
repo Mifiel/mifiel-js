@@ -9,11 +9,11 @@ import type {
 } from '@mifiel/models';
 import { Service } from '@mifiel/api-client-auth';
 
-import { Model } from '../Model';
+import { ModelCrud } from '../ModelCrud';
 
 type DocumentFileType = 'file' | 'file_signed' | 'xml';
 
-export abstract class Document extends Model {
+export abstract class Document extends ModelCrud {
   static resource = 'documents';
 
   static async getHash(file: string | Buffer | ArrayBuffer | ArrayBufferView) {
@@ -57,10 +57,10 @@ export abstract class Document extends Model {
         nullsAsUndefineds: true,
       });
 
-      form.append('file', fs.createReadStream(doc.file));
+      (form as FormData).append('file', fs.createReadStream(doc.file));
 
       return super.create<Entity>(form, {
-        headers: form.getHeaders(),
+        headers: (form as FormData).getHeaders(),
       });
     }
 

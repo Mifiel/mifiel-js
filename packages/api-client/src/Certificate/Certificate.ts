@@ -3,9 +3,9 @@ import FormData from 'isomorphic-form-data';
 
 import type { CertificateResponse } from '@mifiel/models';
 
-import { Model } from '../Model';
+import { ModelCrud } from '../ModelCrud';
 
-export abstract class Certificate extends Model {
+export abstract class Certificate extends ModelCrud {
   static resource = 'keys';
 
   static async create<Entity extends CertificateResponse>(params: {

@@ -5,9 +5,9 @@ import type {
   TemplateRequest,
   TemplateResponse,
 } from '@mifiel/models';
-import { Model } from '../Model';
+import { ModelCrud } from '../ModelCrud';
 
-export abstract class Template extends Model {
+export abstract class Template extends ModelCrud {
   static resource = 'templates';
 
   static async create<Entity extends TemplateResponse>(

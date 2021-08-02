@@ -1,7 +1,7 @@
 import type { AxiosRequestConfig } from 'axios';
 import { Service } from '@mifiel/api-client-auth';
 
-export abstract class Model {
+export abstract class ModelCrud {
   static resource: string;
 
   static async find<Entity>(id: string, config?: AxiosRequestConfig) {
