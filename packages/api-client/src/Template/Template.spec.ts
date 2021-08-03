@@ -48,6 +48,20 @@ describe('Template', () => {
     });
   });
 
+  const expectThrowError = async (method: string, validations: any[] = []) => {
+    const basicValidation: any = [
+      {},
+      { other: null },
+      { documentId: true },
+      ...validations,
+    ];
+
+    for (let i = 0; i < basicValidation.length; i += 1) {
+      // @ts-ignore
+      await expect(Template[method](basicValidation[i])).rejects.toThrowError();
+    }
+  };
+
   describe('@getDocuments', () => {
     it('sends templates/:id/documents as GET', async () => {
       await Template.getDocuments({ templateId });
@@ -58,6 +72,10 @@ describe('Template', () => {
           url: `templates/${templateId}/documents`,
         })
       );
+    });
+
+    it('throws error if params are wrong', async () => {
+      await expectThrowError('getDocuments');
     });
   });
 
@@ -72,6 +90,10 @@ describe('Template', () => {
         })
       );
     });
+
+    it('throws error if params are wrong', async () => {
+      await expectThrowError('getFields');
+    });
   });
 
   describe('@generateDocument', () => {
@@ -85,6 +107,12 @@ describe('Template', () => {
           data: { ...document },
         })
       );
+    });
+
+    it('throws error if params are wrong', async () => {
+      await expectThrowError('generateDocument', [
+        { templateId, document: null },
+      ]);
     });
   });
 
@@ -106,6 +134,12 @@ describe('Template', () => {
           },
         })
       );
+    });
+
+    it('throws error if params are wrong', async () => {
+      await expectThrowError('generateDocuments', [
+        { templateId, documents: {} },
+      ]);
     });
   });
 });

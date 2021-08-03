@@ -22,24 +22,38 @@ describe('Document', () => {
       .mockImplementation(requestMock);
   });
 
+  const expectThrowError = async (method: string, validations: any[] = []) => {
+    const basicValidation: any = [
+      {},
+      { other: null },
+      { documentId: true },
+      ...validations,
+    ];
+
+    for (let i = 0; i < basicValidation.length; i += 1) {
+      // @ts-ignore
+      await expect(Document[method](basicValidation[i])).rejects.toThrowError();
+    }
+  };
+
   describe('@transfer', () => {
+    const receiver = {
+      email: 'ram@mifiel.com',
+    };
+
+    const signatories: SignatoryResponse[] = [
+      {
+        email: 'ezavile@gmail.com',
+        name: 'Edgar Zavala',
+      },
+      {
+        email: 'edgar@mifiel.com',
+        name: 'Edgar Z',
+        tax_id: 'ZAAE9306278TA',
+      },
+    ];
+
     it('sends receiver and signatories as data', async () => {
-      const receiver = {
-        email: 'ram@mifiel.com',
-      };
-
-      const signatories: SignatoryResponse[] = [
-        {
-          email: 'ezavile@gmail.com',
-          name: 'Edgar Zavala',
-        },
-        {
-          email: 'edgar@mifiel.com',
-          name: 'Edgar Z',
-          tax_id: 'ZAAE9306278TA',
-        },
-      ];
-
       await Document.transfer({ documentId, receiver, signatories });
 
       expect(requestMock).toHaveBeenCalledWith(
@@ -49,6 +63,13 @@ describe('Document', () => {
           data: { receiver, signatories },
         })
       );
+    });
+
+    it('throws error if params are wrong', async () => {
+      await expectThrowError('transfer', [
+        { documentId, receiver },
+        { documentId, receiver: { ...receiver, email: null }, signatories },
+      ]);
     });
   });
 
@@ -76,6 +97,10 @@ describe('Document', () => {
           url: `documents/${documentId}/file_signed`,
         })
       );
+    });
+
+    it('throws error if params are wrong', async () => {
+      await expectThrowError('getFile', [{ documentId, type: 'wrong-type' }]);
     });
   });
 
@@ -108,6 +133,13 @@ describe('Document', () => {
 
       expect(mockWriter.write).toHaveBeenCalledWith(file);
     });
+
+    it('throws error if params are wrong', async () => {
+      await expectThrowError('saveFile', [
+        { documentId, type: 'other', path: 'path.pdf' },
+        { documentId, type: 'xml', path: '' },
+      ]);
+    });
   });
 
   describe('@create', () => {
@@ -134,6 +166,14 @@ describe('Document', () => {
       expect(requestMock.mock.calls[0][0].headers['content-type']).toContain(
         'multipart/form-data'
       );
+    });
+
+    it('throws error if params are wrong', async () => {
+      const wrongParams: any = [1, null];
+
+      for (let i = 0; i < wrongParams.length; i += 1) {
+        await expect(Document.create(wrongParams[i])).rejects.toThrowError();
+      }
     });
   });
 });

@@ -24,5 +24,17 @@ describe('Certificate', () => {
         'multipart/form-data'
       );
     });
+
+    it('throws error if params are wrong', async () => {
+      const wrongParams: any = [
+        { other: '' },
+        { filepath: '' },
+        { filepath: 123 },
+      ];
+
+      for (let i = 0; i < wrongParams.length; i += 1) {
+        await expect(Certificate.create(wrongParams[i])).rejects.toThrowError();
+      }
+    });
   });
 });

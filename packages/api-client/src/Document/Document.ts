@@ -10,8 +10,14 @@ import type {
 import { Service } from '@mifiel/api-client-auth';
 
 import { ModelCrud } from '../ModelCrud';
-
-type DocumentFileType = 'file' | 'file_signed' | 'xml';
+import {
+  createDocumentSchema,
+  GetFileSchema,
+  getFileSchema,
+  saveFileSchema,
+  SaveFileSchema,
+  transferDocumentSchema,
+} from './document.types';
 
 export abstract class Document extends ModelCrud {
   static resource = 'documents';
@@ -22,7 +28,9 @@ export abstract class Document extends ModelCrud {
     return hash;
   }
 
-  static async getFile(params: { documentId: string; type: DocumentFileType }) {
+  static async getFile(params: GetFileSchema) {
+    getFileSchema.parse(params);
+
     const { data: file } = await Service.request<Buffer>('documents', {
       method: 'GET',
       url: `${params.documentId}/${params.type}`,
@@ -31,11 +39,9 @@ export abstract class Document extends ModelCrud {
     return file;
   }
 
-  static async saveFile(params: {
-    documentId: string;
-    type: DocumentFileType;
-    path: string;
-  }): Promise<void> {
+  static async saveFile(params: SaveFileSchema): Promise<void> {
+    saveFileSchema.parse(params);
+
     const file = await this.getFile(params);
 
     return new Promise((resolve, reject) => {
@@ -51,6 +57,8 @@ export abstract class Document extends ModelCrud {
   }
 
   static async create<Entity extends DocumentResponse>(doc: DocumentRequest) {
+    createDocumentSchema.parse(doc);
+
     if (doc.file) {
       const form: Partial<FormData> = serialize(doc, {
         indices: true,
@@ -77,6 +85,8 @@ export abstract class Document extends ModelCrud {
     };
     signatories: SignatoryResponse[];
   }) {
+    transferDocumentSchema.parse(params);
+
     const { documentId, ...restParams } = params;
 
     const { data } = await Service.request<DocumentResponse>(this.resource, {

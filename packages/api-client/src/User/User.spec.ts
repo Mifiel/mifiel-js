@@ -42,5 +42,17 @@ describe('User', () => {
         })
       );
     });
+
+    it('throws error if params are wrong', async () => {
+      const wrongParams: any = [
+        { email: null },
+        { tax_id: 'some.pdf' },
+        { callback_url: '' },
+      ];
+
+      for (let i = 0; i < wrongParams.length; i += 1) {
+        await expect(User.setupWidget(wrongParams[i])).rejects.toThrowError();
+      }
+    });
   });
 });

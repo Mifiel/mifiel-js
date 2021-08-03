@@ -6,6 +6,12 @@ import type {
   TemplateResponse,
 } from '@mifiel/models';
 import { ModelCrud } from '../ModelCrud';
+import {
+  generateDocumentOnBulkSchema,
+  generateDocumentSchema,
+  templateIdSchema,
+  TemplateIdSchema,
+} from './template.types';
 
 export abstract class Template extends ModelCrud {
   static resource = 'templates';
@@ -16,14 +22,18 @@ export abstract class Template extends ModelCrud {
     return super.create<Entity>(template);
   }
 
-  static async getDocuments(params: { templateId: string }) {
+  static async getDocuments(params: TemplateIdSchema) {
+    templateIdSchema.parse(params);
+
     return Service.request<TemplateResponse>(this.resource, {
       method: 'GET',
       url: `${params.templateId}/documents`,
     });
   }
 
-  static async getFields(params: { templateId: string }) {
+  static async getFields(params: TemplateIdSchema) {
+    templateIdSchema.parse(params);
+
     return Service.request<{ type: string; name: string; value: string }[]>(
       this.resource,
       {
@@ -37,6 +47,8 @@ export abstract class Template extends ModelCrud {
     templateId: string;
     document: DocumentRequest;
   }) {
+    generateDocumentSchema.parse(params);
+
     return Service.request<DocumentResponse>(this.resource, {
       method: 'POST',
       url: `${params.templateId}/generate_document`,
@@ -50,6 +62,8 @@ export abstract class Template extends ModelCrud {
     callback_url?: string;
     documents: DocumentRequest[];
   }) {
+    generateDocumentOnBulkSchema.parse(params);
+
     const { templateId, ...restParams } = params;
 
     return Service.request<DocumentResponse[]>(this.resource, {

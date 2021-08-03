@@ -16,6 +16,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-underscore-dangle': ['error', { allowAfterThis: true }],
     'prettier/prettier': 'error',
+    'no-await-in-loop': 'off',
   },
   overrides: [
     {
