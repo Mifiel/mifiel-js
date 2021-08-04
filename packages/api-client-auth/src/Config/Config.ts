@@ -49,7 +49,7 @@ export class Config {
     this._env = 'staging';
   }
 
-  static useProd() {
+  static useProduction() {
     this._env = 'production';
   }
 }
