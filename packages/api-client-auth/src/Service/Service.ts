@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Config } from '../Config';
 import { authenticationInterceptor } from '../interceptors';
 
@@ -9,6 +9,7 @@ export class Service {
 
   private constructor() {
     this._api = axios.create({ baseURL: Config.url });
+    this._api.defaults.headers = { 'MI-ERROR-FORMAT': 'verbose' };
     this._api.interceptors.request.use(authenticationInterceptor);
   }
 
@@ -27,17 +28,31 @@ export class Service {
   static async request<T>(
     resource: string,
     config: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> {
+  ): Promise<T> {
     const { api } = Service.getInstance();
     const { url, ...restConfig } = config;
 
     api.defaults.baseURL = Config.url;
 
-    const response = await api.request({
-      url: url ? `${resource}/${url}` : resource,
-      ...restConfig,
-    });
+    try {
+      const { data } = await api.request({
+        url: url ? `${resource}/${url}` : resource,
+        ...restConfig,
+      });
 
-    return response;
+      return data;
+    } catch (error) {
+      const axiosError: AxiosError = error;
+      if (axiosError.response) {
+        throw {
+          status_code: axiosError.response.status,
+          status_message: axiosError.response.statusText,
+          message: axiosError.message,
+          ...axiosError.response.data,
+        };
+      }
+
+      throw error;
+    }
   }
 }
