@@ -1,5 +1,8 @@
+import { z } from 'zod';
 import type { AxiosRequestConfig } from 'axios';
 import { Service } from '@mifiel/api-client-auth';
+
+const modelIdSchema = z.string();
 
 export class Model<Entity> {
   private readonly _resource: string;
@@ -9,6 +12,8 @@ export class Model<Entity> {
   }
 
   async find(id: string, config?: AxiosRequestConfig) {
+    modelIdSchema.parse(id);
+
     const { data } = await Service.request<Entity>(this._resource, {
       method: 'GET',
       url: id,
@@ -28,6 +33,8 @@ export class Model<Entity> {
   }
 
   async delete(id: string, config?: AxiosRequestConfig) {
+    modelIdSchema.parse(id);
+
     const { data } = await Service.request<Entity>(this._resource, {
       method: 'DELETE',
       url: id,
@@ -48,6 +55,8 @@ export class Model<Entity> {
   }
 
   async update(id: string, body: Object, config?: AxiosRequestConfig) {
+    modelIdSchema.parse(id);
+
     const { data } = await Service.request<Entity>(this._resource, {
       method: 'PATCH',
       url: id,
