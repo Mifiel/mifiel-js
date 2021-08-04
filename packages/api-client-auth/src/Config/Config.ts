@@ -3,9 +3,9 @@ import { configParamsSchema, ConfigParamsSchema } from './config.types';
 export class Config {
   private static _env: ConfigParamsSchema['env'];
 
-  private static _appId: string;
+  private static _appId = '';
 
-  private static _appSecret: string;
+  private static _appSecret = '';
 
   private static _version = 'v1';
 

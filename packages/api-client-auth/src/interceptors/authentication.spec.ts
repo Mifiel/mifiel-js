@@ -41,4 +41,15 @@ describe('Authentication Interceptor', () => {
     expect(headers['Content-Type']).toBe('application/json');
     expect(headers['Content-MD5']).toBe('');
   });
+
+  it('throws error if tokens were not setted', async () => {
+    Config.setTokens({ appId: '', appSecret: '' });
+
+    await expect(
+      mifielAPI.request({
+        method: 'POST',
+        url: 'documents',
+      })
+    ).rejects.toThrowError();
+  });
 });

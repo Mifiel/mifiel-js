@@ -16,6 +16,10 @@ export const authenticationInterceptor = (axiosConfig: AxiosRequestConfig) => {
     date,
   ];
 
+  if (!Config.appSecret) {
+    throw new Error(`You must set tokens by Config.setTokens`);
+  }
+
   const signature = hmacsha1(Config.appSecret, canonical.join(','));
 
   return Promise.resolve({
