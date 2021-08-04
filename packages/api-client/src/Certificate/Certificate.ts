@@ -18,7 +18,7 @@ class CertificateModel extends Model<CertificateResponse> {
     createCertificateSchema.parse(params);
 
     const form = new FormData();
-    form.append('file', fs.createReadStream(params.filepath));
+    form.append('cer_file', fs.createReadStream(params.filepath));
 
     return super.create(form, {
       headers: form.getHeaders(),

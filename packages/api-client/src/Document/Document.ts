@@ -32,12 +32,10 @@ class DocumentModel extends Model<DocumentResponse> {
   async getFile(params: GetFileSchema) {
     getFileSchema.parse(params);
 
-    const { data: file } = await this.request<Buffer>({
+    return this.request<Buffer>({
       method: 'GET',
       url: `${params.documentId}/${params.type}`,
     });
-
-    return file;
   }
 
   async saveFile(params: SaveFileSchema): Promise<void> {
@@ -90,13 +88,11 @@ class DocumentModel extends Model<DocumentResponse> {
 
     const { documentId, ...restParams } = params;
 
-    const { data } = await this.request<DocumentResponse>({
+    return this.request<DocumentResponse>({
       method: 'POST',
       url: `${documentId}/transfer`,
       data: restParams,
     });
-
-    return data;
   }
 }
 
