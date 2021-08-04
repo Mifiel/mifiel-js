@@ -2,23 +2,25 @@ import { Service } from '@mifiel/api-client-auth';
 import type { UserResponse } from '@mifiel/models';
 import { setupWidgetSchema, SetupWidgetSchema } from './user.types';
 
-export abstract class User {
-  private static resource = 'users';
+export class UserModel {
+  private readonly _resource = 'users';
 
-  static async me() {
-    return Service.request<UserResponse>(this.resource, {
+  async me() {
+    return Service.request<UserResponse>(this._resource, {
       method: 'GET',
       url: 'me',
     });
   }
 
-  static async setupWidget(params: SetupWidgetSchema) {
+  async setupWidget(params: SetupWidgetSchema) {
     setupWidgetSchema.parse(params);
 
-    return Service.request<{ widget_id: string }>(this.resource, {
+    return Service.request<{ widget_id: string }>(this._resource, {
       method: 'POST',
       url: 'setup-widget',
       data: params,
     });
   }
 }
+
+export const User = new UserModel();

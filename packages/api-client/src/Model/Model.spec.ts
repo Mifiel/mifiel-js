@@ -1,15 +1,11 @@
 import { Service } from '@mifiel/api-client-auth';
-import type { DocumentRequest } from '@mifiel/models';
 
-import { ModelCrud } from './ModelCrud';
+import { Model } from './Model';
 
-describe('ModelCrud', () => {
+describe('Model', () => {
   const documentId = 'some-doc-id';
   let requestMock: jest.Mock;
-
-  beforeAll(() => {
-    ModelCrud.resource = 'documents';
-  });
+  const model = new Model('documents');
 
   beforeEach(() => {
     requestMock = jest.fn(() => ({}));
@@ -19,7 +15,7 @@ describe('ModelCrud', () => {
   });
 
   it('@find - calls GET with id', async () => {
-    await ModelCrud.find(documentId);
+    await model.find(documentId);
 
     expect(requestMock).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -30,7 +26,7 @@ describe('ModelCrud', () => {
   });
 
   it('@all - calls GET without id', async () => {
-    await ModelCrud.all();
+    await model.all();
 
     expect(requestMock).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -41,7 +37,7 @@ describe('ModelCrud', () => {
   });
 
   it('@delete - calls DELETE', async () => {
-    await ModelCrud.delete(documentId);
+    await model.delete(documentId);
 
     expect(requestMock).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -52,7 +48,7 @@ describe('ModelCrud', () => {
   });
 
   it('@create - calls POST', async () => {
-    await ModelCrud.create<DocumentRequest>({
+    await model.create({
       original_hash: 'some-hash',
     });
 
@@ -68,7 +64,7 @@ describe('ModelCrud', () => {
   });
 
   it('@update - calls PATCH', async () => {
-    await ModelCrud.update<DocumentRequest>(documentId, {
+    await model.update(documentId, {
       original_hash: 'some-hash',
     });
 

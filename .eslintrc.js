@@ -17,6 +17,7 @@ module.exports = {
     'no-underscore-dangle': ['error', { allowAfterThis: true }],
     'prettier/prettier': 'error',
     'no-await-in-loop': 'off',
+    'class-methods-use-this': 'off',
   },
   overrides: [
     {

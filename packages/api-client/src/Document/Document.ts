@@ -7,9 +7,8 @@ import type {
   DocumentResponse,
   SignatoryResponse,
 } from '@mifiel/models';
-import { Service } from '@mifiel/api-client-auth';
 
-import { ModelCrud } from '../ModelCrud';
+import { Model } from '../Model';
 import {
   createDocumentSchema,
   GetFileSchema,
@@ -19,19 +18,21 @@ import {
   transferDocumentSchema,
 } from './document.types';
 
-export abstract class Document extends ModelCrud {
-  static resource = 'documents';
+class DocumentModel extends Model<DocumentResponse> {
+  constructor() {
+    super('documents');
+  }
 
-  static async getHash(file: string | Buffer | ArrayBuffer | ArrayBufferView) {
+  async getHash(file: string | Buffer | ArrayBuffer | ArrayBufferView) {
     const hash = await sha256(file);
 
     return hash;
   }
 
-  static async getFile(params: GetFileSchema) {
+  async getFile(params: GetFileSchema) {
     getFileSchema.parse(params);
 
-    const { data: file } = await Service.request<Buffer>('documents', {
+    const { data: file } = await this.request<Buffer>({
       method: 'GET',
       url: `${params.documentId}/${params.type}`,
     });
@@ -39,7 +40,7 @@ export abstract class Document extends ModelCrud {
     return file;
   }
 
-  static async saveFile(params: SaveFileSchema): Promise<void> {
+  async saveFile(params: SaveFileSchema): Promise<void> {
     saveFileSchema.parse(params);
 
     const file = await this.getFile(params);
@@ -56,7 +57,7 @@ export abstract class Document extends ModelCrud {
     });
   }
 
-  static async create<Entity extends DocumentResponse>(doc: DocumentRequest) {
+  async create(doc: DocumentRequest) {
     createDocumentSchema.parse(doc);
 
     if (doc.file) {
@@ -67,15 +68,15 @@ export abstract class Document extends ModelCrud {
 
       (form as FormData).append('file', fs.createReadStream(doc.file));
 
-      return super.create<Entity>(form, {
+      return super.create(form, {
         headers: (form as FormData).getHeaders(),
       });
     }
 
-    return super.create<Entity>(doc);
+    return super.create(doc);
   }
 
-  static async transfer(params: {
+  async transfer(params: {
     documentId: string;
     callback_url?: string;
     receiver: {
@@ -89,7 +90,7 @@ export abstract class Document extends ModelCrud {
 
     const { documentId, ...restParams } = params;
 
-    const { data } = await Service.request<DocumentResponse>(this.resource, {
+    const { data } = await this.request<DocumentResponse>({
       method: 'POST',
       url: `${documentId}/transfer`,
       data: restParams,
@@ -98,3 +99,5 @@ export abstract class Document extends ModelCrud {
     return data;
   }
 }
+
+export const Document = new DocumentModel();

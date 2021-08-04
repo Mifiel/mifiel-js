@@ -3,25 +3,27 @@ import FormData from 'isomorphic-form-data';
 
 import type { CertificateResponse } from '@mifiel/models';
 
-import { ModelCrud } from '../ModelCrud';
+import { Model } from '../Model';
 import {
   createCertificateSchema,
   CreateCertificateSchema,
 } from './certificate.types';
 
-export abstract class Certificate extends ModelCrud {
-  static resource = 'keys';
+class CertificateModel extends Model<CertificateResponse> {
+  constructor() {
+    super('keys');
+  }
 
-  static async create<Entity extends CertificateResponse>(
-    params: CreateCertificateSchema
-  ) {
+  async create(params: CreateCertificateSchema) {
     createCertificateSchema.parse(params);
 
     const form = new FormData();
     form.append('file', fs.createReadStream(params.filepath));
 
-    return super.create<Entity>(form, {
+    return super.create(form, {
       headers: form.getHeaders(),
     });
   }
 }
+
+export const Certificate = new CertificateModel();
