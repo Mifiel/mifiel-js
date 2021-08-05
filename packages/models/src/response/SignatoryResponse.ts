@@ -1,6 +1,7 @@
-export interface SignatoryResponse {
+export type SignatoryResponse = {
   email: string;
-  name: string;
+  type: string;
+  name?: string;
   tax_id?: string;
   field?: string;
-}
+};
