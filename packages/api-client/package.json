@@ -1,0 +1,44 @@
+{
+  "name": "@mifiel/api-client",
+  "version": "0.0.0",
+  "description": "Mifiel API Client for NodeJS",
+  "license": "MIT",
+  "repository": "git@github.com:Mifiel/mifiel-js.git",
+  "bugs": {
+    "url": "https://github.com/Mifiel/mifiel-js/issues"
+  },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/api-client#readme",
+  "author": "Edgar Zavala <ezavile@gmail.com>",
+  "main": "dist/cjs/main.js",
+  "module": "dist/esm/main.js",
+  "files": [
+    "/dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc -p ./tsconfig.prod.json",
+    "build:esm": "node esbuild.config",
+    "check-types": "tsc --noemit",
+    "eslint": "eslint src --ext .ts",
+    "lint": "yarn eslint && yarn check-types",
+    "test": "jest"
+  },
+  "types": "dist/types/main.d.ts",
+  "dependencies": {
+    "@mifiel/api-client-auth": "^0.0.0",
+    "@mifiel/models": "^0.0.0",
+    "axios": "0.21.1",
+    "crypto-hash": "1.3.0",
+    "isomorphic-form-data": "2.0.0",
+    "object-to-formdata": "4.1.0",
+    "zod": "3.7.1"
+  },
+  "devDependencies": {
+    "@types/isomorphic-form-data": "2.0.0"
+  }
+}
