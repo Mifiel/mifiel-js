@@ -45,11 +45,13 @@ describe('Document', () => {
       {
         email: 'ezavile@gmail.com',
         name: 'Edgar Zavala',
+        type: 'holder',
       },
       {
         email: 'edgar@mifiel.com',
         name: 'Edgar Z',
         tax_id: 'ZAAE9306278TA',
+        type: 'n',
       },
     ];
 
