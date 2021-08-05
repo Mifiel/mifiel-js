@@ -1,16 +1,16 @@
 {
   "name": "mifiel",
-  "description": "Monorepo for Mifiel libraries",
+  "description": "Monorepo that contains a set of Mifiel libraries.",
   "license": "MIT",
   "private": true,
   "engines": {
     "node": "15.*"
   },
-  "repository": "git@github.com:Mifiel/mifiel-api.git",
+  "repository": "git@github.com:Mifiel/mifiel-js.git",
   "bugs": {
-    "url": "https://github.com/Mifiel/mifiel-api/issues"
+    "url": "https://github.com/Mifiel/mifiel-js/issues"
   },
-  "homepage": "https://github.com/Mifiel/mifiel-api#readme",
+  "homepage": "https://github.com/Mifiel/mifiel-js#readme",
   "author": "Edgar Zavala <ezavile@gmail.com>",
   "workspaces": [
     "packages/*"
