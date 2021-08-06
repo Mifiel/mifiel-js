@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Config } from '../Config';
-import { authenticationInterceptor } from '../interceptors';
+import { hmacAuthInterceptor } from '../interceptors';
 
 export class Service {
   private readonly _api: AxiosInstance;
@@ -10,7 +10,7 @@ export class Service {
   private constructor() {
     this._api = axios.create({ baseURL: Config.url });
     this._api.defaults.headers = { 'MI-ERROR-FORMAT': 'verbose' };
-    this._api.interceptors.request.use(authenticationInterceptor);
+    this._api.interceptors.request.use(hmacAuthInterceptor);
   }
 
   static getInstance() {

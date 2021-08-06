@@ -2,9 +2,9 @@ import type { AxiosRequestConfig } from 'axios';
 // @ts-ignore
 import hmacsha1 from 'hmacsha1';
 
-import { Config } from '../Config';
+import { Config } from '../../Config';
 
-export const authenticationInterceptor = (axiosConfig: AxiosRequestConfig) => {
+export const hmacAuthInterceptor = (axiosConfig: AxiosRequestConfig) => {
   const date = new Date().toUTCString();
   const contentType = axiosConfig.headers['content-type'] ?? 'application/json';
 

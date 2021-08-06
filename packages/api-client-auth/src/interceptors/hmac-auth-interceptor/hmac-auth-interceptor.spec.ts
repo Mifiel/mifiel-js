@@ -1,11 +1,11 @@
 import MockDate from 'mockdate';
 import axios, { AxiosInstance } from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { Config } from '../Config';
+import { Config } from '../../Config';
 
-import { authenticationInterceptor } from './authentication';
+import { hmacAuthInterceptor } from './hmac-auth-interceptor';
 
-describe('Authentication Interceptor', () => {
+describe('HMAC Authentication Interceptor', () => {
   let mifielAPI: AxiosInstance;
   let mockAPI: MockAdapter;
 
@@ -14,7 +14,7 @@ describe('Authentication Interceptor', () => {
 
     Config.setTokens({ appId: 'app-id', appSecret: 'app-secret' });
     mifielAPI = axios.create({ baseURL: Config.url });
-    mifielAPI.interceptors.request.use(authenticationInterceptor);
+    mifielAPI.interceptors.request.use(hmacAuthInterceptor);
 
     mockAPI = new MockAdapter(mifielAPI);
   });
