@@ -5,7 +5,7 @@
       "exact": true
     }
   },
-  "ignoreChanges": ["**/CHANGELOG.md", "**/package.json", "**/*.md"],
+  "ignoreChanges": ["**/CHANGELOG.md", "**/*.md"],
   "packages": ["packages/*"],
   "version": "independent",
   "useWorkspaces": true
