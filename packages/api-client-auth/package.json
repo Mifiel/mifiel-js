@@ -9,7 +9,7 @@
   },
   "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/api-client-auth#readme",
   "author": "Edgar Zavala <ezavile@gmail.com>",
-  "main": "dist/cjs/main.js",
+  "main": "dist/cjs/src/main.js",
   "module": "dist/esm/main.js",
   "files": [
     "/dist"
@@ -28,9 +28,10 @@
     "lint": "yarn eslint && yarn check-types",
     "test": "jest"
   },
-  "types": "dist/types/main.d.ts",
+  "types": "dist/types/src/main.d.ts",
   "dependencies": {
     "axios": "0.21.1",
+    "os-name": "4.0.1",
     "zod": "3.7.1"
   },
   "devDependencies": {
