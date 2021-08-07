@@ -3,6 +3,11 @@
   "command": {
     "init": {
       "exact": true
+    },
+    "version": {
+      "conventionalCommits": true,
+      "includeMergedTags": true,
+      "message": "chore(release): :rocket: bump versions"
     }
   },
   "ignoreChanges": ["**/CHANGELOG.md", "**/*.md"],

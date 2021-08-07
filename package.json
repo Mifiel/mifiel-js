@@ -22,7 +22,7 @@
     "postpublish": "pinst --enable",
     "prepare": "husky install",
     "prepublishOnly": "pinst --disable",
-    "release:release": "lerna publish",
+    "release:publish": "lerna publish",
     "release:version": "lerna version",
     "test": "lerna run test"
   },
