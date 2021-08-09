@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Mifiel/mifiel-js/compare/@mifiel/api-client@0.1.0...@mifiel/api-client@0.2.0) (2021-08-09)
+
+
+### Features
+
+* **api-client:** use api-client-auth as peerDependency ([1f3f00f](https://github.com/Mifiel/mifiel-js/commit/1f3f00f03e3bc6c44a8f0e21d5b5c37bb23003b8))
+
+
+
+
+
 # 0.1.0 (2021-08-05)
 
 

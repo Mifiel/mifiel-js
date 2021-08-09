@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Mifiel/mifiel-js/compare/@mifiel/api-client-auth@0.1.0...@mifiel/api-client-auth@0.2.0) (2021-08-09)
+
+
+### Features
+
+* **api-client-auth:** add custom user-agent header ([6d09a73](https://github.com/Mifiel/mifiel-js/commit/6d09a739097f09ac03d2d53d739cf3cc0cc347ff))
+* **api-client-auth:** add getter to expose env value ([a6ad7ef](https://github.com/Mifiel/mifiel-js/commit/a6ad7ef84ba72641436e36da4253c6505cd4c2c8))
+* **api-client-auth:** use node native lib (Crypto) to generate signature ([df854cd](https://github.com/Mifiel/mifiel-js/commit/df854cdbfc13e45c8680e965336caa6e497fa2e4))
+
+
+
+
+
 # 0.1.0 (2021-08-05)
 
 
