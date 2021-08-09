@@ -1,6 +1,5 @@
 import type { AxiosRequestConfig } from 'axios';
-// @ts-ignore
-import hmacsha1 from 'hmacsha1';
+import Crypto from 'crypto';
 
 import { Config } from '../../Config';
 
@@ -8,25 +7,29 @@ export const hmacAuthInterceptor = (axiosConfig: AxiosRequestConfig) => {
   const date = new Date().toUTCString();
   const contentType = axiosConfig.headers['content-type'] ?? 'application/json';
 
+  const { version, appSecret, appId } = Config;
+
   const canonical = [
     axiosConfig.method?.toUpperCase(),
     contentType,
     '',
-    `/api/${Config.version}/${axiosConfig.url}`,
+    `/api/${version}/${axiosConfig.url}`,
     date,
   ];
 
-  if (!Config.appSecret) {
+  if (!appSecret) {
     throw new Error(`You must set tokens by Config.setTokens`);
   }
 
-  const signature = hmacsha1(Config.appSecret, canonical.join(','));
+  const hmac = Crypto.createHmac('sha1', appSecret);
+  hmac.update(canonical.join(','));
+  const signature = hmac.digest('base64');
 
   return Promise.resolve({
     ...axiosConfig,
     headers: {
       ...axiosConfig.headers,
-      Authorization: `APIAuth ${Config.appId}:${signature}`,
+      Authorization: `APIAuth ${appId}:${signature}`,
       Date: date,
       'Content-Type': contentType,
       'Content-MD5': '',

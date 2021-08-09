@@ -8,11 +8,11 @@ import { hmacAuthInterceptor } from './hmac-auth-interceptor';
 describe('HMAC Authentication Interceptor', () => {
   let mifielAPI: AxiosInstance;
   let mockAPI: MockAdapter;
+  const tokens = { appId: 'app-id', appSecret: 'app-secret' };
 
   beforeAll(() => {
     MockDate.set('2016');
 
-    Config.setTokens({ appId: 'app-id', appSecret: 'app-secret' });
     mifielAPI = axios.create({ baseURL: Config.url });
     mifielAPI.interceptors.request.use(hmacAuthInterceptor);
 
@@ -24,7 +24,7 @@ describe('HMAC Authentication Interceptor', () => {
     mockAPI.restore();
   });
 
-  it('sets custom headers', async () => {
+  const doEndpoint = async () => {
     mockAPI.onPost('/documents').reply(200);
 
     const {
@@ -34,22 +34,30 @@ describe('HMAC Authentication Interceptor', () => {
       url: 'documents',
     });
 
-    expect(headers.Authorization).toBe(
-      'APIAuth app-id:Qr94Z4Nvp0p5G1CsR5LpQDaTQXM='
-    );
+    return headers;
+  };
+
+  it('throws error if tokens were not setted', async () => {
+    Config.setTokens({ appId: '', appSecret: '' });
+
+    await expect(doEndpoint()).rejects.toThrowError();
+  });
+
+  it('sends custom headers', async () => {
+    Config.setTokens({ ...tokens });
+    const headers = await doEndpoint();
+
     expect(headers.Date).toBe(new Date().toUTCString());
     expect(headers['Content-Type']).toBe('application/json');
     expect(headers['Content-MD5']).toBe('');
   });
 
-  it('throws error if tokens were not setted', async () => {
-    Config.setTokens({ appId: '', appSecret: '' });
+  it('sends signature using digest sha1', async () => {
+    Config.setTokens({ ...tokens });
+    const headers = await doEndpoint();
 
-    await expect(
-      mifielAPI.request({
-        method: 'POST',
-        url: 'documents',
-      })
-    ).rejects.toThrowError();
+    expect(headers.Authorization).toBe(
+      'APIAuth app-id:Qr94Z4Nvp0p5G1CsR5LpQDaTQXM='
+    );
   });
 });

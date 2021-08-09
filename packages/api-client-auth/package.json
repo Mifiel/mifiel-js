@@ -31,7 +31,6 @@
   "types": "dist/types/main.d.ts",
   "dependencies": {
     "axios": "0.21.1",
-    "hmacsha1": "1.0.0",
     "zod": "3.7.1"
   },
   "devDependencies": {
