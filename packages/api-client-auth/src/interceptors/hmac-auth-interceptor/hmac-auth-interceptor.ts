@@ -7,7 +7,7 @@ export const hmacAuthInterceptor = (axiosConfig: AxiosRequestConfig) => {
   const date = new Date().toUTCString();
   const contentType = axiosConfig.headers['content-type'] ?? 'application/json';
 
-  const { version, appSecret, appId } = Config;
+  const { version, hmacDigest, appSecret, appId } = Config;
 
   const canonical = [
     axiosConfig.method?.toUpperCase(),
@@ -21,7 +21,7 @@ export const hmacAuthInterceptor = (axiosConfig: AxiosRequestConfig) => {
     throw new Error(`You must set tokens by Config.setTokens`);
   }
 
-  const hmac = Crypto.createHmac('sha1', appSecret);
+  const hmac = Crypto.createHmac(hmacDigest, appSecret);
   hmac.update(canonical.join(','));
   const signature = hmac.digest('base64');
 
@@ -29,7 +29,7 @@ export const hmacAuthInterceptor = (axiosConfig: AxiosRequestConfig) => {
     ...axiosConfig,
     headers: {
       ...axiosConfig.headers,
-      Authorization: `APIAuth ${appId}:${signature}`,
+      Authorization: `APIAuth-HMAC-${hmacDigest.toUpperCase()} ${appId}:${signature}`,
       Date: date,
       'Content-Type': contentType,
       'Content-MD5': '',

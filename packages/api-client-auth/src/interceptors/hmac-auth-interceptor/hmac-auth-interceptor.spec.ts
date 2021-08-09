@@ -53,11 +53,26 @@ describe('HMAC Authentication Interceptor', () => {
   });
 
   it('sends signature using digest sha1', async () => {
-    Config.setTokens({ ...tokens });
+    Config.setTokens({ ...tokens, hmacDigest: 'sha1' });
     const headers = await doEndpoint();
 
     expect(headers.Authorization).toBe(
-      'APIAuth app-id:Qr94Z4Nvp0p5G1CsR5LpQDaTQXM='
+      'APIAuth-HMAC-SHA1 app-id:Qr94Z4Nvp0p5G1CsR5LpQDaTQXM='
     );
+  });
+
+  it('sends signature using digest sha256', async () => {
+    Config.setTokens({ ...tokens, hmacDigest: 'sha256' });
+    const headers = await doEndpoint();
+
+    expect(headers.Authorization).toBe(
+      'APIAuth-HMAC-SHA256 app-id:9jv4UgrOqZ5GO9XzVDR8cpx+qfUwlHXTimFvIjWVXHM='
+    );
+  });
+
+  it('throws an error if the digest is not supported', () => {
+    expect(() =>
+      Config.setTokens({ ...tokens, hmacDigest: 'unsupported' as any })
+    ).toThrowError();
   });
 });

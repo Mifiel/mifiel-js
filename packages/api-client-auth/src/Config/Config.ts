@@ -7,14 +7,17 @@ export class Config {
 
   private static _appSecret = '';
 
+  private static _hmacDigest: ConfigParamsSchema['hmacDigest'] = 'sha1';
+
   private static _version = 'v1';
 
   static setTokens(params: ConfigParamsSchema) {
-    const validatedParams = configParamsSchema.parse(params);
+    configParamsSchema.parse(params);
 
-    this._appId = validatedParams.appId;
-    this._appSecret = validatedParams.appSecret;
-    this._env = validatedParams.env ?? 'production';
+    this._appId = params.appId;
+    this._appSecret = params.appSecret;
+    this._env = params.env ?? 'production';
+    this._hmacDigest = params.hmacDigest ?? 'sha1';
   }
 
   static get appId() {
@@ -39,6 +42,10 @@ export class Config {
     const currentHost = hosts[this._env || 'production'];
 
     return `${currentHost}/api/${this._version}`;
+  }
+
+  static get hmacDigest() {
+    return this._hmacDigest ?? 'sha1';
   }
 
   static useSandbox() {
