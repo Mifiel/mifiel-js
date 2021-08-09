@@ -1,6 +1,6 @@
 # `@mifiel/api-client-auth`
 
-> Library to authenticate Mifiel API calls. Mifiel uses **SHA1 HMAC** encryption.
+> Library to authenticate Mifiel API calls. Mifiel uses **SHA1 or SHA256 HMAC** encryption.
 
 Please read our [documentation](http://docs.mifiel.com/) for instructions on how to start using the API. This library depends on [axios](https://axios-http.com/) to make requests to the Mifiel API.
 
@@ -28,7 +28,9 @@ Config.setTokens({
   appId: '<APP_ID>',
   appSecret: '<APP_SECRET>',
   // [optional] - by default is production
-  env: 'production' | 'sandbox' | 'staging'
+  env: 'production' | 'sandbox' | 'staging',
+  // [optional] - by default is sha1
+  hmacDigest: 'sha1' | 'sha256'
 });
 ```
 
