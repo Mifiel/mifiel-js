@@ -17,8 +17,16 @@ export class Config {
     this._env = validatedParams.env ?? 'production';
   }
 
-  static get version() {
-    return this._version;
+  static get appId() {
+    return this._appId;
+  }
+
+  static get appSecret() {
+    return this._appSecret;
+  }
+
+  static get env() {
+    return this._env;
   }
 
   static get url() {
@@ -33,14 +41,6 @@ export class Config {
     return `${currentHost}/api/${this._version}`;
   }
 
-  static get appId() {
-    return this._appId;
-  }
-
-  static get appSecret() {
-    return this._appSecret;
-  }
-
   static useSandbox() {
     this._env = 'sandbox';
   }
@@ -51,5 +51,9 @@ export class Config {
 
   static useProduction() {
     this._env = 'production';
+  }
+
+  static get version() {
+    return this._version;
   }
 }

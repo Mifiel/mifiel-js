@@ -14,7 +14,7 @@ yarn add @mifiel/api-client-auth
 
 ## Usage
 
-For your convenience Mifiel offers a Sandbox environment where you can confidently test your code. To start using the API in the Sandbox environment you need to first create an account at [sandbox.mifiel.com](https://sandbox.mifiel.com). Once you have an account you will need an **APP_ID** and an **APP_SECRET** which you can generate in [sandbox.mifiel.com/access_tokens](https://sandbox.mifiel.com/access_tokens).
+For your convenience Mifiel offers a Sandbox environment where you can confidently test your code. To start using the API in the Sandbox environment you need to first create an account at [sandbox.mifiel.com](https://sandbox.mifiel.com). Once you have an account you will need an **APP_ID** and an **APP_SECRET** which you can generate in [https://app-sandbox.mifiel.com/settings/access-tokens](https://https://app-sandbox.mifiel.com/settings/access-tokens).
 
 ## Setting Tokens
 
@@ -28,7 +28,7 @@ Config.setTokens({
   appId: '<APP_ID>',
   appSecret: '<APP_SECRET>',
   // [optional] - by default is production
-  env: 'production' | 'sandbox' 
+  env: 'production' | 'sandbox' | 'staging'
 });
 ```
 

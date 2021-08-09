@@ -3,9 +3,14 @@
   "command": {
     "init": {
       "exact": true
+    },
+    "version": {
+      "conventionalCommits": true,
+      "includeMergedTags": true,
+      "message": "chore(release): :rocket: bump versions"
     }
   },
-  "ignoreChanges": ["**/CHANGELOG.md", "**/package.json", "**/*.md"],
+  "ignoreChanges": ["**/CHANGELOG.md", "**/*.md"],
   "packages": ["packages/*"],
   "version": "independent",
   "useWorkspaces": true

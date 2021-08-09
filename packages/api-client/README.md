@@ -2,17 +2,17 @@
 
 > Library to wrap the most common methods of Mifiel API.
 
+This library depends on [@mifiel/api-client-auth](https://github.com/Mifiel/mifiel-js/tree/main/packages/api-client-auth) to authenticate the Mifiel API calls.
+
 ## Installation
 
 ```bash
-npm install @mifiel/api-client --save
+npm install @mifiel/api-client-auth @mifiel/api-client --save
 # or
-yarn add @mifiel/api-client
+yarn add @mifiel/api-client-auth @mifiel/api-client
 ```
 
 ## Usage
-
-This library depends on [@mifiel/api-client-auth](https://github.com/Mifiel/mifiel-js/tree/main/packages/api-client-auth) to authenticate the Mifiel API calls.
 
 ```typescript
 // for ESM or TypeScript

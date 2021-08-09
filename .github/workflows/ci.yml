@@ -1,26 +1,30 @@
 name: CI
 
-on: push
+on:
+  push:
+   branches:
+     - '**'
 
 jobs:
   ci:
-
+    if: contains(github.event.head_commit.message, 'skip ci') == false
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [15.x]
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - run: |
-        yarn install
-        yarn build
-        yarn lint
-        yarn test
-      name: 'Run Unit Tests and Lint Files'
+      - name: 👉🏼 Checkout
+        uses: actions/checkout@v2
+      - name: 📦️ Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - name: 🚚 Install dependencies
+        run: yarn install
+      - name: 👷 Build packages
+        run: yarn build
+      - name: 🧐 Lint Files
+        run: yarn lint
+      - name: 🧾 Run Unit Tests
+        run: yarn test

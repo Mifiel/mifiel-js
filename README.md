@@ -2,7 +2,7 @@
 
 > Monorepo that contains a set of Mifiel libraries.
 
-## [`@mifiel/models`](https://github.com/Mifiel/mifiel-js/models/tree/main/packages/models)
+## [`@mifiel/models`](https://github.com/Mifiel/mifiel-js/tree/main/packages/models)
 
 [![npm](https://img.shields.io/npm/v/@mifiel/models.svg?style=flat-square)](https://www.npmjs.com/package/@mifiel/models)
 
