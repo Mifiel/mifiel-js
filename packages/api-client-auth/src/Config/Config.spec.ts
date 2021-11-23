@@ -9,19 +9,19 @@ describe('Config', () => {
   });
 
   it('@useSandbox', () => {
-    expect(Config.url).toContain('www.mifiel.com');
+    expect(Config.url).toContain('app.mifiel.com');
 
     Config.useSandbox();
 
-    expect(Config.url).toContain('sandbox.mifiel.com');
+    expect(Config.url).toContain('app-sandbox.mifiel.com');
   });
 
   it('@useStaging', () => {
-    expect(Config.url).toContain('sandbox.mifiel.com');
+    expect(Config.url).toContain('app-sandbox.mifiel.com');
 
     Config.useStaging();
 
-    expect(Config.url).toContain('stageex.mifiel.com');
+    expect(Config.url).toContain('app-stageex.mifiel.com');
   });
 
   it('throws error if params are wrong', () => {

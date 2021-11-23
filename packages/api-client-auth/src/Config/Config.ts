@@ -31,9 +31,9 @@ export class Config {
 
   static get url() {
     const hosts = {
-      production: 'https://www.mifiel.com',
-      sandbox: 'https://sandbox.mifiel.com',
-      staging: 'https://stageex.mifiel.com',
+      production: 'https://app.mifiel.com',
+      sandbox: 'https://app-sandbox.mifiel.com',
+      staging: 'https://app-stageex.mifiel.com',
     };
 
     const currentHost = hosts[this._env || 'production'];
