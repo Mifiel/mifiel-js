@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Mifiel/mifiel-js/compare/@mifiel/api-client-auth@0.2.0...@mifiel/api-client-auth@0.2.1) (2021-11-23)
+
+
+### Bug Fixes
+
+* **api-client-auth:** use app.mifiel for baseUrl ([0143828](https://github.com/Mifiel/mifiel-js/commit/0143828949ecc6b0ad589cd34c77fc9a619f4a11))
+
+
+
+
+
 # [0.2.0](https://github.com/Mifiel/mifiel-js/compare/@mifiel/api-client-auth@0.1.0...@mifiel/api-client-auth@0.2.0) (2021-08-09)
 
 
