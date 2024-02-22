@@ -46,9 +46,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v2
         with:
-          registry-url: http://registry.npmjs.org
+          registry-url: https://registry.npmjs.org
           scope: '@mifiel'
       - name: 📦 Publish to NPM
-        run: yarn release:publish from-package --no-verify-access --registry http://registry.npmjs.org --yes
+        run: yarn release:publish from-package --no-verify-access --registry https://registry.npmjs.org --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
