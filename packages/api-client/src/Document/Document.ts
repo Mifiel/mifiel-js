@@ -35,6 +35,7 @@ class DocumentModel extends Model<DocumentResponse> {
     return this.request<Buffer>({
       method: 'GET',
       url: `${params.documentId}/${params.type}`,
+      responseType: 'arraybuffer',
     });
   }
 
