@@ -43,7 +43,7 @@ export class Service {
       });
 
       return data;
-    } catch (error) {
+    } catch (error: any) {
       const axiosError: AxiosError = error;
       if (axiosError.response) {
         throw {

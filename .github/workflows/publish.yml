@@ -12,7 +12,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
-        node-version: [15.x]
+        node-version: [16.x]
     steps:
       - name: 👉🏼 Checkout
         uses: actions/checkout@v2
