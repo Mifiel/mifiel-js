@@ -1,0 +1,45 @@
+{
+  "name": "@mifiel/widget-stencil",
+  "version": "1.0.0",
+  "description": "Mifiel widget",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mifiel/mifiel-js.git"
+  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
+  },
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/widget-stencil/widget-stencil.esm.js",
+      "require": "./dist/widget-stencil/widget-stencil.cjs.js"
+    },
+    "./loader": {
+      "import": "./dist/loader/index.js",
+      "require": "./dist/loader/index.cjs",
+      "types": "./dist/loader/index.d.ts"
+    },
+    "./widget-stencil": {
+      "import": "./dist/components/widget-stencil.js",
+      "types": "./dist/components/widget-stencil.d.ts"
+    }
+  },
+  "types": "dist/types/index.d.ts",
+  "unpkg": "dist/widget-stencil/widget-stencil.esm.js",
+  "devDependencies": {
+    "@stencil/core": "^4.7.0",
+    "@stencil/react-output-target": "^0.5.3"
+  }
+}
