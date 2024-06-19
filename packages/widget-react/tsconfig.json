@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declarationDir": "./dist/types",
+    "lib": ["dom", "es2015", "es6"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es6",
+    "skipLibCheck": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+  "include": ["lib"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/__tests__/**"]
+}
