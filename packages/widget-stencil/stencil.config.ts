@@ -1,4 +1,5 @@
 import type { Config } from '@stencil/core';
+import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'widget-stencil',
@@ -6,15 +7,14 @@ export const config: Config = {
     {
       type: 'dist',
     },
-    // {
-    //   type: 'dist-custom-elements',
-    //   customElementsExportBehavior: 'auto-define-custom-elements',
-    //   externalRuntime: false,
-    // },
     {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
+    reactOutputTarget({
+      componentCorePackage: '@mifiel/widget-stencil',
+      proxiesFile: '../widget-react/lib/components/stencil-generated/index.ts',
+    }),
   ],
   sourceMap: false,
 };

@@ -119,11 +119,26 @@ export class MifielWidget {
 
   private getAdditionalProps() {
     const additionalProps: { [key: string]: any } = {};
+
+    const parseValue = (value: string): any => {
+      // Convert 'true' and 'false' to booleans
+      if (value === 'true') return true;
+      if (value === 'false') return false;
+
+      // Convert numbers
+      const num = parseFloat(value);
+      if (!Number.isNaN(num) && Number.isFinite(num)) return num;
+
+      // Default to string
+      return value;
+    };
+
     Array.from(this.element.attributes).forEach(attr => {
       if (!(attr.name in this)) {
-        additionalProps[attr.name] = attr.value;
+        additionalProps[attr.name] = parseValue(attr.value);
       }
     });
+
     return additionalProps;
   }
 
