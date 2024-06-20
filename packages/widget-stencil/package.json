@@ -23,17 +23,14 @@
   "collection:main": "dist/collection/index.js",
   "exports": {
     ".": {
-      "import": "./dist/widget-stencil/widget-stencil.esm.js",
-      "require": "./dist/widget-stencil/widget-stencil.cjs.js"
+      "import": "./dist/esm/widget-stencil.js",
+      "require": "./dist/cjs/widget-stencil.cjs.js",
+      "types": "./dist/types/index.d.ts"
     },
-    "./loader": {
+    "./dist/loader": {
       "import": "./dist/loader/index.js",
-      "require": "./dist/loader/index.cjs",
+      "require": "./dist/loader/index.cjs.js",
       "types": "./dist/loader/index.d.ts"
-    },
-    "./widget-stencil": {
-      "import": "./dist/components/widget-stencil.js",
-      "types": "./dist/components/widget-stencil.d.ts"
     }
   },
   "types": "dist/types/index.d.ts",
