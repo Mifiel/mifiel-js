@@ -15,10 +15,14 @@ npm install @mifiel/widget-react
 Import the MifielWidget component and use it in your React application:
 
 ```jsx
-import React from 'react';
-import { MifielWidget } from '@mifiel/widget-react';
+import React, {useEffect} from 'react';
+import { MifielWidget, defineCustomElements } from '@mifiel/widget-react';
 
 function App() {
+  useEffect(() => {
+    defineCustomElements(window)
+  },[]);
+
   const onSuccessHandler = () => {
     console.log('Document signed successfully');
     // Your custom success handling logic here
