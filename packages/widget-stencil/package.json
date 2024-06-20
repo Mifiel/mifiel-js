@@ -36,6 +36,7 @@
   "types": "dist/types/index.d.ts",
   "unpkg": "dist/widget-stencil/widget-stencil.esm.js",
   "devDependencies": {
+    "@stencil/angular-output-target": "^0.8.4",
     "@stencil/core": "^4.7.0",
     "@stencil/react-output-target": "^0.5.3"
   }
