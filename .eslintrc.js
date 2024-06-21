@@ -50,6 +50,10 @@ module.exports = {
     'prefer-rest-params': 'off',
     'no-plusplus': 'off',
     '@typescript-eslint/no-shadow': 'off',
+    'no-restricted-syntax': 'off',
+    'guard-for-in': 'off',
+    'no-prototype-builtins': 'off',
+    'symbol-description': 'off',
   },
   overrides: [
     {

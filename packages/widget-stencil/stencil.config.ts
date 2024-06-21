@@ -1,6 +1,7 @@
 import type { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'widget-stencil',
@@ -21,6 +22,10 @@ export const config: Config = {
       outputType: 'component',
       directivesProxyFile: '../angular-workspace/projects/widget-angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular-workspace/projects/widget-angular/src/lib/stencil-generated/index.ts',
+    }),
+    vueOutputTarget({
+      componentCorePackage: '@mifiel/widget-stencil',
+      proxiesFile: '../widget-vue/lib/components.ts',
     }),
   ],
   sourceMap: false,
