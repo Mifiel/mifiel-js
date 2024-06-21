@@ -1,7 +1,7 @@
 {
   "name": "@mifiel/widget-stencil",
   "version": "1.0.0",
-  "description": "Mifiel widget",
+  "description": "Mifiel widget web component",
   "license": "MIT",
   "repository": {
     "type": "git",

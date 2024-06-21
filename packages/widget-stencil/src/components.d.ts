@@ -44,8 +44,24 @@ export namespace Components {
         "successBtnText": string;
     }
 }
+export interface MifielWidgetCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMifielWidgetElement;
+}
 declare global {
+    interface HTMLMifielWidgetElementEventMap {
+        "error": any;
+        "success": any;
+    }
     interface HTMLMifielWidgetElement extends Components.MifielWidget, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMifielWidgetElementEventMap>(type: K, listener: (this: HTMLMifielWidgetElement, ev: MifielWidgetCustomEvent<HTMLMifielWidgetElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMifielWidgetElementEventMap>(type: K, listener: (this: HTMLMifielWidgetElement, ev: MifielWidgetCustomEvent<HTMLMifielWidgetElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMifielWidgetElement: {
         prototype: HTMLMifielWidgetElement;
@@ -82,10 +98,12 @@ declare namespace LocalJSX {
           * Listener for errors that occur during the signing flow.
          */
         "onError"?: Function;
+        "onError"?: (event: MifielWidgetCustomEvent<any>) => void;
         /**
           * Function to be called when the document is signed successfully.
          */
         "onSuccess"?: Function;
+        "onSuccess"?: (event: MifielWidgetCustomEvent<any>) => void;
         /**
           * The text of the success button.
           * @default 'Proceed to next step'

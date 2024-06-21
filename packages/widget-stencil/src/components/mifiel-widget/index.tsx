@@ -1,12 +1,10 @@
-import { h, Component, Prop, Element, Host, Method } from '@stencil/core';
+import { h, Component, Prop, Element, Host, Method, Event, EventEmitter } from '@stencil/core';
 import { loadScript } from '../../utils/load-script';
 
 const idComponent = 'mifiel-widget';
 const environments = {
   production: 'https://app.mifiel.com',
-  sandbox: 'https://app.mifiel.com',
-  // remove this
-  develop: 'http://app.mifiel.localhost:3000',
+  sandbox: 'https://app-sandbox.mifiel.com',
 };
 
 @Component({
@@ -57,6 +55,10 @@ export class MifielWidget {
 
   @Element() element: HTMLElement;
 
+  @Event() error: EventEmitter<any>;
+
+  @Event() success: EventEmitter<any>;
+
   @Method()
   async getIframe() {
     return this.element.querySelector('iframe');
@@ -95,16 +97,24 @@ export class MifielWidget {
     });
   }
 
-  private getOnError() {
-    if (!this.callToActionError && !this.onError) {
-      return null;
-    }
+  private handleOnError = error => {
+    if (this.onError) this.onError(error);
 
+    this.error.emit(error);
+  };
+
+  private getOnError() {
     return {
       ...(this.callToActionError ? { callToAction: this.callToActionError } : {}),
-      ...(this.onError ? { listener: this.onError } : {}),
+      listener: this.handleOnError,
     };
   }
+
+  private handleOnSuccess = () => {
+    if (this.success) this.onSuccess();
+
+    this.success.emit();
+  };
 
   private getOnSuccess() {
     if (!this.callToActionSuccess && !this.onSuccess) {
@@ -113,7 +123,7 @@ export class MifielWidget {
 
     return {
       ...(this.callToActionSuccess ? { callToAction: this.callToActionSuccess } : {}),
-      ...(this.onSuccess ? { listener: this.onSuccess } : {}),
+      listener: this.handleOnSuccess,
     };
   }
 
