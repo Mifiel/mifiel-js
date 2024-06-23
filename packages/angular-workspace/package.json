@@ -3,11 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "ng build",
-    "ng": "ng",
-    "start": "ng serve",
-    "test": "ng test",
-    "watch": "ng build --watch --configuration development"
+    "prebuild": "rimraf dist",
+    "build": "ng build widget-angular",
+    "ng": "ng"
   },
   "dependencies": {
     "@angular/animations": "^16.2.0",

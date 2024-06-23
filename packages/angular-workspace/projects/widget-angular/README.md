@@ -1,24 +1,95 @@
-# WidgetAngular
+# Mifiel Widget Component
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Angular component wrapper for Mifiel Widget implemented with StencilJS.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project widget-angular` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project widget-angular`.
-> Note: Don't forget to add `--project widget-angular` or else it will be added to the default project in your `angular.json` file. 
+Install the package using npm:
 
-## Build
+```bash
+npm install @mifiel/widget-angular
+```
 
-Run `ng build widget-angular` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Publishing
+Import the MifielWidgetModule in your Angular module and use the mifiel-widget component in your Angular application:
 
-After building your library with `ng build widget-angular`, go to the dist folder `cd dist/widget-angular` and run `npm publish`.
+## Importing the Module
 
-## Running unit tests
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { MifielWidgetModule } from '@mifiel/widget-angular';
 
-Run `ng test widget-angular` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    MifielWidgetModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-## Further help
+## Using the Component
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Now, use the mifiel-widget component in your Angular component template:
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <div>
+      <h1>Sign Document</h1>
+      <mifiel-widget
+        [id]="widgetId"
+        [environment]="environment"
+        (onSuccess)="onSuccessHandler()"
+        (onError)="onErrorHandler($event)"
+        [successBtnText]="successBtnText"
+        [callToActionSuccess]="callToActionSuccess"
+        [callToActionError]="callToActionError"
+        [containerClass]="containerClass"
+      ></mifiel-widget>
+    </div>
+  `,
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  widgetId = 'your-widget-id';
+  environment = 'production';
+  successBtnText = 'Proceed to next step';
+  callToActionSuccess = 'https://example.com/next-step';
+  callToActionError = 'https://example.com/error-page';
+  containerClass = 'widget-container';
+
+  onSuccessHandler() {
+    console.log('Document signed successfully');
+    // Your custom success handling logic here
+  }
+
+  onErrorHandler(error: any) {
+    console.error('Signing error:', error);
+    // Your custom error handling logic here
+  }
+}
+
+```
+
+## Props
+
+- **`id`**: (string, required) The ID of the widget.
+- **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
+- **`onSuccess`**: (function, optional) Function to be called when the document is signed successfully.
+- **`onError`**: (function, optional) Listener for errors that occur during the signing flow.
+- **`successBtnText`**: (string, optional) Text for the success button (`Proceed to next step` by default).
+- **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
+- **`callToActionError`**: (string | function, optional) Main button action in the error view.
+- **`containerClass`**: (string, optional) CSS class to be applied to the widget container.

@@ -1,6 +1,7 @@
 {
   "name": "@mifiel/widget-angular",
   "version": "1.0.0",
+  "description": "Angular wrapper for the Mifiel Widget implemented with StencilJS",
   "sideEffects": false,
   "dependencies": {
     "tslib": "^2.3.0"

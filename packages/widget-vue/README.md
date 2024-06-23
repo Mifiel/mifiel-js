@@ -1,6 +1,6 @@
 # Mifiel Widget Component
 
-React component wrapper for Mifiel Widget implemented with StencilJS.
+Vue component wrapper for Mifiel Widget implemented with StencilJS.
 
 ## Installation
 

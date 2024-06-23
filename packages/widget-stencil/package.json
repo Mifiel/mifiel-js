@@ -1,12 +1,13 @@
 {
   "name": "@mifiel/widget-stencil",
   "version": "1.0.0",
-  "description": "Mifiel widget web component",
+  "description": "Mifiel Widget component built with StencilJS for easy integration into web applications.",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mifiel/mifiel-js.git"
   },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-stencil#readme",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "files": [
@@ -15,9 +16,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "start": "stencil build --dev --watch --serve"
   },
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
