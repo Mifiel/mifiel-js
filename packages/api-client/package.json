@@ -1,6 +1,6 @@
 {
   "name": "@mifiel/api-client",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Mifiel API Client for NodeJS",
   "license": "MIT",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
