@@ -21,7 +21,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.ts'],
+      files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
       parserOptions: {
         project: './tsconfig.json',
         EXPERIMENTAL_useSourceOfProjectReferenceRedirect: true,

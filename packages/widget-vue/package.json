@@ -1,0 +1,30 @@
+{
+  "name": "@mifiel/widget-vue",
+  "version": "1.0.0",
+  "description": "Vue.js wrapper for the Mifiel Widget implemented with StencilJS",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mifiel/mifiel-js.git"
+  },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-vue#readme",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "npm run tsc",
+    "tsc": "tsc -p . --outDir ./dist"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@mifiel/widget-stencil": "*"
+  },
+  "devDependencies": {
+    "vue": "^3.4.29"
+  }
+}

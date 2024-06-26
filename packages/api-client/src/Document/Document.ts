@@ -60,10 +60,10 @@ class DocumentModel extends Model<DocumentResponse> {
     createDocumentSchema.parse(doc);
 
     if (doc.file) {
-      const form: Partial<FormData> = serialize(doc, {
+      const form = serialize(doc, {
         indices: true,
         nullsAsUndefineds: true,
-      });
+      }) as unknown as Partial<FormData>;
 
       (form as FormData).append('file', fs.createReadStream(doc.file));
 

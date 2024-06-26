@@ -1,0 +1,43 @@
+{
+  "name": "@mifiel/widget-stencil",
+  "version": "1.0.0",
+  "description": "Mifiel Widget component built with StencilJS for easy integration into web applications.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mifiel/mifiel-js.git"
+  },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-stencil#readme",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve"
+  },
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/widget-stencil.js",
+      "require": "./dist/cjs/widget-stencil.cjs.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./dist/loader": {
+      "import": "./dist/loader/index.js",
+      "require": "./dist/loader/index.cjs.js",
+      "types": "./dist/loader/index.d.ts"
+    }
+  },
+  "types": "dist/types/index.d.ts",
+  "unpkg": "dist/widget-stencil/widget-stencil.esm.js",
+  "devDependencies": {
+    "@stencil/angular-output-target": "^0.8.4",
+    "@stencil/core": "^4.7.0",
+    "@stencil/react-output-target": "^0.5.3",
+    "@stencil/vue-output-target": "^0.8.8"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@mifiel/widget-react",
+  "version": "1.0.0",
+  "description": "A React wrapper for the Mifiel Widget component built with StencilJS.",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mifiel/mifiel-js.git"
+  },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-react#readme",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "npm run tsc",
+    "tsc": "tsc -p . --outDir ./dist"
+  },
+  "types": "dist/types/index.d.ts",
+  "dependencies": {
+    "@mifiel/widget-stencil": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.4.5"
+  }
+}
