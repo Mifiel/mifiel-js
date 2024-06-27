@@ -1,6 +1,6 @@
 {
   "name": "@mifiel/widget-react",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A React wrapper for the Mifiel Widget component built with StencilJS.",
   "license": "UNLICENSED",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
@@ -25,7 +25,7 @@
   },
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@mifiel/widget-stencil": "*"
+    "@mifiel/widget-stencil": "^0.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
