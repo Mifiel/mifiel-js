@@ -93,3 +93,9 @@ export class AppComponent {
 - **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
 - **`callToActionError`**: (string | function, optional) Main button action in the error view.
 - **`containerClass`**: (string, optional) CSS class to be applied to the widget container.
+
+# Important Information
+
+## ESM Compatibility
+
+This wrapper is built using ECMAScript Modules (ESM) and therefore only works in environments that support ESM. If you're using a build tool like Webpack or Rollup, they typically support ESM out of the box.
