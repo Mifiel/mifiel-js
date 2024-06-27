@@ -63,3 +63,32 @@ export default App;
 - **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
 - **`callToActionError`**: (string | function, optional) Main button action in the error view.
 - **`containerClass`**: (string, optional) CSS class to be applied to the widget container.
+
+
+# Important Information
+
+## ESM Compatibility
+
+This wrapper is built using ECMAScript Modules (ESM) and therefore only works in environments that support ESM. If you're using a build tool like Webpack or Rollup, they typically support ESM out of the box.
+
+## Using with Next.js
+
+1. Next.js by default uses CommonJS modules. To use this wrapper with Next.js, you will need to enable ESM support. You can achieve this by using the next-transpile-modules plugin.
+
+```bash
+npm install next-transpile-modules
+```
+
+2. Create or update your next.config.js to include the plugin:
+
+```javascript
+const withTM = require('next-transpile-modules')(['@mifiel/widget-react']);
+
+module.exports = withTM({
+  // Other Next.js configurations
+});
+```
+
+3. Import and use the wrapper in your Next.js application
+
+If you are using another framework and encounter compatibility issues, look for the corresponding plugin.
