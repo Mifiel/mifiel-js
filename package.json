@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "build": "lerna run build --scope=@mifiel/{api-client,api-client-auth} && yarn build:widget",
-    "build:widget": "lerna run build --scope=@mifiel/widget-stencil && lerna run build --scope=@mifiel/{widget-react,widget-vue,angular-workspace}",
+    "build:widget": "lerna run build --scope=@mifiel/widget-stencil && lerna run build --scope=@mifiel/{widget-react,widget-vue,widget-angular}",
     "husky": "husky",
     "lint": "lerna run lint",
     "postpublish": "pinst --enable",

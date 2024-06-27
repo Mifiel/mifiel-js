@@ -1,0 +1,65 @@
+{
+  "name": "@mifiel/widget-angular",
+  "version": "0.0.0",
+  "description": "Angular wrapper for the Mifiel Widget implemented with StencilJS",
+  "license": "UNLICENSED",
+  "repository": "git@github.com:Mifiel/mifiel-js.git",
+  "bugs": {
+    "url": "https://github.com/Mifiel/mifiel-js/issues"
+  },
+  "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-angular#readme",
+  "author": "Alejandro López <alejandro@mifiel.com>",
+  "module": "fesm2022/mifiel-widget-angular.mjs",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "ng build",
+    "ng": "ng"
+  },
+  "exports": {
+    ".": {
+      "default": "./dist/fesm2022/mifiel-widget-angular.mjs",
+      "esm": "./dist/esm2022/mifiel-widget-angular.mjs",
+      "esm2022": "./dist/esm2022/mifiel-widget-angular.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    }
+  },
+  "typings": "index.d.ts",
+  "dependencies": {
+    "@angular/animations": "^16.2.0",
+    "@angular/common": "^16.2.0",
+    "@angular/compiler": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.0",
+    "@angular/platform-browser": "^16.2.0",
+    "@angular/platform-browser-dynamic": "^16.2.0",
+    "@angular/router": "^16.2.0",
+    "@mifiel/widget-stencil": "*",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.2.14",
+    "@angular-eslint/eslint-plugin": "^12.7.0",
+    "@angular-eslint/template-parser": "^12.7.0",
+    "@angular/cli": "^16.2.14",
+    "@angular/compiler-cli": "^16.2.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^16.2.0",
+    "typescript": "~5.1.3"
+  }
+}
