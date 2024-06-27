@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import type { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
@@ -20,8 +21,8 @@ export const config: Config = {
     angularOutputTarget({
       componentCorePackage: '@mifiel/widget-stencil',
       outputType: 'component',
-      directivesProxyFile: '../angular-workspace/projects/widget-angular/src/lib/stencil-generated/components.ts',
-      directivesArrayFile: '../angular-workspace/projects/widget-angular/src/lib/stencil-generated/index.ts',
+      directivesProxyFile: '../widget-angular/src/lib/stencil-generated/components.ts',
+      directivesArrayFile: '../widget-angular/src/lib/stencil-generated/index.ts',
     }),
     vueOutputTarget({
       componentCorePackage: '@mifiel/widget-stencil',
