@@ -36,10 +36,10 @@ app.mount('#app');
       environment="production"
       @success="onSuccessHandler"
       @error="onErrorHandler"
-      successBtnText="Proceed to next step"
-      callToActionSuccess="https://example.com/next-step"
-      callToActionError="https://example.com/error-page"
-      containerClass="widget-container"
+      success-btn-text="Proceed to next step"
+      call-to-action-success="https://example.com/next-step"
+      call-to-action-error="https://example.com/error-page"
+      container-class="widget-container"
     />
   </div>
 </template>
@@ -75,10 +75,10 @@ export default {
 - **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
 - **`@success`**: (function, optional) Function to be called when the document is signed successfully.
 - **`@error`**: (function, optional) Listener for errors that occur during the signing flow.
-- **`successBtnText`**: (string, optional) Text for the success button (`Proceed to next step` by default).
-- **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
-- **`callToActionError`**: (string | function, optional) Main button action in the error view.
-- **`containerClass`**: (string, optional) CSS class to be applied to the widget container.
+- **`success-btn-text`**: (string, optional) Text for the success button (`Proceed to next step` by default).
+- **`call-to-action-success`**: (string | function, optional) Main button action in the success view.
+- **`call-to-action-error`**: (string | function, optional) Main button action in the error view.
+- **`container-class`**: (string, optional) CSS class to be applied to the widget container.
 
 # Important Information
 

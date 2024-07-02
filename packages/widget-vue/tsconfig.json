@@ -12,8 +12,10 @@
     "sourceMap": true,
     "lib": ["dom", "es2020"],
     "moduleResolution": "node",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["lib/**/*.ts"],
+  "include": ["lib"],
   "exclude": ["node_modules"]
 }
