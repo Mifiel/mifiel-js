@@ -42,6 +42,10 @@ export namespace Components {
           * @default 'Proceed to next step'
          */
         "successBtnText": string;
+        /**
+          * Set widget version
+         */
+        "widgetVersion"?: string;
     }
 }
 export interface MifielWidgetCustomEvent<T> extends CustomEvent<T> {
@@ -109,6 +113,10 @@ declare namespace LocalJSX {
           * @default 'Proceed to next step'
          */
         "successBtnText"?: string;
+        /**
+          * Set widget version
+         */
+        "widgetVersion"?: string;
     }
     interface IntrinsicElements {
         "mifiel-widget": MifielWidget;

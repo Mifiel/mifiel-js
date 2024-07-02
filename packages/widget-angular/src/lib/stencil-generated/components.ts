@@ -8,7 +8,7 @@ import { Components } from '@mifiel/widget-stencil';
 
 
 @ProxyCmp({
-  inputs: ['callToActionError', 'callToActionSuccess', 'containerClass', 'environment', 'id', 'onError', 'onSuccess', 'successBtnText'],
+  inputs: ['callToActionError', 'callToActionSuccess', 'containerClass', 'environment', 'id', 'onError', 'onSuccess', 'successBtnText', 'widgetVersion'],
   methods: ['getIframe']
 })
 @Component({
@@ -16,7 +16,7 @@ import { Components } from '@mifiel/widget-stencil';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['callToActionError', 'callToActionSuccess', 'containerClass', 'environment', 'id', 'onError', 'onSuccess', 'successBtnText'],
+  inputs: ['callToActionError', 'callToActionSuccess', 'containerClass', 'environment', 'id', 'onError', 'onSuccess', 'successBtnText', 'widgetVersion'],
 })
 export class MifielWidget {
   protected el: HTMLElement;

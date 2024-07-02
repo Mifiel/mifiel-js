@@ -9,8 +9,8 @@
   },
   "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-react#readme",
   "author": "Alejandro López <alejandro@mifiel.com>",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/lib/index.js",
+  "module": "dist/lib/index.js",
   "files": [
     "dist"
   ],
@@ -20,10 +20,10 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "npm run tsc",
+    "build": "node utils/version.js && npm run tsc",
     "tsc": "tsc -p . --outDir ./dist"
   },
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/lib/index.d.ts",
   "dependencies": {
     "@mifiel/widget-stencil": "^0.0.1"
   },

@@ -5,7 +5,7 @@ import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
-  namespace: 'widget-stencil',
+  namespace: 'widget',
   outputTargets: [
     {
       type: 'dist',

@@ -53,6 +53,11 @@ export class MifielWidget {
    */
   @Prop() containerClass?: string;
 
+  /**
+   * Set widget version
+   */
+  @Prop() widgetVersion?: string;
+
   @Element() element: HTMLElement;
 
   @Event() error: EventEmitter<any>;
@@ -65,6 +70,8 @@ export class MifielWidget {
   }
 
   componentWillLoad() {
+    console.log('version', this.widgetVersion);
+
     // @ts-ignore
     window.mifiel = window.mifiel || [];
     for (
