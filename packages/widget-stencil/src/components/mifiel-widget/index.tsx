@@ -1,5 +1,6 @@
 import { h, Component, Prop, Element, Host, Method, Event, EventEmitter } from '@stencil/core';
 import { loadScript } from '../../utils/load-script';
+import dataWidget from '../../config.json';
 
 const idComponent = 'mifiel-widget';
 const environments = {
@@ -56,7 +57,7 @@ export class MifielWidget {
   /**
    * Set widget version
    */
-  @Prop() widgetVersion?: string;
+  @Prop() widgetVersion?: string = `${dataWidget.appName}@${dataWidget.appVersion}`;
 
   @Element() element: HTMLElement;
 
@@ -70,8 +71,6 @@ export class MifielWidget {
   }
 
   componentWillLoad() {
-    console.log('version', this.widgetVersion);
-
     // @ts-ignore
     window.mifiel = window.mifiel || [];
     for (

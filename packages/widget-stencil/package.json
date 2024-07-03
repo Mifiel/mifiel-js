@@ -20,7 +20,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "stencil build",
+    "build": "node src/utils/version.js && stencil build",
     "start": "stencil build --dev --watch --serve"
   },
   "collection": "dist/collection/collection-manifest.json",
