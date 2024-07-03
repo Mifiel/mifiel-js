@@ -30,5 +30,5 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "src/config.json"]
+  "include": ["src", "src/components/config.json"]
 }

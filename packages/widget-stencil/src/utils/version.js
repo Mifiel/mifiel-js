@@ -12,6 +12,6 @@ const configObject = {
   appVersion: version,
 };
 
-const configFilePath = path.resolve(__dirname, '../config.json');
+const configFilePath = path.resolve(__dirname, '../components/config.json');
 
 fs.writeFileSync(configFilePath, JSON.stringify(configObject, null, 2), 'utf8');

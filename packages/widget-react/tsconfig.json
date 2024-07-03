@@ -18,6 +18,6 @@
     "allowSyntheticDefaultImports": true,
     "declarationDir": "./dist/types"
   },
-  "include": ["lib"],
+  "include": ["lib", "utils/version.js"],
   "exclude": ["node_modules"]
 }

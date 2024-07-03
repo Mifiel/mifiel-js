@@ -16,6 +16,6 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["lib"],
+  "include": ["lib", "utils/version.js"],
   "exclude": ["node_modules"]
 }

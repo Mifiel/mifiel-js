@@ -1,6 +1,6 @@
 import { h, Component, Prop, Element, Host, Method, Event, EventEmitter } from '@stencil/core';
 import { loadScript } from '../../utils/load-script';
-import dataWidget from '../../config.json';
+import dataWidget from '../config.json';
 
 const idComponent = 'mifiel-widget';
 const environments = {
