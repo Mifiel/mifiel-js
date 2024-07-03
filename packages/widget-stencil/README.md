@@ -12,7 +12,23 @@ npm install @mifiel/widget-stencil
 
 ## Usage
 
-Use mifiel-widget component in your web application
+### Using the `mifiel-widget` Component
+
+To integrate the `mifiel-widget` component into your web application, follow these steps:
+
+1. **Using Node Modules:**
+   Compile the code and import our library using:
+   ```javascript
+   import { defineCustomElements } from '@mifiel/widget-stencil/loader';
+   ```
+
+2. **Using CDN:**
+  Alternatively, you can include the component via CDN:
+  ```javascript
+  <script src="https://app.mifiel.com/widget/index.js"></script>
+  ```
+  This method allows you to directly use the component without compilation steps.
+
 
 ```html
 <!DOCTYPE html>
@@ -21,10 +37,13 @@ Use mifiel-widget component in your web application
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mifiel Widget Example</title>
-  <script type="module">
+  <!-- with node modules -->
+  <!-- <script type="module">
     import { defineCustomElements } from '@mifiel/widget-stencil/loader';
     defineCustomElements();
-  </script>
+  </script> -->
+  <!-- with CDN -->
+  <script src="https://app.mifiel.com/widget/index.js"></script>
 </head>
 <body>
   <h1>Sign Document</h1>
@@ -61,9 +80,12 @@ Use mifiel-widget component in your web application
 ## Using with JavaScript
 
 ```javascript
+// Only use this if you are using node_modules.
+// Start
 import { defineCustomElements } from '@mifiel/widget-stencil/loader';
 
 defineCustomElements(window);
+// End
 
 function onSuccessHandler() {
   console.log('Document signed successfully');
@@ -96,9 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 - **`id`**: (string, required) The ID of the widget.
 - **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
-- **`onSuccess`**: (function, optional) Function to be called when the document is signed successfully.
-- **`onError`**: (function, optional) Listener for errors that occur during the signing flow.
-- **`successBtnText`**: (string, optional) Text for the success button (`Proceed to next step` by default).
-- **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
-- **`callToActionError`**: (string | function, optional) Main button action in the error view.
-- **`containerClass`**: (string, optional) CSS class to be applied to the widget container.
+- **`on-success`**: (function, optional) Function to be called when the document is signed successfully.
+- **`on-error`**: (function, optional) Listener for errors that occur during the signing flow.
+- **`success-btn-text`**: (string, optional) Text for the success button (`Proceed to next step` by default).
+- **`call-to-action-success`**: (string | function, optional) Main button action in the success view.
+- **`call-to-action-error`**: (string | function, optional) Main button action in the error view.
+- **`container-class`**: (string, optional) CSS class to be applied to the widget container.
+
+## Listeners
+
+In addition to using the `on-success` and `on-error` props, listeners for `success` and `error` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.

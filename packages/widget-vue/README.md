@@ -34,6 +34,7 @@ app.mount('#app');
     <MifielWidget
       id="your-widget-id"
       environment="production"
+      {/* Event listeners for success and error events */}
       @success="onSuccessHandler"
       @error="onErrorHandler"
       success-btn-text="Proceed to next step"
@@ -73,12 +74,17 @@ export default {
 
 - **`id`**: (string, required) The ID of the widget.
 - **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
-- **`@success`**: (function, optional) Function to be called when the document is signed successfully.
-- **`@error`**: (function, optional) Listener for errors that occur during the signing flow.
+- **`on-success`**: (function, optional) Function to be called when the document is signed successfully.
+- **`on-error`**: (function, optional) Listener for errors that occur during the signing flow.
 - **`success-btn-text`**: (string, optional) Text for the success button (`Proceed to next step` by default).
 - **`call-to-action-success`**: (string | function, optional) Main button action in the success view.
 - **`call-to-action-error`**: (string | function, optional) Main button action in the error view.
 - **`container-class`**: (string, optional) CSS class to be applied to the widget container.
+
+## Listeners
+
+In addition to using the `on-success` and `on-error` props, listeners for `success` and `error` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
+
 
 # Important Information
 

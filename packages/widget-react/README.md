@@ -15,13 +15,11 @@ npm install @mifiel/widget-react
 Import the MifielWidget component and use it in your React application:
 
 ```jsx
-import React, {useEffect} from 'react';
-import { MifielWidget, defineCustomElements } from '@mifiel/widget-react';
+import { useEffect, useRef } from 'react';
+import { MifielWidget } from './components';
 
-function App() {
-  useEffect(() => {
-    defineCustomElements(window)
-  },[]);
+const YourComponent = () => {
+  const widgetRef = useRef(null);
 
   const onSuccessHandler = () => {
     console.log('Document signed successfully');
@@ -33,24 +31,36 @@ function App() {
     // Your custom error handling logic here
   };
 
-  return (
-    <div>
-      <h1>Sign Document</h1>
-      <MifielWidget
-        id="your-widget-id"
-        environment="production"
-        onSuccess={onSuccessHandler}
-        onError={onErrorHandler}
-        successBtnText="Proceed to next step"
-        callToActionSuccess="https://example.com/next-step"
-        callToActionError="https://example.com/error-page"
-        containerClass="widget-container"
-      />
-    </div>
-  );
-}
+  useEffect(() => {
+    const widgetElement = widgetRef.current;
 
-export default App;
+    if (widgetElement) {
+      widgetElement.addEventListener('success', onSuccessHandler);
+      widgetElement.addEventListener('error', onErrorHandler);
+    }
+
+    return () => {
+      if (widgetElement) {
+        widgetElement.removeEventListener('success', onSuccessHandler);
+        widgetElement.removeEventListener('error', onErrorHandler);
+      }
+    };
+  }, []);
+
+  return (
+    <MifielWidget
+      ref={widgetRef}
+      id="your-widget-id"
+      environment="production"
+      successBtnText="Proceed to next step"
+      callToActionSuccess="https://example.com/next-step"
+      containerClass="widget-container"
+    />
+  );
+};
+
+export default YourComponent;
+
 ```
 
 ## Props
@@ -64,6 +74,9 @@ export default App;
 - **`callToActionError`**: (string | function, optional) Main button action in the error view.
 - **`containerClass`**: (string, optional) CSS class to be applied to the widget container.
 
+## Listeners
+
+In addition to using the `onSuccess` and `onError` props, listeners for `success` and `error` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
 
 # Important Information
 
