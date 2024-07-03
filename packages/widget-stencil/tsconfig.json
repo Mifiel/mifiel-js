@@ -7,7 +7,7 @@
     "jsxFactory": "h",
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "composite": true,
     "removeComments": true,
     "importHelpers": true,

@@ -9,7 +9,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2017",
-    "sourceMap": true,
+    "sourceMap": false,
     "lib": ["dom", "es2020"],
     "moduleResolution": "node",
     "skipLibCheck": true,
