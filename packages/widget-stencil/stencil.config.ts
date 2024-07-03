@@ -15,17 +15,17 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      componentCorePackage: '@mifiel/widget-stencil',
+      componentCorePackage: '@mifiel/widget',
       proxiesFile: '../widget-react/lib/components/stencil-generated/index.ts',
     }),
     angularOutputTarget({
-      componentCorePackage: '@mifiel/widget-stencil',
+      componentCorePackage: '@mifiel/widget',
       outputType: 'component',
       directivesProxyFile: '../widget-angular/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../widget-angular/src/lib/stencil-generated/index.ts',
     }),
     vueOutputTarget({
-      componentCorePackage: '@mifiel/widget-stencil',
+      componentCorePackage: '@mifiel/widget',
       proxiesFile: '../widget-vue/lib/components.ts',
     }),
   ],

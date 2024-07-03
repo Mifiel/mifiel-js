@@ -3,7 +3,7 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from '@mifiel/widget-stencil';
+import type { JSX } from '@mifiel/widget';
 
 
 

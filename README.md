@@ -20,9 +20,9 @@ Library to authenticate Mifiel API calls.
 
 Mifiel API Client for NodeJS.
 
-## [`@mifiel/widget-stencil`](https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-stencil)
+## [`@mifiel/widget`](https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-stencil)
 
-[![npm](https://img.shields.io/npm/v/@mifiel/widget-stencil.svg?style=flat-square)](https://www.npmjs.com/package/@mifiel/widget-stencil)
+[![npm](https://img.shields.io/npm/v/@mifiel/widget.svg?style=flat-square)](https://www.npmjs.com/package/@mifiel/widget)
 
 Web component for Mifiel Widget implemented with StencilJS.
 

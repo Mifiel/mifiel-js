@@ -2,7 +2,7 @@
 /* tslint:disable */
 import { defineComponent, h } from 'vue';
 import { defineContainer } from './vue-component-lib/utils';
-import type { JSX } from '@mifiel/widget-stencil';
+import type { JSX } from '@mifiel/widget';
 import dataWidget from './config.json';
 
 const widgetVersion = `${dataWidget.appName}@${dataWidget.appVersion}`

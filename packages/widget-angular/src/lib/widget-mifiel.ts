@@ -9,7 +9,7 @@ import {
   NgZone,
   OnInit,
 } from '@angular/core';
-import { Components } from '@mifiel/widget-stencil';
+import { Components } from '@mifiel/widget';
 import {
   ProxyCmp,
   proxyOutputs,

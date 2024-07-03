@@ -24,7 +24,7 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@mifiel/widget-stencil": "^0.0.1"
+    "@mifiel/widget": "^0.0.1"
   },
   "devDependencies": {
     "vue": "^3.4.29"

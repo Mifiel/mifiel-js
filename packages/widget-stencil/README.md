@@ -7,7 +7,7 @@ Web component for Mifiel Widget implemented with StencilJS.
 Install the package using npm:
 
 ```bash
-npm install @mifiel/widget-stencil
+npm install @mifiel/widget
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ To integrate the `mifiel-widget` component into your web application, follow the
 1. **Using Node Modules:**
    Compile the code and import our library using:
    ```javascript
-   import { defineCustomElements } from '@mifiel/widget-stencil/loader';
+   import { defineCustomElements } from '@mifiel/widget/loader';
    ```
 
 2. **Using CDN:**
@@ -39,7 +39,7 @@ To integrate the `mifiel-widget` component into your web application, follow the
   <title>Mifiel Widget Example</title>
   <!-- with node modules -->
   <!-- <script type="module">
-    import { defineCustomElements } from '@mifiel/widget-stencil/loader';
+    import { defineCustomElements } from '@mifiel/widget/loader';
     defineCustomElements();
   </script> -->
   <!-- with CDN -->
@@ -82,7 +82,7 @@ To integrate the `mifiel-widget` component into your web application, follow the
 ```javascript
 // Only use this if you are using node_modules.
 // Start
-import { defineCustomElements } from '@mifiel/widget-stencil/loader';
+import { defineCustomElements } from '@mifiel/widget/loader';
 
 defineCustomElements(window);
 // End
