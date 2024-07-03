@@ -19,7 +19,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "ng build",
+    "build": "node ./src/utils/version.js && ng build",
     "ng": "ng"
   },
   "exports": {

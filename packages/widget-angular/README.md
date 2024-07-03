@@ -14,7 +14,7 @@ npm install @mifiel/widget-angular
 
 Import the MifielWidgetModule in your Angular module and use the mifiel-widget component in your Angular application:
 
-## Importing the Module
+## Importing the Module in app.module.ts
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -51,8 +51,8 @@ import { Component } from '@angular/core';
       <mifiel-widget
         [id]="widgetId"
         [environment]="environment"
-        (onSuccess)="onSuccessHandler()"
-        (onError)="onErrorHandler($event)"
+        (success)="onSuccessHandler()"
+        (error)="onErrorHandler($event)"
         [successBtnText]="successBtnText"
         [callToActionSuccess]="callToActionSuccess"
         [callToActionError]="callToActionError"
@@ -87,8 +87,8 @@ export class AppComponent {
 
 - **`id`**: (string, required) The ID of the widget.
 - **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
-- **`onSuccess`**: (function, optional) Function to be called when the document is signed successfully.
-- **`onError`**: (function, optional) Listener for errors that occur during the signing flow.
+- **`success`**: (function, optional) Function to be called when the document is signed successfully.
+- **`error`**: (function, optional) Listener for errors that occur during the signing flow.
 - **`successBtnText`**: (string, optional) Text for the success button (`Proceed to next step` by default).
 - **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
 - **`callToActionError`**: (string | function, optional) Main button action in the error view.
