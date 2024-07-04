@@ -40,7 +40,7 @@ To integrate the `mifiel-widget` component into your web application, follow the
   <!-- with node modules -->
   <!-- <script type="module">
     import { defineCustomElements } from '@mifiel/widget/loader';
-    defineCustomElements();
+    defineCustomElements(window);
   </script> -->
   <!-- with CDN -->
   <script src="https://app.mifiel.com/widget/index.js"></script>

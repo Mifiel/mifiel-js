@@ -63,7 +63,11 @@ export class MifielWidget {
 
   @Event() signError: EventEmitter<any>;
 
+  @Event({ eventName: 'sign-error' }) signErrorVue: EventEmitter<any>;
+
   @Event() signSuccess: EventEmitter<any>;
+
+  @Event({ eventName: 'sign-success' }) signSuccessVue: EventEmitter<any>;
 
   @Method()
   async getIframe() {
@@ -106,7 +110,11 @@ export class MifielWidget {
   private handleOnError = error => {
     if (this.onSignError) this.onSignError(error);
 
-    this.signError.emit(error);
+    if (this.widgetVersion.includes('@mifiel/widget-vue')) {
+      return this.signErrorVue.emit(error);
+    }
+
+    return this.signError.emit(error);
   };
 
   private getOnError() {
@@ -119,7 +127,11 @@ export class MifielWidget {
   private handleOnSuccess = () => {
     if (this.onSignSuccess) this.onSignSuccess();
 
-    this.signSuccess.emit();
+    if (this.widgetVersion.includes('@mifiel/widget-vue')) {
+      return this.signSuccessVue.emit();
+    }
+
+    return this.signSuccess.emit();
   };
 
   private getOnSuccess() {

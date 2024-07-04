@@ -19,6 +19,8 @@ export const MifielWidget = /*@__PURE__*/ defineContainer<JSX.MifielWidget>('mif
   'containerClass',
   'widgetVersion',
   'signError',
-  'signSuccess'
+  'sign-error',
+  'signSuccess',
+  'sign-success'
 ]);
 

@@ -55,7 +55,9 @@ export interface MifielWidgetCustomEvent<T> extends CustomEvent<T> {
 declare global {
     interface HTMLMifielWidgetElementEventMap {
         "signError": any;
+        "sign-error": any;
         "signSuccess": any;
+        "sign-success": any;
     }
     interface HTMLMifielWidgetElement extends Components.MifielWidget, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMifielWidgetElementEventMap>(type: K, listener: (this: HTMLMifielWidgetElement, ev: MifielWidgetCustomEvent<HTMLMifielWidgetElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -94,6 +96,8 @@ declare namespace LocalJSX {
           * The widget ID.
          */
         "id"?: string;
+        "onSign-error"?: (event: MifielWidgetCustomEvent<any>) => void;
+        "onSign-success"?: (event: MifielWidgetCustomEvent<any>) => void;
         /**
           * Function that will be called whenever an error occurs during the signing flow.
          */

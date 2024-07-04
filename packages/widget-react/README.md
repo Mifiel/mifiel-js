@@ -16,7 +16,7 @@ Import the MifielWidget component and use it in your React application:
 
 ```jsx
 import { useEffect, useRef } from 'react';
-import { MifielWidget } from './components';
+import { MifielWidget, defineCustomElements } from '@mifiel/widget-react';
 
 const YourComponent = () => {
   const widgetRef = useRef(null);
@@ -30,6 +30,12 @@ const YourComponent = () => {
     console.error('Signing error:', error);
     // Your custom error handling logic here
   };
+
+  // This should only be done once throughout your entire project
+  useEffect(() => {
+    defineCustomElements(window)
+  },[]);
+
 
   useEffect(() => {
     const widgetElement = widgetRef?.current;
@@ -45,18 +51,19 @@ const YourComponent = () => {
         widgetElement.removeEventListener('signError', onErrorHandler);
       }
     };
-  }, [widgetRef.current]);
+  }, [widgetRef]);
 
   return (
-    <MifielWidget
-      ref={widgetRef}
-      id="your-widget-id"
-      environment="production"
-      successBtnText="Proceed to next step"
-      successBtnAction="https://example.com/next-step"
-      errorBtnAction="https://example.com/next-step"
-      containerClass="widget-container"
-    />
+    <div ref={widgetRef}>
+      <MifielWidget
+        id="your-widget-id"
+        environment="production"
+        successBtnText="Proceed to next step"
+        successBtnAction="https://example.com/next-step"
+        errorBtnAction="https://example.com/next-step"
+        containerClass="widget-container"
+      />
+    </div>
   );
 };
 

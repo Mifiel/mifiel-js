@@ -23,7 +23,7 @@ export class MifielWidget {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['signError', 'signSuccess']);
+    proxyOutputs(this, this.el, ['signError', 'sign-error', 'signSuccess', 'sign-success']);
   }
 }
 
@@ -32,7 +32,11 @@ export declare interface MifielWidget extends Components.MifielWidget {
 
   signError: EventEmitter<CustomEvent<any>>;
 
+  'sign-error': EventEmitter<CustomEvent<any>>;
+
   signSuccess: EventEmitter<CustomEvent<any>>;
+
+  'sign-success': EventEmitter<CustomEvent<any>>;
 }
 
 

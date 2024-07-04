@@ -34,7 +34,6 @@ app.mount('#app');
     <MifielWidget
       id="your-widget-id"
       environment="production"
-      {/* Event listeners for success and error events */}
       @sign-success="onSuccessHandler"
       @sign-error="onErrorHandler"
       success-btn-text="Proceed to next step"
