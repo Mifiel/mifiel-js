@@ -32,20 +32,20 @@ const YourComponent = () => {
   };
 
   useEffect(() => {
-    const widgetElement = widgetRef.current;
+    const widgetElement = widgetRef?.current;
 
     if (widgetElement) {
-      widgetElement.addEventListener('success', onSuccessHandler);
-      widgetElement.addEventListener('error', onErrorHandler);
+      widgetElement.addEventListener('signSuccess', onSuccessHandler);
+      widgetElement.addEventListener('signError', onErrorHandler);
     }
 
     return () => {
       if (widgetElement) {
-        widgetElement.removeEventListener('success', onSuccessHandler);
-        widgetElement.removeEventListener('error', onErrorHandler);
+        widgetElement.removeEventListener('signSuccess', onSuccessHandler);
+        widgetElement.removeEventListener('signError', onErrorHandler);
       }
     };
-  }, []);
+  }, [widgetRef.current]);
 
   return (
     <MifielWidget
@@ -53,7 +53,8 @@ const YourComponent = () => {
       id="your-widget-id"
       environment="production"
       successBtnText="Proceed to next step"
-      callToActionSuccess="https://example.com/next-step"
+      successBtnAction="https://example.com/next-step"
+      errorBtnAction="https://example.com/next-step"
       containerClass="widget-container"
     />
   );
@@ -65,18 +66,18 @@ export default YourComponent;
 
 ## Props
 
-- **`id`**: (string, required) The ID of the widget.
-- **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
-- **`onSuccess`**: (function, optional) Function to be called when the document is signed successfully.
-- **`onError`**: (function, optional) Listener for errors that occur during the signing flow.
-- **`successBtnText`**: (string, optional) Text for the success button (`Proceed to next step` by default).
-- **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
-- **`callToActionError`**: (string | function, optional) Main button action in the error view.
+- **`id`**: (string, required) The widget ID
+- **`environment`**: (string, optional) The environment where the widget will be used: sandbox or production. By default, production.
+- **`onSignSuccess`**: (function, optional) Function will be called when the document is signed successfully
+- **`onSignError`**: (function, optional) Function that will be called whenever an error occurs during the signing flow.
+- **`successBtnText`**: (string, optional) Text that will display in the main button in the success page. By default, Proceed to next step
+- **`successBtnAction`**: (string | function, optional) Function to be executed when the main button is clicked in the success page. It can also be a string containing a URL to redirect to.
+- **`errorBtnAction`**: (string | function, optional) Function to be executed when the main button is clicked in the error page. It can also be a string containing a URL to redirect to.
 - **`containerClass`**: (string, optional) CSS class to be applied to the widget container.
 
 ## Listeners
 
-In addition to using the `onSuccess` and `onError` props, listeners for `success` and `error` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
+In addition to using the `onSignSuccess` and `onSignError` props, listeners for `signSuccess` and `signError` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
 
 # Important Information
 

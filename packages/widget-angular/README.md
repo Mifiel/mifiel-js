@@ -51,12 +51,11 @@ import { Component } from '@angular/core';
       <mifiel-widget
         [id]="widgetId"
         [environment]="environment"
-        <!-- Event listeners for success and error events -->
-        (success)="onSuccessHandler()"
-        (error)="onErrorHandler($event)"
+        (signSuccess)="onSuccessHandler()"
+        (signError)="onErrorHandler($event)"
         [successBtnText]="successBtnText"
-        [callToActionSuccess]="callToActionSuccess"
-        [callToActionError]="callToActionError"
+        [successBtnAction]="successBtnAction"
+        [errorBtnAction]="errorBtnAction"
         [containerClass]="containerClass"
       ></mifiel-widget>
     </div>
@@ -67,8 +66,8 @@ export class AppComponent {
   widgetId = 'your-widget-id';
   environment = 'production';
   successBtnText = 'Proceed to next step';
-  callToActionSuccess = 'https://example.com/next-step';
-  callToActionError = 'https://example.com/error-page';
+  successBtnAction = 'https://example.com/next-step';
+  errorBtnAction = 'https://example.com/error-page';
   containerClass = 'widget-container';
 
   onSuccessHandler() {
@@ -86,22 +85,25 @@ export class AppComponent {
 
 ## Props
 
-- **`id`**: (string, required) The ID of the widget.
-- **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
-- **`onSuccess`**: (function, optional) Function to be called when the document is signed successfully.
-- **`onError`**: (function, optional) Listener for errors that occur during the signing flow.
-- **`successBtnText`**: (string, optional) Text for the success button (`Proceed to next step` by default).
-- **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
-- **`callToActionError`**: (string | function, optional) Main button action in the error view.
+- **`id`**: (string, required) The widget ID
+- **`environment`**: (string, optional) The environment where the widget will be used: sandbox or production. By default, production.
+- **`onSignSuccess`**: (function, optional) Function will be called when the document is signed successfully
+- **`onSignError`**: (function, optional) Function that will be called whenever an error occurs during the signing flow.
+- **`successBtnText`**: (string, optional) Text that will display in the main button in the success page. By default, Proceed to next step
+- **`successBtnAction`**: (string | function, optional) Function to be executed when the main button is clicked in the success page. It can also be a string containing a URL to redirect to.
+- **`errorBtnAction`**: (string | function, optional) Function to be executed when the main button is clicked in the error page. It can also be a string containing a URL to redirect to.
 - **`containerClass`**: (string, optional) CSS class to be applied to the widget container.
 
 ## Listeners
 
-In addition to using the `onSuccess` and `onError` props, listeners for `success` and `error` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
-
+In addition to using the `onSignSuccess` and `onSignError` props, listeners for `signSuccess` and `signError` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
 
 # Important Information
 
 ## ESM Compatibility
 
 This wrapper is built using ECMAScript Modules (ESM) and therefore only works in environments that support ESM. If you're using a build tool like Webpack or Rollup, they typically support ESM out of the box.
+
+## tsconfig.json configuration
+
+To prevent errors within the `node_modules` directory, set the `skipLibCheck` option to `true` in your TypeScript configuration file (`tsconfig.json`). This will skip type checking for all declaration files (`.d.ts`), improving the build time and reducing unnecessary errors from third-party libraries.

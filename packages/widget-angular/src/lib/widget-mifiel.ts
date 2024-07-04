@@ -10,52 +10,26 @@ import {
   OnInit,
 } from '@angular/core';
 import { Components } from '@mifiel/widget';
-import {
-  ProxyCmp,
-  proxyOutputs,
-} from './stencil-generated/angular-component-lib/utils';
 import dataWidget from './config.json';
 
-@ProxyCmp({
-  inputs: [
-    'callToActionError',
-    'callToActionSuccess',
-    'containerClass',
-    'environment',
-    'id',
-    'onError',
-    'onSuccess',
-    'successBtnText',
-    'widgetVersion',
-  ],
-  methods: ['getIframe'],
-})
+import { MifielWidget as Mifiel } from './stencil-generated/components';
+
 @Component({
   selector: 'mifiel-widget',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content widget-version="1"></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [
-    'callToActionError',
-    'callToActionSuccess',
-    'containerClass',
-    'environment',
-    'id',
-    'onError',
-    'onSuccess',
-    'successBtnText',
-    'widgetVersion',
-  ],
 })
-export class MifielWidget implements OnInit {
-  protected el: HTMLElement;
+export class MifielWidget extends Mifiel implements OnInit {
+  protected override el!: HTMLElement;
 
-  @Input() widgetVersion?: string;
+  @Input() override widgetVersion?: string;
 
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['error', 'success']);
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected override z: NgZone
+  ) {
+    super(c, r, z);
   }
 
   ngOnInit() {

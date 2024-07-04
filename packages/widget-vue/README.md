@@ -35,11 +35,11 @@ app.mount('#app');
       id="your-widget-id"
       environment="production"
       {/* Event listeners for success and error events */}
-      @success="onSuccessHandler"
-      @error="onErrorHandler"
+      @sign-success="onSuccessHandler"
+      @sign-error="onErrorHandler"
       success-btn-text="Proceed to next step"
-      call-to-action-success="https://example.com/next-step"
-      call-to-action-error="https://example.com/error-page"
+      success-btn-action="https://example.com/next-step"
+      error-btn-action="https://example.com/error-page"
       container-class="widget-container"
     />
   </div>
@@ -72,18 +72,18 @@ export default {
 
 ## Props
 
-- **`id`**: (string, required) The ID of the widget.
-- **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
-- **`on-success`**: (function, optional) Function to be called when the document is signed successfully.
-- **`on-error`**: (function, optional) Listener for errors that occur during the signing flow.
-- **`success-btn-text`**: (string, optional) Text for the success button (`Proceed to next step` by default).
-- **`call-to-action-success`**: (string | function, optional) Main button action in the success view.
-- **`call-to-action-error`**: (string | function, optional) Main button action in the error view.
+- **`id`**: (string, required) The widget ID
+- **`environment`**: (string, optional) The environment where the widget will be used: sandbox or production. By default, production.
+- **`on-sign-success`**: (function, optional) Function will be called when the document is signed successfully
+- **`on-sign-error`**: (function, optional) Function that will be called whenever an error occurs during the signing flow.
+- **`success-btn-text`**: (string, optional) Text that will display in the main button in the success page. By default, Proceed to next step
+- **`success-btn-action`**: (string | function, optional) Function to be executed when the main button is clicked in the success page. It can also be a string containing a URL to redirect to.
+- **`error-btn-action`**: (string | function, optional) Function to be executed when the main button is clicked in the error page. It can also be a string containing a URL to redirect to.
 - **`container-class`**: (string, optional) CSS class to be applied to the widget container.
 
 ## Listeners
 
-In addition to using the `on-success` and `on-error` props, listeners for `success` and `error` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
+In addition to using the `on-sign-success` and `on-sign-error` props, listeners for `sign-success` and `sign-error` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
 
 
 # Important Information
