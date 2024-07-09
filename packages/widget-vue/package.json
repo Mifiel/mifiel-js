@@ -1,6 +1,6 @@
 {
   "name": "@mifiel/widget-vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue.js wrapper for the Mifiel Widget implemented with StencilJS",
   "license": "UNLICENSED",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
@@ -24,7 +24,7 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@mifiel/widget": "^0.0.1"
+    "@mifiel/widget": "^0.0.2"
   },
   "devDependencies": {
     "vue": "^3.4.29"
