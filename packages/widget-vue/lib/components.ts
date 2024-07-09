@@ -3,21 +3,24 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from '@mifiel/widget-stencil';
+import type { JSX } from '@mifiel/widget';
 
 
 
 
 export const MifielWidget = /*@__PURE__*/ defineContainer<JSX.MifielWidget>('mifiel-widget', undefined, [
-  'environment',
   'id',
+  'environment',
+  'onSignSuccess',
+  'onSignError',
   'successBtnText',
-  'onSuccess',
-  'callToActionSuccess',
-  'onError',
-  'callToActionError',
+  'successBtnAction',
+  'errorBtnAction',
   'containerClass',
-  'error',
-  'success'
+  'widgetVersion',
+  'signError',
+  'sign-error',
+  'signSuccess',
+  'sign-success'
 ]);
 

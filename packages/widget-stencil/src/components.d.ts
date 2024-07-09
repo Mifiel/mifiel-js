@@ -8,14 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface MifielWidget {
         /**
-          * Main button action in the full screen error view. Can be a URL or a function.
-         */
-        "callToActionError"?: string | Function;
-        /**
-          * Main button action in the success view. Can be a URL or a function.
-         */
-        "callToActionSuccess"?: string | Function;
-        /**
           * Set classes to the iframe container
          */
         "containerClass"?: string;
@@ -24,24 +16,36 @@ export namespace Components {
           * @default 'production'
          */
         "environment": keyof typeof environments;
+        /**
+          * Function to be executed when the main button is clicked in the error page. It can also be a string containing a URL to redirect to.
+         */
+        "errorBtnAction"?: string | Function;
         "getIframe": () => Promise<HTMLIFrameElement>;
         /**
-          * The ID of the widget.
+          * The widget ID.
          */
         "id": string;
         /**
-          * Listener for errors that occur during the signing flow.
+          * Function that will be called whenever an error occurs during the signing flow.
          */
-        "onError"?: Function;
+        "onSignError"?: Function;
         /**
-          * Function to be called when the document is signed successfully.
+          * Function will be called when the document is signed successfully.
          */
-        "onSuccess"?: Function;
+        "onSignSuccess"?: Function;
+        /**
+          * Function to be executed when the main button is clicked on the success page. It can also be a string containing a URL to redirect to.
+         */
+        "successBtnAction"?: string | Function;
         /**
           * The text of the success button.
           * @default 'Proceed to next step'
          */
         "successBtnText": string;
+        /**
+          * Set widget version
+         */
+        "widgetVersion"?: string;
     }
 }
 export interface MifielWidgetCustomEvent<T> extends CustomEvent<T> {
@@ -50,8 +54,10 @@ export interface MifielWidgetCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLMifielWidgetElementEventMap {
-        "error": any;
-        "success": any;
+        "signError": any;
+        "sign-error": any;
+        "signSuccess": any;
+        "sign-success": any;
     }
     interface HTMLMifielWidgetElement extends Components.MifielWidget, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMifielWidgetElementEventMap>(type: K, listener: (this: HTMLMifielWidgetElement, ev: MifielWidgetCustomEvent<HTMLMifielWidgetElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -74,14 +80,6 @@ declare global {
 declare namespace LocalJSX {
     interface MifielWidget {
         /**
-          * Main button action in the full screen error view. Can be a URL or a function.
-         */
-        "callToActionError"?: string | Function;
-        /**
-          * Main button action in the success view. Can be a URL or a function.
-         */
-        "callToActionSuccess"?: string | Function;
-        /**
           * Set classes to the iframe container
          */
         "containerClass"?: string;
@@ -91,24 +89,38 @@ declare namespace LocalJSX {
          */
         "environment"?: keyof typeof environments;
         /**
-          * The ID of the widget.
+          * Function to be executed when the main button is clicked in the error page. It can also be a string containing a URL to redirect to.
+         */
+        "errorBtnAction"?: string | Function;
+        /**
+          * The widget ID.
          */
         "id"?: string;
+        "onSign-error"?: (event: MifielWidgetCustomEvent<any>) => void;
+        "onSign-success"?: (event: MifielWidgetCustomEvent<any>) => void;
         /**
-          * Listener for errors that occur during the signing flow.
+          * Function that will be called whenever an error occurs during the signing flow.
          */
-        "onError"?: Function;
-        "onError"?: (event: MifielWidgetCustomEvent<any>) => void;
+        "onSignError"?: Function;
+        "onSignError"?: (event: MifielWidgetCustomEvent<any>) => void;
         /**
-          * Function to be called when the document is signed successfully.
+          * Function will be called when the document is signed successfully.
          */
-        "onSuccess"?: Function;
-        "onSuccess"?: (event: MifielWidgetCustomEvent<any>) => void;
+        "onSignSuccess"?: Function;
+        "onSignSuccess"?: (event: MifielWidgetCustomEvent<any>) => void;
+        /**
+          * Function to be executed when the main button is clicked on the success page. It can also be a string containing a URL to redirect to.
+         */
+        "successBtnAction"?: string | Function;
         /**
           * The text of the success button.
           * @default 'Proceed to next step'
          */
         "successBtnText"?: string;
+        /**
+          * Set widget version
+         */
+        "widgetVersion"?: string;
     }
     interface IntrinsicElements {
         "mifiel-widget": MifielWidget;

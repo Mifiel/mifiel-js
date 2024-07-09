@@ -7,7 +7,7 @@
     "jsxFactory": "h",
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "composite": true,
     "removeComments": true,
     "importHelpers": true,
@@ -29,5 +29,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
-  }
+  },
+  "include": ["src", "src/components/config.json"]
 }

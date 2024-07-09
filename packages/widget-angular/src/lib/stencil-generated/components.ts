@@ -4,11 +4,11 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from '@mifiel/widget-stencil';
+import { Components } from '@mifiel/widget';
 
 
 @ProxyCmp({
-  inputs: ['callToActionError', 'callToActionSuccess', 'containerClass', 'environment', 'id', 'onError', 'onSuccess', 'successBtnText'],
+  inputs: ['containerClass', 'environment', 'errorBtnAction', 'id', 'onSignError', 'onSignSuccess', 'successBtnAction', 'successBtnText', 'widgetVersion'],
   methods: ['getIframe']
 })
 @Component({
@@ -16,23 +16,27 @@ import { Components } from '@mifiel/widget-stencil';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['callToActionError', 'callToActionSuccess', 'containerClass', 'environment', 'id', 'onError', 'onSuccess', 'successBtnText'],
+  inputs: ['containerClass', 'environment', 'errorBtnAction', 'id', 'onSignError', 'onSignSuccess', 'successBtnAction', 'successBtnText', 'widgetVersion'],
 })
 export class MifielWidget {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['error', 'success']);
+    proxyOutputs(this, this.el, ['signError', 'sign-error', 'signSuccess', 'sign-success']);
   }
 }
 
 
 export declare interface MifielWidget extends Components.MifielWidget {
 
-  error: EventEmitter<CustomEvent<any>>;
+  signError: EventEmitter<CustomEvent<any>>;
 
-  success: EventEmitter<CustomEvent<any>>;
+  'sign-error': EventEmitter<CustomEvent<any>>;
+
+  signSuccess: EventEmitter<CustomEvent<any>>;
+
+  'sign-success': EventEmitter<CustomEvent<any>>;
 }
 
 

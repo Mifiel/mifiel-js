@@ -1,5 +1,5 @@
 {
-  "name": "@mifiel/widget-stencil",
+  "name": "@mifiel/widget",
   "version": "0.0.1",
   "description": "Mifiel Widget component built with StencilJS for easy integration into web applications.",
   "license": "MIT",
@@ -20,15 +20,15 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "stencil build",
+    "build": "node src/utils/version.js && stencil build",
     "start": "stencil build --dev --watch --serve"
   },
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "exports": {
     ".": {
-      "import": "./dist/esm/widget-stencil.js",
-      "require": "./dist/cjs/widget-stencil.cjs.js",
+      "import": "./dist/esm/widget.js",
+      "require": "./dist/cjs/widget.cjs.js",
       "types": "./dist/types/index.d.ts"
     },
     "./dist/loader": {
@@ -38,7 +38,7 @@
     }
   },
   "types": "dist/types/index.d.ts",
-  "unpkg": "dist/widget-stencil/widget-stencil.esm.js",
+  "unpkg": "dist/widget/widget.esm.js",
   "devDependencies": {
     "@stencil/angular-output-target": "^0.8.4",
     "@stencil/core": "^4.7.0",

@@ -14,6 +14,6 @@
     "@angular/router",
     "rxjs",
     "zone.js",
-    "@mifiel/widget-stencil"
+    "@mifiel/widget"
   ]
 }

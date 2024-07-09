@@ -20,12 +20,12 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "npm run tsc",
+    "build": "node utils/version.js && npm run tsc",
     "tsc": "tsc -p . --outDir ./dist"
   },
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@mifiel/widget-stencil": "^0.0.1"
+    "@mifiel/widget": "^0.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

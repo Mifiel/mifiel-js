@@ -9,11 +9,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2017",
-    "sourceMap": true,
+    "sourceMap": false,
     "lib": ["dom", "es2020"],
     "moduleResolution": "node",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["lib/**/*.ts"],
+  "include": ["lib", "utils/version.js"],
   "exclude": ["node_modules"]
 }

@@ -1,5 +1,6 @@
 import { h, Component, Prop, Element, Host, Method, Event, EventEmitter } from '@stencil/core';
 import { loadScript } from '../../utils/load-script';
+import dataWidget from '../config.json';
 
 const idComponent = 'mifiel-widget';
 const environments = {
@@ -12,15 +13,25 @@ const environments = {
 })
 export class MifielWidget {
   /**
+   * The widget ID.
+   */
+  @Prop() id: string;
+
+  /**
    * The environment to use for the widget.
    * @default 'production'
    */
   @Prop() environment: keyof typeof environments = 'production';
 
   /**
-   * The ID of the widget.
+   * Function will be called when the document is signed successfully.
    */
-  @Prop() id: string;
+  @Prop() onSignSuccess?: Function;
+
+  /**
+   * Function that will be called whenever an error occurs during the signing flow.
+   */
+  @Prop() onSignError?: Function;
 
   /**
    * The text of the success button.
@@ -29,35 +40,34 @@ export class MifielWidget {
   @Prop() successBtnText = 'Proceed to next step';
 
   /**
-   * Function to be called when the document is signed successfully.
+   * Function to be executed when the main button is clicked on the success page. It can also be a string containing a URL to redirect to.
    */
-  @Prop() onSuccess?: Function;
+  @Prop() successBtnAction?: string | Function;
 
   /**
-   * Main button action in the success view. Can be a URL or a function.
+   * Function to be executed when the main button is clicked in the error page. It can also be a string containing a URL to redirect to.
    */
-  @Prop() callToActionSuccess?: string | Function;
-
-  /**
-   * Listener for errors that occur during the signing flow.
-   */
-  @Prop() onError?: Function;
-
-  /**
-   * Main button action in the full screen error view. Can be a URL or a function.
-   */
-  @Prop() callToActionError?: string | Function;
+  @Prop() errorBtnAction?: string | Function;
 
   /**
    * Set classes to the iframe container
    */
   @Prop() containerClass?: string;
 
+  /**
+   * Set widget version
+   */
+  @Prop() widgetVersion?: string = `${dataWidget.appName}@${dataWidget.appVersion}`;
+
   @Element() element: HTMLElement;
 
-  @Event() error: EventEmitter<any>;
+  @Event() signError: EventEmitter<any>;
 
-  @Event() success: EventEmitter<any>;
+  @Event({ eventName: 'sign-error' }) signErrorVue: EventEmitter<any>;
+
+  @Event() signSuccess: EventEmitter<any>;
+
+  @Event({ eventName: 'sign-success' }) signSuccessVue: EventEmitter<any>;
 
   @Method()
   async getIframe() {
@@ -98,31 +108,39 @@ export class MifielWidget {
   }
 
   private handleOnError = error => {
-    if (this.onError) this.onError(error);
+    if (this.onSignError) this.onSignError(error);
 
-    this.error.emit(error);
+    if (this.widgetVersion.includes('@mifiel/widget-vue')) {
+      return this.signErrorVue.emit(error);
+    }
+
+    return this.signError.emit(error);
   };
 
   private getOnError() {
     return {
-      ...(this.callToActionError ? { callToAction: this.callToActionError } : {}),
+      ...(this.errorBtnAction ? { callToAction: this.errorBtnAction } : {}),
       listener: this.handleOnError,
     };
   }
 
   private handleOnSuccess = () => {
-    if (this.success) this.onSuccess();
+    if (this.onSignSuccess) this.onSignSuccess();
 
-    this.success.emit();
+    if (this.widgetVersion.includes('@mifiel/widget-vue')) {
+      return this.signSuccessVue.emit();
+    }
+
+    return this.signSuccess.emit();
   };
 
   private getOnSuccess() {
-    if (!this.callToActionSuccess && !this.onSuccess) {
+    if (!this.successBtnAction && !this.onSignSuccess) {
       return null;
     }
 
     return {
-      ...(this.callToActionSuccess ? { callToAction: this.callToActionSuccess } : {}),
+      ...(this.successBtnAction ? { callToAction: this.successBtnAction } : {}),
       listener: this.handleOnSuccess,
     };
   }

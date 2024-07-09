@@ -15,13 +15,11 @@ npm install @mifiel/widget-react
 Import the MifielWidget component and use it in your React application:
 
 ```jsx
-import React, {useEffect} from 'react';
+import { useEffect, useRef } from 'react';
 import { MifielWidget, defineCustomElements } from '@mifiel/widget-react';
 
-function App() {
-  useEffect(() => {
-    defineCustomElements(window)
-  },[]);
+const YourComponent = () => {
+  const widgetRef = useRef(null);
 
   const onSuccessHandler = () => {
     console.log('Document signed successfully');
@@ -33,37 +31,60 @@ function App() {
     // Your custom error handling logic here
   };
 
+  // This should only be done once throughout your entire project
+  useEffect(() => {
+    defineCustomElements(window)
+  },[]);
+
+
+  useEffect(() => {
+    const widgetElement = widgetRef?.current;
+
+    if (widgetElement) {
+      widgetElement.addEventListener('signSuccess', onSuccessHandler);
+      widgetElement.addEventListener('signError', onErrorHandler);
+    }
+
+    return () => {
+      if (widgetElement) {
+        widgetElement.removeEventListener('signSuccess', onSuccessHandler);
+        widgetElement.removeEventListener('signError', onErrorHandler);
+      }
+    };
+  }, [widgetRef]);
+
   return (
-    <div>
-      <h1>Sign Document</h1>
+    <div ref={widgetRef}>
       <MifielWidget
         id="your-widget-id"
         environment="production"
-        onSuccess={onSuccessHandler}
-        onError={onErrorHandler}
         successBtnText="Proceed to next step"
-        callToActionSuccess="https://example.com/next-step"
-        callToActionError="https://example.com/error-page"
+        successBtnAction="https://example.com/next-step"
+        errorBtnAction="https://example.com/next-step"
         containerClass="widget-container"
       />
     </div>
   );
-}
+};
 
-export default App;
+export default YourComponent;
+
 ```
 
 ## Props
 
-- **`id`**: (string, required) The ID of the widget.
-- **`environment`**: (string, optional) The environment to use for the widget (`production` by default).
-- **`onSuccess`**: (function, optional) Function to be called when the document is signed successfully.
-- **`onError`**: (function, optional) Listener for errors that occur during the signing flow.
-- **`successBtnText`**: (string, optional) Text for the success button (`Proceed to next step` by default).
-- **`callToActionSuccess`**: (string | function, optional) Main button action in the success view.
-- **`callToActionError`**: (string | function, optional) Main button action in the error view.
+- **`id`**: (string, required) The widget ID
+- **`environment`**: (string, optional) The environment where the widget will be used: sandbox or production. By default, production.
+- **`onSignSuccess`**: (function, optional) Function will be called when the document is signed successfully
+- **`onSignError`**: (function, optional) Function that will be called whenever an error occurs during the signing flow.
+- **`successBtnText`**: (string, optional) Text that will display in the main button in the success page. By default, Proceed to next step
+- **`successBtnAction`**: (string | function, optional) Function to be executed when the main button is clicked in the success page. It can also be a string containing a URL to redirect to.
+- **`errorBtnAction`**: (string | function, optional) Function to be executed when the main button is clicked in the error page. It can also be a string containing a URL to redirect to.
 - **`containerClass`**: (string, optional) CSS class to be applied to the widget container.
 
+## Listeners
+
+In addition to using the `onSignSuccess` and `onSignError` props, listeners for `signSuccess` and `signError` events can also be added to achieve the same outcome. This approach is recommended for handling successful document signing and errors during the signing process.
 
 # Important Information
 

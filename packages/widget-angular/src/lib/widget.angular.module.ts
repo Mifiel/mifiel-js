@@ -1,6 +1,8 @@
-import {APP_INITIALIZER, NgModule } from '@angular/core';
-import { DIRECTIVES } from './stencil-generated';
-import { defineCustomElements } from '@mifiel/widget-stencil/dist/loader';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { defineCustomElements } from '@mifiel/widget/dist/loader';
+import { MifielWidget } from './widget-mifiel';
+
+const DIRECTIVES = [MifielWidget];
 
 @NgModule({
   declarations: [...DIRECTIVES],
@@ -9,8 +11,8 @@ import { defineCustomElements } from '@mifiel/widget-stencil/dist/loader';
     {
       provide: APP_INITIALIZER,
       useFactory: () => defineCustomElements,
-      multi: true
+      multi: true,
     },
-  ]
+  ],
 })
 export class MifielWidgetModule {}
