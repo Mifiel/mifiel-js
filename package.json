@@ -28,6 +28,8 @@
     "test": "lerna run test"
   },
   "devDependencies": {
+    "@angular/compiler": "^16.2.0",
+    "@angular/core": "^16.2.0",
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
     "@commitlint/config-lerna-scopes": "13.1.0",
