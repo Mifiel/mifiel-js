@@ -34,6 +34,7 @@ export class Config {
       production: 'https://app.mifiel.com',
       sandbox: 'https://app-sandbox.mifiel.com',
       staging: 'https://app-stageex.mifiel.com',
+      qa: 'https://app-qa.mifiel.com',
     };
 
     const currentHost = hosts[this._env || 'production'];
@@ -47,6 +48,10 @@ export class Config {
 
   static useStaging() {
     this._env = 'staging';
+  }
+
+  static useQA() {
+    this._env = 'qa';
   }
 
   static useProduction() {

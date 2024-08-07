@@ -7,6 +7,7 @@ export const configParamsSchema = z.object({
     .literal('production')
     .or(z.literal('sandbox'))
     .or(z.literal('staging'))
+    .or(z.literal('qa'))
     .optional(),
 });
 
