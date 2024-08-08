@@ -10,6 +10,13 @@ export interface SignaturePackageItemResponse {
   };
 }
 
+export enum Algorithm {
+  RSASHA256 = 'RSA-SHA256',
+  RSASHA1 = 'RSA-SHA1',
+  SIMPLE = 'SIMPLE',
+  BITCOINHDW = 'BITCOIN-HDW',
+  BITCOINTX = 'BITCOIN-TX',
+}
 export interface SignaturePackagePlaintextResponse {
   name:
     | 'doc'
@@ -18,7 +25,7 @@ export interface SignaturePackagePlaintextResponse {
     | 'sat_auth_credentials'
     | 'sat_auth_request'
     | 'sat_auth_download';
-  alg: 'RSA-SHA256' | 'RSA-SHA1' | 'SIMPLE' | 'BITCOIN-HDW' | 'BITCOIN-TX';
+  alg: Algorithm;
   status: 'pending' | 'completed' | 'blocked' | 'deleted';
   widget_id: string;
   entity_keys?: {
