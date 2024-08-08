@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/Mifiel/mifiel-js/compare/@mifiel/models@0.1.2...@mifiel/models@0.1.3) (2024-08-08)
+
+
+### Bug Fixes
+
+* don't use enums [#86](https://github.com/Mifiel/mifiel-js/issues/86)du5b5h3 ([#8](https://github.com/Mifiel/mifiel-js/issues/8)) ([906f02d](https://github.com/Mifiel/mifiel-js/commit/906f02d894952b1331a4f4651722dcf059daf072)), closes [#86du5b5h3](https://github.com/Mifiel/mifiel-js/issues/86du5b5h3)
+
+
+
+
+
 ## [0.1.2](https://github.com/Mifiel/mifiel-js/compare/@mifiel/models@0.1.1...@mifiel/models@0.1.2) (2024-08-08)
 
 **Note:** Version bump only for package @mifiel/models

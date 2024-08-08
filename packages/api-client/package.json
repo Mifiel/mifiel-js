@@ -1,6 +1,6 @@
 {
   "name": "@mifiel/api-client",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Mifiel API Client for NodeJS",
   "license": "MIT",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@mifiel/api-client-auth": "^0.2.3",
-    "@mifiel/models": "^0.1.2",
+    "@mifiel/models": "^0.1.3",
     "@types/isomorphic-form-data": "2.0.0"
   }
 }
