@@ -5,6 +5,7 @@ export interface SignaturePackageItemResponse {
   text: string;
   signature?: string;
   metadata?: {
+    chain?: string;
     serialized_address?: string;
     inputs?: { address_index: string; redeem_script: string }[];
   };
