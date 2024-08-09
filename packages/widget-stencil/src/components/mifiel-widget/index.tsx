@@ -98,6 +98,7 @@ export class MifielWidget {
       // @ts-ignore
       window.mifiel.widget({
         ...this.getAdditionalProps(),
+        widgetVersion: this.widgetVersion,
         widgetId: this.id,
         appendTo: idComponent,
         successBtnText: this.successBtnText,
