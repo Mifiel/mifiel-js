@@ -25,7 +25,7 @@ To integrate the `mifiel-widget` component into your web application, follow the
 2. **Using CDN:**
   Alternatively, you can include the component via CDN:
   ```javascript
-  <script src="https://app.mifiel.com/widget/index.js"></script>
+  <script src="https://app.mifiel.com/widget-component/index.js"></script>
   ```
   This method allows you to directly use the component without compilation steps.
 
@@ -43,7 +43,7 @@ To integrate the `mifiel-widget` component into your web application, follow the
     defineCustomElements(window);
   </script> -->
   <!-- with CDN -->
-  <script src="https://app.mifiel.com/widget/index.js"></script>
+  <script src="https://app.mifiel.com/widget-component/index.js"></script>
 </head>
 <body>
   <h1>Sign Document</h1>
