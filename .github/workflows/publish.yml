@@ -15,7 +15,7 @@ jobs:
         node-version: [16.x]
     steps:
       - name: 👉🏼 Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
         with:
           # pulls all commits (needed for lerna / semantic release to correctly version) — see https://github.com/lerna/lerna/issues/2542
           fetch-depth: 0
@@ -25,7 +25,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
       - name: 📦️ Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
@@ -36,7 +36,7 @@ jobs:
         run: yarn build
       - name: 🔖 Release New Version
         run: yarn release:version --yes
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v6
         with:
           registry-url: https://npm.pkg.github.com
           scope: '@mifiel'
@@ -44,7 +44,7 @@ jobs:
         run: yarn release:publish from-package --no-verify-access --registry https://npm.pkg.github.com --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v6
         with:
           registry-url: https://registry.npmjs.org
           scope: '@mifiel'
