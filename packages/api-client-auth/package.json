@@ -26,7 +26,7 @@
   },
   "types": "dist/types/src/main.d.ts",
   "dependencies": {
-    "axios": "0.21.1",
+    "axios": "0.31.0",
     "os-name": "4.0.1",
     "zod": "3.7.1"
   },
