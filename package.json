@@ -28,15 +28,15 @@
     "test": "lerna run test"
   },
   "devDependencies": {
-    "@angular/compiler": "^19.2.22",
-    "@angular/core": "^19.2.22",
+    "@angular/compiler": "^21.2.12",
+    "@angular/core": "^21.2.12",
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
     "@commitlint/config-lerna-scopes": "13.1.0",
     "@types/jest": "^29.5.14",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
-    "esbuild": "0.12.19",
+    "esbuild": "0.25.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-typescript": "18.0.0",
     "eslint-config-prettier": "^9.1.0",
