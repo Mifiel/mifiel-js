@@ -4,3 +4,4 @@ coverage
 
 .eslintrc.js
 *.config.js
+packages/widget-angular/src/lib/stencil-generated/**

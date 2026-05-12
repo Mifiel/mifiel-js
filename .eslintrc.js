@@ -10,7 +10,7 @@ module.exports = {
   parserOptions: {
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'import', 'prettier'],
   rules: {
     'no-console': 'warn',
     'import/prefer-default-export': 'off',

@@ -44,6 +44,7 @@ export namespace Components {
         "successBtnText": string;
         /**
           * Set widget version
+          * @default `${dataWidget.appName}@${dataWidget.appVersion}`
          */
         "widgetVersion"?: string;
     }
@@ -119,18 +120,30 @@ declare namespace LocalJSX {
         "successBtnText"?: string;
         /**
           * Set widget version
+          * @default `${dataWidget.appName}@${dataWidget.appVersion}`
          */
         "widgetVersion"?: string;
     }
+
+    interface MifielWidgetAttributes {
+        "id": string;
+        "environment": keyof typeof environments;
+        "successBtnText": string;
+        "successBtnAction": string | Function;
+        "errorBtnAction": string | Function;
+        "containerClass": string;
+        "widgetVersion": string;
+    }
+
     interface IntrinsicElements {
-        "mifiel-widget": MifielWidget;
+        "mifiel-widget": Omit<MifielWidget, keyof MifielWidgetAttributes> & { [K in keyof MifielWidget & keyof MifielWidgetAttributes]?: MifielWidget[K] } & { [K in keyof MifielWidget & keyof MifielWidgetAttributes as `attr:${K}`]?: MifielWidgetAttributes[K] } & { [K in keyof MifielWidget & keyof MifielWidgetAttributes as `prop:${K}`]?: MifielWidget[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "mifiel-widget": LocalJSX.MifielWidget & JSXBase.HTMLAttributes<HTMLMifielWidgetElement>;
+            "mifiel-widget": LocalJSX.IntrinsicElements["mifiel-widget"] & JSXBase.HTMLAttributes<HTMLMifielWidgetElement>;
         }
     }
 }
