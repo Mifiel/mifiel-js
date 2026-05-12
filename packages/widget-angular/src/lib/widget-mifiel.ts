@@ -16,11 +16,12 @@ import { MifielWidget as Mifiel } from './stencil-generated/components';
 
 @Component({
   selector: 'mifiel-widget',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
 })
 export class MifielWidget extends Mifiel implements OnInit {
-  protected override el!: HTMLElement;
+  protected override el!: HTMLMifielWidgetElement;
 
   @Input() override widgetVersion?: string;
 

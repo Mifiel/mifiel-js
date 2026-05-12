@@ -11,7 +11,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', 'prettier', 'import', '@angular-eslint'],
+  plugins: ['@typescript-eslint', 'prettier', 'import'],
   rules: {},
   overrides: [
     {

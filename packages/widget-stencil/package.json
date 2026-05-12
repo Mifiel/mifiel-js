@@ -20,7 +20,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "node src/utils/version.js && stencil build",
+    "build": "node src/utils/version.js && stencil build && node ./scripts/patch-angular-proxies.cjs",
     "start": "stencil build --dev --watch --serve"
   },
   "collection": "dist/collection/collection-manifest.json",
@@ -40,8 +40,8 @@
   "types": "dist/types/index.d.ts",
   "unpkg": "dist/widget/widget.esm.js",
   "devDependencies": {
-    "@stencil/angular-output-target": "^0.8.4",
-    "@stencil/core": "^4.7.0",
+    "@stencil/angular-output-target": "^1.3.1",
+    "@stencil/core": "^4.43.4",
     "@stencil/react-output-target": "^0.5.3",
     "@stencil/vue-output-target": "^0.8.8"
   }

@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Output, NgZone } from '@angular/core';
 
-import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
+import { ProxyCmp } from './angular-component-lib/utils';
 
 import { Components } from '@mifiel/widget';
 
@@ -17,13 +17,16 @@ import { Components } from '@mifiel/widget';
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['containerClass', 'environment', 'errorBtnAction', 'id', 'onSignError', 'onSignSuccess', 'successBtnAction', 'successBtnText', 'widgetVersion'],
+  outputs: ['signError', 'sign-error', 'signSuccess', 'sign-success'],
+  standalone: false
 })
 export class MifielWidget {
-  protected el: HTMLElement;
+  protected el: HTMLMifielWidgetElement;
+  @Output() signError = new EventEmitter<CustomEvent<any>>();
+  @Output() signSuccess = new EventEmitter<CustomEvent<any>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['signError', 'sign-error', 'signSuccess', 'sign-success']);
   }
 }
 
