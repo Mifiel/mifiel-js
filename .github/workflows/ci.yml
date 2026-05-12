@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [22.x]
     steps:
       - name: 👉🏼 Checkout
         uses: actions/checkout@v6
@@ -22,9 +22,10 @@ jobs:
           cache: 'yarn'
       - name: 🚚 Install dependencies
         run: yarn install
+      # Build must run before tests: @mifiel/api-client resolves @mifiel/api-client-auth types from dist.
       - name: 👷 Build packages
         run: yarn build
-      - name: 🧐 Lint Files
-        run: yarn lint
       - name: 🧾 Run Unit Tests
         run: yarn test
+      - name: 🧐 Lint Files
+        run: yarn lint
