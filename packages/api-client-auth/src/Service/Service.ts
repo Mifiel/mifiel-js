@@ -11,7 +11,7 @@ export class Service {
   private constructor() {
     this._api = axios.create({ baseURL: Config.url });
 
-    this._api.defaults.headers = headers;
+    Object.assign(this._api.defaults.headers.common, headers);
     this._api.interceptors.request.use(hmacAuthInterceptor);
   }
 
@@ -46,11 +46,16 @@ export class Service {
     } catch (error: any) {
       const axiosError: AxiosError = error;
       if (axiosError.response) {
+        const { status, statusText, data } = axiosError.response;
+        const dataObject =
+          data !== null && typeof data === 'object' ? data : {};
+        // API consumers expect a plain error-shaped object (legacy contract).
+        // eslint-disable-next-line @typescript-eslint/no-throw-literal -- preserve thrown payload shape
         throw {
-          status_code: axiosError.response.status,
-          status_message: axiosError.response.statusText,
+          status_code: status,
+          status_message: statusText,
           message: axiosError.message,
-          ...axiosError.response.data,
+          ...dataObject,
         };
       }
 

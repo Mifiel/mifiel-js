@@ -1,11 +1,18 @@
-import type { AxiosRequestConfig } from 'axios';
+import { AxiosHeaders } from 'axios';
+import type { InternalAxiosRequestConfig } from 'axios';
 import Crypto from 'crypto';
 
 import { Config } from '../../Config';
 
-export const hmacAuthInterceptor = (axiosConfig: AxiosRequestConfig) => {
+export const hmacAuthInterceptor = (
+  axiosConfig: InternalAxiosRequestConfig
+): InternalAxiosRequestConfig => {
   const date = new Date().toUTCString();
-  const contentType = axiosConfig.headers['content-type'] ?? 'application/json';
+  const merged = AxiosHeaders.from(axiosConfig.headers);
+  const contentType =
+    merged.get('Content-Type') ??
+    merged.get('content-type') ??
+    'application/json';
 
   const { version, appSecret, appId } = Config;
 
@@ -25,14 +32,13 @@ export const hmacAuthInterceptor = (axiosConfig: AxiosRequestConfig) => {
   hmac.update(canonical.join(','));
   const signature = hmac.digest('base64');
 
-  return Promise.resolve({
+  merged.set('Authorization', `APIAuth ${appId}:${signature}`);
+  merged.set('Date', date);
+  merged.set('Content-Type', contentType);
+  merged.set('Content-MD5', '');
+
+  return {
     ...axiosConfig,
-    headers: {
-      ...axiosConfig.headers,
-      Authorization: `APIAuth ${appId}:${signature}`,
-      Date: date,
-      'Content-Type': contentType,
-      'Content-MD5': '',
-    },
-  });
+    headers: merged,
+  };
 };
