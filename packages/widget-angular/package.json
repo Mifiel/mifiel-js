@@ -1,6 +1,6 @@
 {
   "name": "@mifiel/widget-angular",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Angular wrapper for the Mifiel Widget implemented with StencilJS",
   "license": "UNLICENSED",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
@@ -35,7 +35,7 @@
   },
   "typings": "index.d.ts",
   "dependencies": {
-    "@mifiel/widget": "^0.0.3"
+    "@mifiel/widget": "^0.0.4"
   },
   "peerDependencies": {
     "@angular/compiler": "^19.2.0",

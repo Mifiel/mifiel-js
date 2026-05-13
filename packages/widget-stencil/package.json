@@ -1,6 +1,6 @@
 {
   "name": "@mifiel/widget",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mifiel Widget component built with StencilJS for easy integration into web applications.",
   "license": "MIT",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
