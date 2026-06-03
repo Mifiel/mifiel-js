@@ -1,9 +1,10 @@
-import fs from 'fs';
-import FormData from 'isomorphic-form-data';
+import path from 'path';
+import { openAsBlob } from 'node:fs';
 
 import type { CertificateResponse } from '@mifiel/models';
 
 import { Model } from '../Model';
+import { multipartHeaders } from '../utils/multipartHeaders';
 import {
   createCertificateSchema,
   CreateCertificateSchema,
@@ -18,10 +19,13 @@ class CertificateModel extends Model<CertificateResponse> {
     createCertificateSchema.parse(params);
 
     const form = new FormData();
-    form.append('cer_file', fs.createReadStream(params.filepath));
+    const filename = path.basename(params.filepath);
+    const file = await openAsBlob(params.filepath);
+
+    form.append('cer_file', file, filename);
 
     return super.create(form, {
-      headers: form.getHeaders(),
+      headers: multipartHeaders(),
     });
   }
 }
