@@ -20,6 +20,11 @@ describe('Certificate', () => {
       await Certificate.create({ filepath });
 
       expect(requestMock.mock.calls[0][0].data).toBeInstanceOf(FormData);
+      const { headers } = requestMock.mock.calls[0][0];
+      const contentType =
+        headers['content-type'] ?? headers['Content-Type'] ?? headers.get?.('Content-Type');
+
+      expect(contentType).toContain('multipart/form-data');
     });
 
     it('throws error if params are wrong', async () => {

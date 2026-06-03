@@ -10,6 +10,7 @@ import type {
 } from '@mifiel/models';
 
 import { Model } from '../Model';
+import { multipartHeaders } from '../utils/multipartHeaders';
 import {
   createDocumentSchema,
   GetFileSchema,
@@ -71,7 +72,9 @@ class DocumentModel extends Model<DocumentResponse> {
 
       form.append('file', file, filename);
 
-      return super.create(form);
+      return super.create(form, {
+        headers: multipartHeaders(),
+      });
     }
 
     return super.create(doc);

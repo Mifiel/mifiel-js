@@ -4,6 +4,7 @@ import { openAsBlob } from 'node:fs';
 import type { CertificateResponse } from '@mifiel/models';
 
 import { Model } from '../Model';
+import { multipartHeaders } from '../utils/multipartHeaders';
 import {
   createCertificateSchema,
   CreateCertificateSchema,
@@ -23,7 +24,9 @@ class CertificateModel extends Model<CertificateResponse> {
 
     form.append('cer_file', file, filename);
 
-    return super.create(form);
+    return super.create(form, {
+      headers: multipartHeaders(),
+    });
   }
 }
 
