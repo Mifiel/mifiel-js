@@ -1,0 +1,70 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      root-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"
+    directory: "/packages/api-client-auth"
+    schedule:
+      interval: "weekly"
+    groups:
+      api-client-auth-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"
+    directory: "/packages/api-client"
+    schedule:
+      interval: "weekly"
+    groups:
+      api-client-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"
+    directory: "/packages/models"
+    schedule:
+      interval: "weekly"
+    groups:
+      models-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"
+    directory: "/packages/widget-angular"
+    schedule:
+      interval: "weekly"
+    groups:
+      widget-angular-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"
+    directory: "/packages/widget-react"
+    schedule:
+      interval: "weekly"
+    groups:
+      widget-react-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"
+    directory: "/packages/widget-stencil"
+    schedule:
+      interval: "weekly"
+    groups:
+      widget-stencil-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"
+    directory: "/packages/widget-vue"
+    schedule:
+      interval: "weekly"
+    groups:
+      widget-vue-deps:
+        patterns: ["*"]
