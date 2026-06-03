@@ -1,5 +1,6 @@
 import fs from 'fs';
-import type FormData from 'isomorphic-form-data';
+import path from 'path';
+import { openAsBlob } from 'node:fs';
 import { serialize } from 'object-to-formdata';
 import { sha256 } from 'crypto-hash';
 import type {
@@ -63,13 +64,14 @@ class DocumentModel extends Model<DocumentResponse> {
       const form = serialize(doc, {
         indices: true,
         nullsAsUndefineds: true,
-      }) as unknown as Partial<FormData>;
-
-      (form as FormData).append('file', fs.createReadStream(doc.file));
-
-      return super.create(form, {
-        headers: (form as FormData).getHeaders(),
       });
+
+      const filename = path.basename(doc.file);
+      const file = await openAsBlob(doc.file);
+
+      form.append('file', file, filename);
+
+      return super.create(form);
     }
 
     return super.create(doc);

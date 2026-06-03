@@ -1,4 +1,3 @@
-import 'isomorphic-form-data';
 import path from 'path';
 import fs from 'fs';
 import { Service } from '@mifiel/api-client-auth';
@@ -165,9 +164,7 @@ describe('Document', () => {
         original_hash: 'some-file',
       });
 
-      expect(requestMock.mock.calls[0][0].headers['content-type']).toContain(
-        'multipart/form-data'
-      );
+      expect(requestMock.mock.calls[0][0].data).toBeInstanceOf(FormData);
     });
 
     it('throws error if params are wrong', async () => {

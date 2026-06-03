@@ -1,4 +1,3 @@
-import 'isomorphic-form-data';
 import path from 'path';
 import { Service } from '@mifiel/api-client-auth';
 
@@ -20,9 +19,7 @@ describe('Certificate', () => {
     it('sends data as FormData', async () => {
       await Certificate.create({ filepath });
 
-      expect(requestMock.mock.calls[0][0].headers['content-type']).toContain(
-        'multipart/form-data'
-      );
+      expect(requestMock.mock.calls[0][0].data).toBeInstanceOf(FormData);
     });
 
     it('throws error if params are wrong', async () => {
