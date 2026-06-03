@@ -14,6 +14,10 @@
   "files": [
     "/dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "yarn build:cjs && yarn build:esm",
