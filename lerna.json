@@ -1,9 +1,6 @@
 {
   "npmClient": "yarn",
   "command": {
-    "init": {
-      "exact": true
-    },
     "version": {
       "conventionalCommits": true,
       "includeMergedTags": true,
