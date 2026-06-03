@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import { createHash } from 'node:crypto';
 import { openAsBlob } from 'node:fs';
 import { serialize } from 'object-to-formdata';
-import { sha256 } from 'crypto-hash';
 import type {
   DocumentRequest,
   DocumentResponse,
@@ -25,10 +25,25 @@ class DocumentModel extends Model<DocumentResponse> {
     super('documents');
   }
 
-  async getHash(file: string | Buffer | ArrayBuffer | ArrayBufferView) {
-    const hash = await sha256(file);
+  async getHash(
+    file: string | Buffer | ArrayBuffer | ArrayBufferView
+  ): Promise<string> {
+    let bytes: Uint8Array;
 
-    return hash;
+    if (typeof file === 'string') {
+      bytes = new TextEncoder().encode(file);
+    } else if (Buffer.isBuffer(file)) {
+      bytes = new Uint8Array(file.buffer, file.byteOffset, file.byteLength);
+    } else if (ArrayBuffer.isView(file)) {
+      bytes = new Uint8Array(file.buffer, file.byteOffset, file.byteLength);
+    } else {
+      bytes = new Uint8Array(file);
+    }
+
+    // Preserve async API (formerly backed by crypto-hash); hash is computed synchronously.
+    return await Promise.resolve(
+      createHash('sha256').update(bytes).digest('hex')
+    );
   }
 
   async getFile(params: GetFileSchema) {

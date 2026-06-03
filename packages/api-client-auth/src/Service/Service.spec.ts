@@ -1,6 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 
 import { Config } from '../Config';
+import * as pckg from '../../package.json';
 
 import { Service } from './Service';
 
@@ -52,12 +53,8 @@ describe('Service', () => {
         const [nodeVersion, vendorVersion, axiosVersion] = versions;
 
         expect(nodeVersion).toBe(`NODE/${process.versions.node}`);
-        expect(vendorVersion).toBe(
-          `@mifiel/api-client-auth/${process.env.npm_package_version}`
-        );
-        expect(axiosVersion).toBe(
-          `axios/${process.env.npm_package_dependencies_axios}`
-        );
+        expect(vendorVersion).toBe(`@mifiel/api-client-auth/${pckg.version}`);
+        expect(axiosVersion).toBe(`axios/${pckg.dependencies.axios}`);
       });
     });
   });
