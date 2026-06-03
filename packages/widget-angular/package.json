@@ -9,6 +9,17 @@
   },
   "homepage": "https://github.com/Mifiel/mifiel-js/tree/main/packages/widget-angular#readme",
   "author": "Alejandro López <alejandro@mifiel.com>",
+  "exports": {
+    ".": {
+      "default": "./dist/fesm2022/mifiel-widget-angular.mjs",
+      "esm": "./dist/esm2022/mifiel-widget-angular.mjs",
+      "esm2022": "./dist/esm2022/mifiel-widget-angular.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    }
+  },
   "module": "fesm2022/mifiel-widget-angular.mjs",
   "files": [
     "dist"
@@ -22,32 +33,23 @@
     "build": "node ./src/utils/version.js && ng build",
     "ng": "ng"
   },
-  "exports": {
-    ".": {
-      "default": "./dist/fesm2022/mifiel-widget-angular.mjs",
-      "esm": "./dist/esm2022/mifiel-widget-angular.mjs",
-      "esm2022": "./dist/esm2022/mifiel-widget-angular.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./package.json": {
-      "default": "./package.json"
-    }
-  },
   "typings": "index.d.ts",
   "dependencies": {
     "@mifiel/widget": "^0.0.5"
   },
   "peerDependencies": {
-    "@angular/compiler": "^19.2.0",
-    "@angular/core": "^19.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.16.2"
+    "zone.js": "~0.16.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^21.2.13",
     "@angular/cli": "^21.2.13",
+    "@angular/compiler": "^21.2.15",
     "@angular/compiler-cli": "^21.2.15",
+    "@angular/core": "^21.2.15",
     "ng-packagr": "^21.2.5",
     "rxjs": "~7.8.1",
     "tslib": "^2.8.1",
