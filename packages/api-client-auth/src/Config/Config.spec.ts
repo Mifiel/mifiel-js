@@ -33,7 +33,7 @@ describe('Config', () => {
     ];
 
     wrongParams.forEach((params: any) => {
-      expect(() => Config.setTokens(params)).toThrowError();
+      expect(() => Config.setTokens(params)).toThrow();
     });
   });
 });

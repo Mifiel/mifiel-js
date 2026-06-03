@@ -50,7 +50,6 @@ export class Service {
         const dataObject =
           data !== null && typeof data === 'object' ? data : {};
         // API consumers expect a plain error-shaped object (legacy contract).
-        // eslint-disable-next-line @typescript-eslint/no-throw-literal -- preserve thrown payload shape
         throw {
           status_code: status,
           status_message: statusText,

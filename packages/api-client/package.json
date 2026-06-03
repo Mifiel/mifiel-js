@@ -24,7 +24,7 @@
     "build:cjs": "tsc -p ./tsconfig.prod.json",
     "build:esm": "node esbuild.config",
     "check-types": "tsc --noemit",
-    "eslint": "eslint src --ext .ts",
+    "eslint": "eslint src",
     "lint": "yarn eslint && yarn check-types",
     "test": "jest"
   },

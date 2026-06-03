@@ -83,9 +83,9 @@ describe('Model', () => {
     const wrongParams: any = [1, undefined, {}, null, true];
 
     for (let i = 0; i < wrongParams.length; i += 1) {
-      await expect(model.find(wrongParams[i])).rejects.toThrowError();
-      await expect(model.delete(wrongParams[i])).rejects.toThrowError();
-      await expect(model.update(wrongParams[i], {})).rejects.toThrowError();
+      await expect(model.find(wrongParams[i])).rejects.toThrow();
+      await expect(model.delete(wrongParams[i])).rejects.toThrow();
+      await expect(model.update(wrongParams[i], {})).rejects.toThrow();
     }
   });
 });

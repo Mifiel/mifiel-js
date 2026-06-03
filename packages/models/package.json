@@ -19,6 +19,7 @@
   },
   "scripts": {
     "check-types": "tsc --noemit",
+    "eslint": "eslint src",
     "lint": "yarn eslint && yarn check-types"
   }
 }
