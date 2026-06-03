@@ -25,8 +25,8 @@ export const transferDocumentSchema = z.object({
     tax_id: z.string().optional(),
     asset_key: z.string().optional(),
   }),
-  signatories: z.record(z.any()).array(),
+  signatories: z.array(z.record(z.string(), z.any())),
 });
 
 // NOTE: we don't generate type, in order to make createDocument param flexible
-export const createDocumentSchema = z.record(z.any());
+export const createDocumentSchema = z.record(z.string(), z.any());
