@@ -16,8 +16,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build --scope=@mifiel/{api-client,api-client-auth} && yarn build:widget",
-    "build:widget": "lerna run build --scope=@mifiel/widget && lerna run build --scope=@mifiel/{widget-react,widget-vue,widget-angular}",
+    "build": "lerna run build --scope=@mifiel/api-client --scope=@mifiel/api-client-auth && yarn build:widget",
+    "build:widget": "lerna run build --scope=@mifiel/widget && lerna run build --scope=@mifiel/widget-react --scope=@mifiel/widget-vue --scope=@mifiel/widget-angular",
     "husky": "husky",
     "lint": "lerna run lint",
     "postpublish": "pinst --enable",
@@ -49,6 +49,7 @@
     "lint-staged": "17.0.7",
     "pinst": "3.0.0",
     "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
     "ts-jest": "^29.2.5",
     "typescript": "~6.0.3"
   }
