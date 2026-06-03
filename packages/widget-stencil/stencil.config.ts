@@ -8,6 +8,10 @@ export const config: Config = {
   namespace: 'widget',
   outputTargets: [
     {
+      type: 'dist-custom-elements',
+      externalRuntime: false,
+    },
+    {
       type: 'dist',
     },
     {
@@ -15,8 +19,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      componentCorePackage: '@mifiel/widget',
-      proxiesFile: '../widget-react/lib/components/stencil-generated/index.ts',
+      outDir: '../widget-react/lib/components/stencil-generated',
     }),
     angularOutputTarget({
       componentCorePackage: '@mifiel/widget',

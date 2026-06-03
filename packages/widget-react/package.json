@@ -25,7 +25,8 @@
   },
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@mifiel/widget": "^0.0.5"
+    "@mifiel/widget": "^0.0.5",
+    "@stencil/react-output-target": "^1.5.3"
   },
   "devDependencies": {
     "@types/react": "^19.2.16",
