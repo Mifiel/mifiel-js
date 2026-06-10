@@ -9,15 +9,22 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": false,
+    "rootDir": "lib",
     "outDir": "./dist",
     "lib": ["dom", "es2015"],
+    "ignoreDeprecations": "6.0",
     "moduleResolution": "node",
     "target": "es2015",
     "skipLibCheck": true,
+    "strict": false,
+    "types": ["node"],
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "declarationDir": "./dist/types"
   },
-  "include": ["lib", "utils/version.js"],
-  "exclude": ["node_modules"]
+  "include": ["lib"],
+  "exclude": [
+    "node_modules",
+    "lib/components/stencil-generated/react-component-lib"
+  ]
 }

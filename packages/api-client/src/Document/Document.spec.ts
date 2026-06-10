@@ -31,7 +31,7 @@ describe('Document', () => {
 
     for (let i = 0; i < basicValidation.length; i += 1) {
       // @ts-ignore
-      await expect(Document[method](basicValidation[i])).rejects.toThrowError();
+      await expect(Document[method](basicValidation[i])).rejects.toThrow();
     }
   };
 
@@ -178,7 +178,7 @@ describe('Document', () => {
       const wrongParams: any = [1, null];
 
       for (let i = 0; i < wrongParams.length; i += 1) {
-        await expect(Document.create(wrongParams[i])).rejects.toThrowError();
+        await expect(Document.create(wrongParams[i])).rejects.toThrow();
       }
     });
   });

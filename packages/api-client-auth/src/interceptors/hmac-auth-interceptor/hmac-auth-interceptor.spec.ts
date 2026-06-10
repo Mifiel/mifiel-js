@@ -40,7 +40,7 @@ describe('HMAC Authentication Interceptor', () => {
   it('throws error if tokens were not setted', async () => {
     Config.setTokens({ appId: '', appSecret: '' });
 
-    await expect(doEndpoint()).rejects.toThrowError();
+    await expect(doEndpoint()).rejects.toThrow();
   });
 
   it('sends custom headers', async () => {

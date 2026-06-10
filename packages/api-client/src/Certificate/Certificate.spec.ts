@@ -37,7 +37,7 @@ describe('Certificate', () => {
       ];
 
       for (let i = 0; i < wrongParams.length; i += 1) {
-        await expect(Certificate.create(wrongParams[i])).rejects.toThrowError();
+        await expect(Certificate.create(wrongParams[i])).rejects.toThrow();
       }
     });
   });

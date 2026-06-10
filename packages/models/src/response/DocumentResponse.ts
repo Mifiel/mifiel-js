@@ -108,7 +108,7 @@ export type DocumentResponse = Partial<{
         email: string;
         name: string;
       };
-    }
+    },
   ];
   signing_groups: SigningGroupResponse[];
 }>;

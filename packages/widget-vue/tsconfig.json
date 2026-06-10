@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "lib",
     "outDir": "./dist",
     "module": "ES2015",
     "declaration": true,
@@ -11,11 +12,12 @@
     "target": "es2017",
     "sourceMap": false,
     "lib": ["dom", "es2020"],
+    "ignoreDeprecations": "6.0",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["lib", "utils/version.js"],
+  "include": ["lib"],
   "exclude": ["node_modules"]
 }

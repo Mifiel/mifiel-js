@@ -22,6 +22,8 @@ jobs:
           cache: 'yarn'
       - name: 🚚 Install dependencies
         run: yarn install
+        env:
+          YARN_ENABLE_SCRIPTS: true
       # Build must run before tests: @mifiel/api-client resolves @mifiel/api-client-auth types from dist.
       - name: 👷 Build packages
         run: yarn build

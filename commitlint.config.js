@@ -1,11 +1,11 @@
 const {
   utils: { getPackages },
-} = require('@commitlint/config-lerna-scopes');
+} = require('@commitlint/config-workspace-scopes').default;
 
 module.exports = {
   extends: [
     '@commitlint/config-conventional',
-    '@commitlint/config-lerna-scopes',
+    '@commitlint/config-workspace-scopes',
   ],
   rules: {
     'scope-enum': async (ctx) => [

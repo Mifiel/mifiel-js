@@ -51,7 +51,7 @@ describe('User', () => {
       ];
 
       for (let i = 0; i < wrongParams.length; i += 1) {
-        await expect(User.setupWidget(wrongParams[i])).rejects.toThrowError();
+        await expect(User.setupWidget(wrongParams[i])).rejects.toThrow();
       }
     });
   });

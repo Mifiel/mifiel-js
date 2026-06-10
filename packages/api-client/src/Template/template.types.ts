@@ -10,12 +10,12 @@ export type TemplateIdSchema = z.infer<typeof templateIdSchema>;
 
 export const generateDocumentSchema = z
   .object({
-    document: z.record(z.any()),
+    document: z.record(z.string(), z.any()),
   })
   .merge(templateIdSchema);
 
 export const generateDocumentOnBulkSchema = z.object({
   identifier: z.string().optional(),
   callback_url: z.string().optional(),
-  documents: z.record(z.any()).array(),
+  documents: z.array(z.record(z.string(), z.any())),
 });

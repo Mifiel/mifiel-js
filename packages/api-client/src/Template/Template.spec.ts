@@ -58,7 +58,7 @@ describe('Template', () => {
 
     for (let i = 0; i < basicValidation.length; i += 1) {
       // @ts-ignore
-      await expect(Template[method](basicValidation[i])).rejects.toThrowError();
+      await expect(Template[method](basicValidation[i])).rejects.toThrow();
     }
   };
 

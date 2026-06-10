@@ -24,15 +24,14 @@
     "build:cjs": "tsc -p ./tsconfig.prod.json",
     "build:esm": "node esbuild.config",
     "check-types": "tsc --noemit",
-    "eslint": "eslint src --ext .ts",
+    "eslint": "eslint src",
     "lint": "yarn eslint && yarn check-types",
     "test": "jest"
   },
   "types": "dist/types/src/main.d.ts",
   "dependencies": {
-    "axios": "1.16.0",
-    "os-name": "4.0.1",
-    "zod": "^3.24.2"
+    "axios": "1.16.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "axios-mock-adapter": "2.1.0",

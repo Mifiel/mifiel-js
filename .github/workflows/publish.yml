@@ -32,6 +32,8 @@ jobs:
           scope: '@mifiel'
       - name: 🚚 Install dependencies
         run: yarn install
+        env:
+          YARN_ENABLE_SCRIPTS: true
       - name: 👷 Build packages
         run: yarn build
       - name: 🔖 Release New Version
