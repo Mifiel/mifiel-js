@@ -17,7 +17,7 @@ import { Components } from '@mifiel/widget';
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['containerClass', 'environment', 'errorBtnAction', 'id', 'onSignError', 'onSignSuccess', 'successBtnAction', 'successBtnText', 'widgetVersion'],
-  outputs: ['signError', 'sign-error', 'signSuccess', 'sign-success'],
+  outputs: ['signError', 'signSuccess'],
   standalone: false
 })
 export class MifielWidget {
@@ -35,11 +35,7 @@ export declare interface MifielWidget extends Components.MifielWidget {
 
   signError: EventEmitter<CustomEvent<any>>;
 
-  'sign-error': EventEmitter<CustomEvent<any>>;
-
   signSuccess: EventEmitter<CustomEvent<any>>;
-
-  'sign-success': EventEmitter<CustomEvent<any>>;
 }
 
 
