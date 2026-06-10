@@ -17,15 +17,28 @@ function patchFile(filePath, mutator) {
   }
 }
 
+function dedupeOutputProperty(src, propertyName) {
+  const pattern = new RegExp(
+    `(@Output\\(\\) ${propertyName} = new EventEmitter<.+?>\\(\\);)(?:\\n\\s*\\1)+`,
+    'g',
+  );
+  return src.replace(pattern, '$1');
+}
+
 const angularTarget = path.join(__dirname, '../../widget-angular/src/lib/stencil-generated/components.ts');
 patchFile(angularTarget, src => {
-  let next = src.replace(
-    /@Output\(\) signError = new EventEmitter<CustomEvent<any>>\(\);\n\s*@Output\(\) signError = new EventEmitter<CustomEvent<any>>\(\);/,
-    '@Output() signError = new EventEmitter<CustomEvent<any>>();',
+  let next = dedupeOutputProperty(src, 'signError');
+  next = dedupeOutputProperty(next, 'signSuccess');
+  next = next.replace(
+    /outputs: \['signError', 'sign-error', 'signSuccess', 'sign-success'\]/,
+    "outputs: ['signError', 'signSuccess']",
   );
   next = next.replace(
-    /@Output\(\) signSuccess = new EventEmitter<CustomEvent<any>>\(\);\n\s*@Output\(\) signSuccess = new EventEmitter<CustomEvent<any>>\(\);/,
-    '@Output() signSuccess = new EventEmitter<CustomEvent<any>>();',
+    /signError: EventEmitter<.+?>;\n\n\s*'sign-error': EventEmitter<.+?>;\n\n\s*signSuccess: EventEmitter<.+?>;\n\n\s*'sign-success': EventEmitter<.+?>;/,
+    match => {
+      const eventType = match.match(/signError: EventEmitter<(.+)>;/)[1];
+      return `signError: EventEmitter<${eventType}>;\n\n  signSuccess: EventEmitter<${eventType}>;`;
+    },
   );
   return next;
 });
