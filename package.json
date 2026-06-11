@@ -27,6 +27,9 @@
     "release:version": "lerna version",
     "test": "lerna run test"
   },
+  "resolutions": {
+    "axios": "1.17.0"
+  },
   "devDependencies": {
     "@angular/compiler": "^21.2.15",
     "@angular/core": "^21.2.15",
