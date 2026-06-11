@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/Mifiel/mifiel-js/compare/@mifiel/widget-angular@0.1.3...@mifiel/widget-angular@0.1.4) (2026-06-11)
+
+**Note:** Version bump only for package @mifiel/widget-angular
+
 ## [0.1.3](https://github.com/Mifiel/mifiel-js/compare/@mifiel/widget-angular@0.1.2...@mifiel/widget-angular@0.1.3) (2026-06-03)
 
 **Note:** Version bump only for package @mifiel/widget-angular

@@ -3991,7 +3991,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mifiel/api-client-auth@npm:^0.2.5, @mifiel/api-client-auth@workspace:packages/api-client-auth":
+"@mifiel/api-client-auth@npm:^0.2.6, @mifiel/api-client-auth@workspace:packages/api-client-auth":
   version: 0.0.0-use.local
   resolution: "@mifiel/api-client-auth@workspace:packages/api-client-auth"
   dependencies:
@@ -4006,8 +4006,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mifiel/api-client@workspace:packages/api-client"
   dependencies:
-    "@mifiel/api-client-auth": "npm:^0.2.5"
-    "@mifiel/models": "npm:^0.1.4"
+    "@mifiel/api-client-auth": "npm:^0.2.6"
+    "@mifiel/models": "npm:^0.1.5"
     axios: "npm:1.16.1"
     object-to-formdata: "npm:4.5.1"
     zod: "npm:^4.4.3"
@@ -4016,7 +4016,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mifiel/models@npm:^0.1.4, @mifiel/models@workspace:packages/models":
+"@mifiel/models@npm:^0.1.5, @mifiel/models@workspace:packages/models":
   version: 0.0.0-use.local
   resolution: "@mifiel/models@workspace:packages/models"
   languageName: unknown
@@ -4031,7 +4031,7 @@ __metadata:
     "@angular/compiler": "npm:^21.2.15"
     "@angular/compiler-cli": "npm:^21.2.15"
     "@angular/core": "npm:^21.2.15"
-    "@mifiel/widget": "npm:^0.0.5"
+    "@mifiel/widget": "npm:^0.0.6"
     ng-packagr: "npm:^21.2.5"
     rxjs: "npm:~7.8.1"
     tslib: "npm:^2.8.1"
@@ -4050,7 +4050,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mifiel/widget-react@workspace:packages/widget-react"
   dependencies:
-    "@mifiel/widget": "npm:^0.0.5"
+    "@mifiel/widget": "npm:^0.0.6"
     "@stencil/react-output-target": "npm:^1.5.3"
     "@types/react": "npm:^19.2.16"
     react: "npm:^19.2.7"
@@ -4063,12 +4063,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mifiel/widget-vue@workspace:packages/widget-vue"
   dependencies:
-    "@mifiel/widget": "npm:^0.0.5"
+    "@mifiel/widget": "npm:^0.0.6"
     vue: "npm:^3.4.29"
   languageName: unknown
   linkType: soft
 
-"@mifiel/widget@npm:^0.0.5, @mifiel/widget@workspace:packages/widget-stencil":
+"@mifiel/widget@npm:^0.0.6, @mifiel/widget@workspace:packages/widget-stencil":
   version: 0.0.0-use.local
   resolution: "@mifiel/widget@workspace:packages/widget-stencil"
   dependencies:
