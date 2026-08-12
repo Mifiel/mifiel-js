@@ -12,11 +12,7 @@ export interface SignaturePackageItemResponse {
 }
 
 export type Algorithms =
-  | 'RSA-SHA256'
-  | 'RSA-SHA1'
-  | 'SIMPLE'
-  | 'BITCOIN-HDW'
-  | 'BITCOIN-TX';
+  'RSA-SHA256' | 'RSA-SHA1' | 'SIMPLE' | 'BITCOIN-HDW' | 'BITCOIN-TX';
 
 export interface SignaturePackagePlaintextResponse {
   name:
