@@ -15,13 +15,13 @@ jobs:
     steps:
       - name: 👉🏼 Checkout
         uses: actions/checkout@v6
+      - name: 📥 Setup pnpm
+        uses: pnpm/action-setup@v4
       - name: 📦️ Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - name: Enable Corepack
-        run: corepack enable
       - name: 🚚 Install dependencies
         run: pnpm install --frozen-lockfile
       # Build must run before tests: @mifiel/api-client resolves @mifiel/api-client-auth types from dist.
