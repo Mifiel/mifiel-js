@@ -8,8 +8,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         node-version: [22.x]
@@ -19,11 +17,12 @@ jobs:
         with:
           # pulls all commits (needed for lerna / semantic release to correctly version) — see https://github.com/lerna/lerna/issues/2542
           fetch-depth: 0
+          # PAT of a user on the ruleset bypass list (required to push version bumps to protected main)
+          token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
       - name: 🤖 Git Bot Identity
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
       - name: 📥 Setup pnpm
         uses: pnpm/action-setup@v4
       - name: 📦️ Use Node.js ${{ matrix.node-version }}
