@@ -22,8 +22,8 @@ import { Components } from '@mifiel/widget';
 })
 export class MifielWidget {
   protected el: HTMLMifielWidgetElement;
-  @Output() signError = new EventEmitter<CustomEvent<any>>();
-  @Output() signSuccess = new EventEmitter<CustomEvent<any>>();
+  @Output() signError = new EventEmitter<MifielWidgetCustomEvent<any>>();
+  @Output() signSuccess = new EventEmitter<MifielWidgetCustomEvent<any>>();
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
@@ -31,11 +31,13 @@ export class MifielWidget {
 }
 
 
+import type { MifielWidgetCustomEvent } from '@mifiel/widget';
+
 export declare interface MifielWidget extends Components.MifielWidget {
 
-  signError: EventEmitter<CustomEvent<any>>;
+  signError: EventEmitter<MifielWidgetCustomEvent<any>>;
 
-  signSuccess: EventEmitter<CustomEvent<any>>;
+  signSuccess: EventEmitter<MifielWidgetCustomEvent<any>>;
 }
 
 
