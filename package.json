@@ -16,7 +16,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build --scope=@mifiel/api-client --scope=@mifiel/api-client-auth && yarn build:widget",
+    "build": "lerna run build --scope=@mifiel/api-client --scope=@mifiel/api-client-auth && pnpm run build:widget",
     "build:widget": "lerna run build --scope=@mifiel/widget && lerna run build --scope=@mifiel/widget-react --scope=@mifiel/widget-vue --scope=@mifiel/widget-angular",
     "husky": "husky",
     "lint": "lerna run lint",
@@ -27,16 +27,17 @@
     "release:version": "lerna version",
     "test": "lerna run test"
   },
-  "resolutions": {
-    "axios": "1.17.0"
-  },
+  "packageManager": "pnpm@11.5.3",
   "devDependencies": {
+    "@mifiel/api-client": "workspace:*",
+    "@mifiel/api-client-auth": "workspace:*",
     "@angular/compiler": "^21.2.15",
     "@angular/core": "^21.2.15",
     "@commitlint/cli": "21.0.2",
     "@commitlint/config-conventional": "21.0.2",
     "@commitlint/config-workspace-scopes": "21.0.2",
     "@types/jest": "^30.0.0",
+    "@types/node": "^25.9.1",
     "esbuild": "0.28.0",
     "eslint": "^10.4.1",
     "eslint-config-prettier": "^10.1.8",

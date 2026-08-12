@@ -20,6 +20,7 @@
   "scripts": {
     "check-types": "tsc --noemit",
     "eslint": "eslint src",
-    "lint": "yarn eslint && yarn check-types"
-  }
+    "lint": "pnpm run eslint && pnpm run check-types"
+  },
+  "packageManager": "pnpm@11.5.3"
 }

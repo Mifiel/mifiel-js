@@ -35,7 +35,7 @@
   },
   "typings": "index.d.ts",
   "dependencies": {
-    "@mifiel/widget": "^0.0.6"
+    "@mifiel/widget": "workspace:*"
   },
   "peerDependencies": {
     "@angular/compiler": "^21.2.0",
