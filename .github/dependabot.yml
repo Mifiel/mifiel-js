@@ -9,6 +9,17 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # TypeScript 7+ and Angular 22+ are not yet a compatible set for this repo
+    # (Angular 21/22 require TypeScript <6.1; Angular 22 also needs Node >=22.22.3).
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@angular/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@angular-devkit/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "ng-packagr"
+        update-types: ["version-update:semver-major"]
     groups:
       root-deps:
         patterns: ["*"]
@@ -17,6 +28,10 @@ updates:
     directory: "/packages/api-client-auth"
     schedule:
       interval: "weekly"
+    # axios@1.19 breaks axios-mock-adapter's AxiosInstance typing
+    ignore:
+      - dependency-name: "axios"
+        versions: [">=1.19.0"]
     groups:
       api-client-auth-deps:
         patterns: ["*"]
@@ -25,6 +40,10 @@ updates:
     directory: "/packages/api-client"
     schedule:
       interval: "weekly"
+    # Keep axios in lockstep with api-client-auth (mock-adapter typing break at 1.19)
+    ignore:
+      - dependency-name: "axios"
+        versions: [">=1.19.0"]
     groups:
       api-client-deps:
         patterns: ["*"]
@@ -41,6 +60,15 @@ updates:
     directory: "/packages/widget-angular"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@angular/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@angular-devkit/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "ng-packagr"
+        update-types: ["version-update:semver-major"]
     groups:
       widget-angular-deps:
         patterns: ["*"]
@@ -49,6 +77,9 @@ updates:
     directory: "/packages/widget-react"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     groups:
       widget-react-deps:
         patterns: ["*"]
