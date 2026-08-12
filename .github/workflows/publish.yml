@@ -24,31 +24,26 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+      - name: 📥 Setup pnpm
+        uses: pnpm/action-setup@v4
       - name: 📦️ Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'pnpm'
           scope: '@mifiel'
-      - name: Enable Corepack
-        run: |
-          corepack enable
-          yarn set version 4.16.0
-          git checkout package.json
       - name: 🚚 Install dependencies
-        run: yarn install --immutable
-        env:
-          YARN_ENABLE_SCRIPTS: true
+        run: pnpm install --frozen-lockfile
       - name: 👷 Build packages
-        run: yarn build
+        run: pnpm run build
       - name: 🔖 Release New Version
-        run: yarn release:version --yes
+        run: pnpm run release:version --yes
       - uses: actions/setup-node@v6
         with:
           registry-url: https://npm.pkg.github.com
           scope: '@mifiel'
       - name: 📦 Publish to Github Packages
-        run: yarn release:publish from-package --no-verify-access --registry https://npm.pkg.github.com --yes
+        run: pnpm run release:publish from-package --no-verify-access --registry https://npm.pkg.github.com --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v6
@@ -56,6 +51,6 @@ jobs:
           registry-url: https://registry.npmjs.org
           scope: '@mifiel'
       - name: 📦 Publish to NPM
-        run: yarn release:publish from-package --no-verify-access --registry https://registry.npmjs.org --yes
+        run: pnpm run release:publish from-package --no-verify-access --registry https://registry.npmjs.org --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

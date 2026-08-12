@@ -20,17 +20,19 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "yarn build:cjs && yarn build:esm",
+    "build": "pnpm run build:cjs && pnpm run build:esm",
     "build:cjs": "tsc -p ./tsconfig.prod.json",
     "build:esm": "node esbuild.config",
     "check-types": "tsc --noemit",
     "eslint": "eslint src",
-    "lint": "yarn eslint && yarn check-types",
+    "lint": "pnpm run eslint && pnpm run check-types",
     "test": "jest"
   },
+  "packageManager": "pnpm@11.5.3",
   "types": "dist/types/src/main.d.ts",
   "dependencies": {
     "axios": "1.17.0",
+    "tslib": "^2.8.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {

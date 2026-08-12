@@ -15,23 +15,19 @@ jobs:
     steps:
       - name: 👉🏼 Checkout
         uses: actions/checkout@v6
+      - name: 📥 Setup pnpm
+        uses: pnpm/action-setup@v4
       - name: 📦️ Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-      - name: Enable Corepack
-        run: |
-          corepack enable
-          yarn set version 4.16.0
+          cache: 'pnpm'
       - name: 🚚 Install dependencies
-        run: yarn install --immutable
-        env:
-          YARN_ENABLE_SCRIPTS: true
+        run: pnpm install --frozen-lockfile
       # Build must run before tests: @mifiel/api-client resolves @mifiel/api-client-auth types from dist.
       - name: 👷 Build packages
-        run: yarn build
+        run: pnpm run build
       - name: 🧾 Run Unit Tests
-        run: yarn test
+        run: pnpm run test
       - name: 🧐 Lint Files
-        run: yarn lint
+        run: pnpm run lint

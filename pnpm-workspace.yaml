@@ -1,0 +1,20 @@
+packages:
+  - "packages/*"
+
+nodeVersion: "22.22.3"
+nodeLinker: hoisted
+
+saveExact: true
+
+allowBuilds:
+  "@parcel/watcher": true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+  nx: true
+  unrs-resolver: true
+
+minimumReleaseAge: 10080 # 7 days
+
+registries:
+  "@mifiel": https://npm.pkg.github.com

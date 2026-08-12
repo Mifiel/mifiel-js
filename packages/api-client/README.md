@@ -9,7 +9,7 @@ This library depends on [@mifiel/api-client-auth](https://github.com/Mifiel/mifi
 ```bash
 npm install @mifiel/api-client-auth @mifiel/api-client --save
 # or
-yarn add @mifiel/api-client-auth @mifiel/api-client
+pnpm add @mifiel/api-client-auth @mifiel/api-client
 ```
 
 ## Usage

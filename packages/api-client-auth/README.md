@@ -9,7 +9,7 @@ Please read our [documentation](http://docs.mifiel.com/) for instructions on how
 ```bash
 npm install @mifiel/api-client-auth --save
 # or
-yarn add @mifiel/api-client-auth
+pnpm add @mifiel/api-client-auth
 ```
 
 ## Usage
