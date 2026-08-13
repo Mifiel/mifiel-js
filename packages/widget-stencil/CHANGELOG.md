@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/Mifiel/mifiel-js/compare/%40mifiel%2Fwidget%400.0.6...%40mifiel%2Fwidget%400.0.7) (2026-08-13)
+
+**Note:** Version bump only for package @mifiel/widget
+
 ## [0.0.6](https://github.com/Mifiel/mifiel-js/compare/@mifiel/widget@0.0.5...@mifiel/widget@0.0.6) (2026-06-11)
 
 **Note:** Version bump only for package @mifiel/widget

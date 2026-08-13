@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.8](https://github.com/Mifiel/mifiel-js/compare/%40mifiel%2Fwidget-vue%400.0.7...%40mifiel%2Fwidget-vue%400.0.8) (2026-08-13)
+
+**Note:** Version bump only for package @mifiel/widget-vue
+
 ## [0.0.7](https://github.com/Mifiel/mifiel-js/compare/@mifiel/widget-vue@0.0.6...@mifiel/widget-vue@0.0.7) (2026-08-12)
 
 **Note:** Version bump only for package @mifiel/widget-vue
