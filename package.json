@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "22.*"
+    "node": "24.*"
   },
   "repository": "git@github.com:Mifiel/mifiel-js.git",
   "bugs": {

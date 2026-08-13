@@ -1,7 +1,7 @@
 packages:
   - "packages/*"
 
-nodeVersion: "22.22.3"
+nodeVersion: "24.18.0"
 nodeLinker: hoisted
 
 saveExact: true

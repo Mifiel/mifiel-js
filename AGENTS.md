@@ -2,7 +2,7 @@
 
 ## Cursor Cloud specific instructions
 
-This is the Mifiel JS/TypeScript **library monorepo** (`pnpm` workspaces + Nx + Lerna). There is no long-running backend; the packages are published npm libraries. Node 22 and `pnpm@11.5.3` are already available on the VM, and the update script runs `pnpm install --frozen-lockfile`.
+This is the Mifiel JS/TypeScript **library monorepo** (`pnpm` workspaces + Nx + Lerna). There is no long-running backend; the packages are published npm libraries. Node 24 and `pnpm@11.5.3` are already available on the VM, and the update script runs `pnpm install --frozen-lockfile`.
 
 Packages (`packages/*`):
 - `@mifiel/models` — TypeScript types only. Lint only (`tsc --noemit` + eslint).
