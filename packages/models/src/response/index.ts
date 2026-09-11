@@ -6,3 +6,4 @@ export * from './DocumentResponse';
 export * from './SignatoryResponse';
 export * from './UserResponse';
 export * from './TemplateResponse';
+export * from './WebhookResponse';
