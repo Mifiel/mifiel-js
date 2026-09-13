@@ -32,7 +32,7 @@
     "@mifiel/api-client": "workspace:*",
     "@mifiel/api-client-auth": "workspace:*",
     "@angular/compiler": "21.2.19",
-    "@angular/core": "21.2.19",
+    "@angular/core": "21.2.20",
     "@commitlint/cli": "21.2.1",
     "@commitlint/config-conventional": "21.2.0",
     "@commitlint/config-workspace-scopes": "21.2.0",
