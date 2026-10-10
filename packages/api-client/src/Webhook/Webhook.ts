@@ -1,5 +1,6 @@
 import type {
   TriggerWebhookRequest,
+  TriggerWebhookResponse,
   WebhookRequest,
   WebhookResponse,
 } from '@mifiel/models';
@@ -39,7 +40,7 @@ class WebhookModel extends Model<WebhookResponse> {
 
   async trigger(params: { id: string } & TriggerWebhookRequest) {
     const { id, ...body } = triggerWebhookSchema.parse(params);
-    return this.request({
+    return this.request<TriggerWebhookResponse>({
       method: 'POST',
       url: `${id}/trigger`,
       data: {
