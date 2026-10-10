@@ -19,8 +19,8 @@ const createWebhookSchema = z.object({
 });
 
 const triggerWebhookSchema = z.object({
-  id: z.string().min(1),
-  resource: z.string().min(1),
+  id: z.uuid(),
+  resource: z.uuid(),
   instant: z.boolean().optional(),
 });
 
