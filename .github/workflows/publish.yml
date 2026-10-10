@@ -8,6 +8,10 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm trusted publisher (OIDC)
+      packages: write # publish to GitHub Packages with GITHUB_TOKEN
     strategy:
       matrix:
         node-version: [22.x]
@@ -50,6 +54,5 @@ jobs:
           registry-url: https://registry.npmjs.org
           scope: '@mifiel'
       - name: 📦 Publish to NPM
+        # Trusted publisher: lerna exchanges the GitHub OIDC token. Do not set NODE_AUTH_TOKEN here.
         run: pnpm run release:publish from-package --no-verify-access --registry https://registry.npmjs.org --yes
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
