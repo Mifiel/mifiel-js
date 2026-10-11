@@ -2,7 +2,7 @@
   "name": "@mifiel/widget-vue",
   "version": "0.0.8",
   "description": "Vue.js wrapper for the Mifiel Widget implemented with StencilJS",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
   "bugs": {
     "url": "https://github.com/Mifiel/mifiel-js/issues"
@@ -11,7 +11,8 @@
   "author": "Alejandro López <alejandro@mifiel.com>",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "publishConfig": {
     "access": "public",
