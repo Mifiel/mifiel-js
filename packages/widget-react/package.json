@@ -1,6 +1,6 @@
 {
   "name": "@mifiel/widget-react",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A React wrapper for the Mifiel Widget component built with StencilJS.",
   "license": "MIT",
   "repository": "git@github.com:Mifiel/mifiel-js.git",

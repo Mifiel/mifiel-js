@@ -1,6 +1,6 @@
 {
   "name": "@mifiel/widget-angular",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Angular wrapper for the Mifiel Widget implemented with StencilJS",
   "license": "MIT",
   "repository": "git@github.com:Mifiel/mifiel-js.git",
