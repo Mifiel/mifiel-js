@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.16](https://github.com/Mifiel/mifiel-js/compare/%40mifiel%2Fapi-client%400.2.15...%40mifiel%2Fapi-client%400.2.16) (2026-11-05)
+
+**Note:** Version bump only for package @mifiel/api-client
+
 ## [0.2.15](https://github.com/Mifiel/mifiel-js/compare/%40mifiel%2Fapi-client%400.2.14...%40mifiel%2Fapi-client%400.2.15) (2026-10-10)
 
 **Note:** Version bump only for package @mifiel/api-client
